@@ -14,7 +14,7 @@ git clone https://github.com/g4cm4n/dotfiles.git ~/dotfiles
 bash ~/dotfiles/install.sh
 ```
 
-\(Optional\) If you have superuser rights you can remove ```.zshenv``` from your ```$HOME``` to keep it clean as good practice suggests. Instead set ```ZDOTDIR=$HOME/.zsh``` in ```/etc/zsh/zshenv``` (if it doesn't exist, create it first).
+\(Optional\) If you have superuser rights you can remove ```.zshenv``` from your ```$HOME``` to keep it clean as good practice suggests. Instead set ```ZDOTDIR=$HOME/.zsh``` in ```/etc/zsh/zshenv```.
 
 ## Instructions for WSL: 
 1. Copy contents of ```dotfiles\windows\%USERPROFILE%\.config\Fonts``` to ```C:\Windows\Fonts```.
