@@ -21,7 +21,7 @@ bash ~/dotfiles/install.sh
 1. Copy contents of ```dotfiles\windows\%USERPROFILE%\.config\Fonts``` to ```C:\Windows\Fonts```.
 2. Copy ```dotfiles\windows\%USERPROFILE%\.config\ProfileIcons\``` to ```C:\Users\%USERPROFILE%\.config\ProfileIcons```.
 3. Replace Windows Terminal settings (CTRL+,) with [this provided in repo](https://github.com/g4cm4n/dotfiles/blob/master/windows/settings.json).
-4. Customize options which are different in your W10/WSL environment like ```startingDirectory```, ```keybindings```, etc
+4. Customize options which are different \(unique\) in every W10/WSL environment like ```startingDirectory```, ```keybindings```, etc...
 4. Run ```bash ~/dotfiles/install.sh``` inside your WSL distro.
 5. Restart prompt.
 
