@@ -5,12 +5,14 @@ Personal development-environment preferences. Using this configuration in ArcoLi
 ![dotfiles](https://user-images.githubusercontent.com/16854775/95653367-c98b3a00-0ae7-11eb-9266-7fa4d57021e3.jpg?raw=true)
 
 How to install on Linux: 
-1. ```git clone https://github.com/g4cm4n/dotfiles.git ~/dotfiles``` 
-2. Create backup of your current (neo)vim and zsh rc-files if needed.
-3. Run (you'll need curl in your $PATH): 
-```cd ~/dotfiles
-bash ~/dotfiles/install.sh```
-(Optional) 4. If you have superuser rights you can remove ```.zshenv``` from your ```$HOME``` to keep it clean. Instead you must set ```ZDOTDIR=$HOME/.zsh``` in ```/etc/zsh/zshenv``` (if it doesn't exist, create it first).
+1. Create backup of your current (neo)vim and zsh rc-files.
+2. Make sure you've got working ```curl``` binary in your ```$PATH```.
+3. Run in terminal: 
+```git clone https://github.com/g4cm4n/dotfiles.git ~/dotfiles```
+```cd ~/dotfiles```
+```bash ~/dotfiles/install.sh```
+
+(Optional) 4. If you have superuser rights you can remove ```.zshenv``` from your ```$HOME``` to keep it clean. Instead set ```ZDOTDIR=$HOME/.zsh``` inside ```/etc/zsh/zshenv``` (if it doesn't exist, create it first).
 
 Instructions for WSL: 
 1. Copy contents of ```dotfiles\windows\%USERPROFILE%\.config\Fonts``` to ```C:\Windows\Fonts```.
