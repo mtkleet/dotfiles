@@ -1,0 +1,933 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/86bdb84c/
+$VIMFILES	init.vim	/^    let $VIMFILES=$HOME.'\/.vim'$/;"	v
+$VIMFILES	init.vim	/^    let $VIMFILES=$VIM.'\/vimfiles'$/;"	v
+$schema	windows/settings.json	/^  "$schema": "https:\/\/aka.ms\/terminal-profiles-schema",$/;"	s
+/	init.vim	/^map \/ <Plug>(incsearch-forward)$/;"	m
+0	windows/settings.json	/^            {$/;"	o	array:actions.70.commands.0.commands
+0	windows/settings.json	/^        {$/;"	o	array:actions.68.commands
+0	windows/settings.json	/^        {$/;"	o	array:actions.69.commands
+0	windows/settings.json	/^        {$/;"	o	array:actions.70.commands
+0	windows/settings.json	/^      {$/;"	o	array:profiles.list
+0	windows/settings.json	/^    {$/;"	o	array:actions
+0	windows/settings.json	/^    {$/;"	o	array:schemes
+1	windows/settings.json	/^            {$/;"	o	array:actions.70.commands.0.commands
+1	windows/settings.json	/^      {$/;"	o	array:profiles.list
+1	windows/settings.json	/^    {$/;"	o	array:actions
+1	windows/settings.json	/^    {$/;"	o	array:schemes
+10	windows/settings.json	/^    {$/;"	o	array:actions
+10	windows/settings.json	/^    {$/;"	o	array:schemes
+11	windows/settings.json	/^    {$/;"	o	array:actions
+11	windows/settings.json	/^    {$/;"	o	array:schemes
+12	windows/settings.json	/^    {$/;"	o	array:actions
+12	windows/settings.json	/^    {$/;"	o	array:schemes
+13	windows/settings.json	/^    {$/;"	o	array:actions
+13	windows/settings.json	/^    {$/;"	o	array:schemes
+14	windows/settings.json	/^    {$/;"	o	array:actions
+14	windows/settings.json	/^    {$/;"	o	array:schemes
+15	windows/settings.json	/^    {$/;"	o	array:actions
+15	windows/settings.json	/^    {$/;"	o	array:schemes
+16	windows/settings.json	/^    {$/;"	o	array:actions
+16	windows/settings.json	/^    {$/;"	o	array:schemes
+17	windows/settings.json	/^    {$/;"	o	array:actions
+17	windows/settings.json	/^    {$/;"	o	array:schemes
+18	windows/settings.json	/^    {$/;"	o	array:actions
+18	windows/settings.json	/^    {$/;"	o	array:schemes
+19	windows/settings.json	/^    {$/;"	o	array:actions
+19	windows/settings.json	/^    {$/;"	o	array:schemes
+2	windows/settings.json	/^            {$/;"	o	array:actions.70.commands.0.commands
+2	windows/settings.json	/^      {$/;"	o	array:profiles.list
+2	windows/settings.json	/^    {$/;"	o	array:actions
+2	windows/settings.json	/^    {$/;"	o	array:schemes
+20	windows/settings.json	/^    {$/;"	o	array:actions
+20	windows/settings.json	/^    {$/;"	o	array:schemes
+21	windows/settings.json	/^    {$/;"	o	array:actions
+22	windows/settings.json	/^    {$/;"	o	array:actions
+23	windows/settings.json	/^    {$/;"	o	array:actions
+24	windows/settings.json	/^    {$/;"	o	array:actions
+25	windows/settings.json	/^    {$/;"	o	array:actions
+26	windows/settings.json	/^    {$/;"	o	array:actions
+27	windows/settings.json	/^    {$/;"	o	array:actions
+28	windows/settings.json	/^    {$/;"	o	array:actions
+29	windows/settings.json	/^    {$/;"	o	array:actions
+3	windows/settings.json	/^      {$/;"	o	array:profiles.list
+3	windows/settings.json	/^    {$/;"	o	array:actions
+3	windows/settings.json	/^    {$/;"	o	array:schemes
+30	windows/settings.json	/^    {$/;"	o	array:actions
+31	windows/settings.json	/^    {$/;"	o	array:actions
+32	windows/settings.json	/^    {$/;"	o	array:actions
+33	windows/settings.json	/^    {$/;"	o	array:actions
+34	windows/settings.json	/^    {$/;"	o	array:actions
+35	windows/settings.json	/^    {$/;"	o	array:actions
+36	windows/settings.json	/^    {$/;"	o	array:actions
+37	windows/settings.json	/^    {$/;"	o	array:actions
+38	windows/settings.json	/^    {$/;"	o	array:actions
+39	windows/settings.json	/^    {$/;"	o	array:actions
+4	windows/settings.json	/^      {$/;"	o	array:profiles.list
+4	windows/settings.json	/^    {$/;"	o	array:actions
+4	windows/settings.json	/^    {$/;"	o	array:schemes
+40	windows/settings.json	/^    {$/;"	o	array:actions
+41	windows/settings.json	/^    {$/;"	o	array:actions
+42	windows/settings.json	/^    {$/;"	o	array:actions
+43	windows/settings.json	/^    {$/;"	o	array:actions
+44	windows/settings.json	/^    {$/;"	o	array:actions
+45	windows/settings.json	/^    {$/;"	o	array:actions
+46	windows/settings.json	/^    {$/;"	o	array:actions
+47	windows/settings.json	/^    {$/;"	o	array:actions
+48	windows/settings.json	/^    {$/;"	o	array:actions
+49	windows/settings.json	/^    {$/;"	o	array:actions
+5	windows/settings.json	/^    {$/;"	o	array:actions
+5	windows/settings.json	/^    {$/;"	o	array:schemes
+50	windows/settings.json	/^    {$/;"	o	array:actions
+51	windows/settings.json	/^    {$/;"	o	array:actions
+52	windows/settings.json	/^    {$/;"	o	array:actions
+53	windows/settings.json	/^    {$/;"	o	array:actions
+54	windows/settings.json	/^    {$/;"	o	array:actions
+55	windows/settings.json	/^    {$/;"	o	array:actions
+56	windows/settings.json	/^    {$/;"	o	array:actions
+57	windows/settings.json	/^    {$/;"	o	array:actions
+58	windows/settings.json	/^    {$/;"	o	array:actions
+59	windows/settings.json	/^    {$/;"	o	array:actions
+6	windows/settings.json	/^    {$/;"	o	array:actions
+6	windows/settings.json	/^    {$/;"	o	array:schemes
+60	windows/settings.json	/^    {$/;"	o	array:actions
+61	windows/settings.json	/^    {$/;"	o	array:actions
+62	windows/settings.json	/^    {$/;"	o	array:actions
+63	windows/settings.json	/^    {$/;"	o	array:actions
+64	windows/settings.json	/^    {$/;"	o	array:actions
+65	windows/settings.json	/^    {$/;"	o	array:actions
+66	windows/settings.json	/^    {$/;"	o	array:actions
+67	windows/settings.json	/^    {$/;"	o	array:actions
+68	windows/settings.json	/^    {$/;"	o	array:actions
+69	windows/settings.json	/^    {$/;"	o	array:actions
+7	windows/settings.json	/^    {$/;"	o	array:actions
+7	windows/settings.json	/^    {$/;"	o	array:schemes
+70	windows/settings.json	/^    {$/;"	o	array:actions
+8	windows/settings.json	/^    {$/;"	o	array:actions
+8	windows/settings.json	/^    {$/;"	o	array:schemes
+9	windows/settings.json	/^    {$/;"	o	array:actions
+9	windows/settings.json	/^    {$/;"	o	array:schemes
+<F1>	init.vim	/^nnoremap<F1> :set invnumber<CR><CR>$/;"	m
+<F3>	init.vim	/^nnoremap<F3> :set list! list?<CR>$/;"	m
+<F4>	init.vim	/^nnoremap<F4> :NERDTreeToggle<CR><F3>$/;"	m
+<F5>	init.vim	/^nnoremap<F5> :TagbarToggle<CR><F4>$/;"	m
+<F8>	init.vim	/^nnoremap<F8> :call CompileRun()<CR>$/;"	m
+<Leader>[	init.vim	/^nnoremap <Leader>[ :b#<CR>$/;"	m
+<Leader>]	init.vim	/^nnoremap <Leader>] :bn<CR>$/;"	m
+<R>	init.vim	/^noremap<R> :redo<CR>$/;"	m
+<leader>c	init.vim	/^nnoremap<silent><leader>c :cclose<BAR>lclose<CR>$/;"	m
+<leader>f	init.vim	/^nnoremap<leader>f :YcmCompleter Format<CR>$/;"	m
+<leader>h	init.vim	/^nnoremap<leader>h :split \\| :enew<CR>$/;"	m
+<leader>o	init.vim	/^nnoremap<leader>o :call OpenContainerFolder()<CR><CR>$/;"	m
+<leader>q	init.vim	/^nnoremap<leader>q :q<CR>$/;"	m
+<leader>st	init.vim	/^nnoremap <leader>st :%s\/\\s\\+$\/\/e<cr>:let @\/=''<CR>$/;"	m
+<leader>v	init.vim	/^nnoremap<leader>v :vsplit \\| :enew<CR>$/;"	m
+<leader>vrc	init.vim	/^nnoremap<leader>vrc :vs $MYVIMRC<CR>$/;"	m
+<leader>w	init.vim	/^nnoremap<leader>w :w<CR>$/;"	m
+?	init.vim	/^map ? <Plug>(incsearch-backward)$/;"	m
+CompileRun	init.vim	/^func! CompileRun()$/;"	f
+DevIconsEnableFolderExtensionPatternMatching	init.vim	/^let DevIconsEnableFolderExtensionPatternMatching=1$/;"	v
+DevIconsEnableFoldersOpenClose	init.vim	/^let DevIconsEnableFoldersOpenClose=1$/;"	v
+N	init.vim	/^map N <Plug>(incsearch-nohl-N)$/;"	m
+OpenContainerFolder	init.vim	/^function! OpenContainerFolder()$/;"	f
+Q	init.vim	/^cnoremap Q <Nop>$/;"	m
+Run	init.vim	/^func! Run()$/;"	f
+action	windows/settings.json	/^                "action": "splitPane",$/;"	s	object:actions.70.commands.0.commands.0.command
+action	windows/settings.json	/^                "action": "splitPane",$/;"	s	object:actions.70.commands.0.commands.1.command
+action	windows/settings.json	/^                "action": "splitPane",$/;"	s	object:actions.70.commands.0.commands.2.command
+action	windows/settings.json	/^            "action": "newTab",$/;"	s	object:actions.69.commands.0.command
+action	windows/settings.json	/^            "action": "setColorScheme",$/;"	s	object:actions.68.commands.0.command
+action	windows/settings.json	/^        "action": "adjustFontSize",$/;"	s	object:actions.65.command
+action	windows/settings.json	/^        "action": "adjustFontSize",$/;"	s	object:actions.66.command
+action	windows/settings.json	/^        "action": "copy",$/;"	s	object:actions.56.command
+action	windows/settings.json	/^        "action": "copy",$/;"	s	object:actions.57.command
+action	windows/settings.json	/^        "action": "copy",$/;"	s	object:actions.58.command
+action	windows/settings.json	/^        "action": "moveFocus",$/;"	s	object:actions.43.command
+action	windows/settings.json	/^        "action": "moveFocus",$/;"	s	object:actions.44.command
+action	windows/settings.json	/^        "action": "moveFocus",$/;"	s	object:actions.45.command
+action	windows/settings.json	/^        "action": "moveFocus",$/;"	s	object:actions.46.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.15.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.16.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.17.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.18.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.19.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.20.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.21.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.22.command
+action	windows/settings.json	/^        "action": "newTab",$/;"	s	object:actions.23.command
+action	windows/settings.json	/^        "action": "openSettings",$/;"	s	object:actions.7.command
+action	windows/settings.json	/^        "action": "resizePane",$/;"	s	object:actions.39.command
+action	windows/settings.json	/^        "action": "resizePane",$/;"	s	object:actions.40.command
+action	windows/settings.json	/^        "action": "resizePane",$/;"	s	object:actions.41.command
+action	windows/settings.json	/^        "action": "resizePane",$/;"	s	object:actions.42.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.37.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.38.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.48.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.49.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.50.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.51.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.52.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.53.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.54.command
+action	windows/settings.json	/^        "action": "splitPane",$/;"	s	object:actions.55.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.27.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.28.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.29.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.30.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.31.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.32.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.33.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.34.command
+action	windows/settings.json	/^        "action": "switchToTab",$/;"	s	object:actions.35.command
+actions	windows/settings.json	/^  "actions": [$/;"	a
+airline_theme	init.vim	/^let airline_theme='solarized_flood'$/;"	v
+altGrAliasing	windows/settings.json	/^      "altGrAliasing": true,$/;"	b	object:profiles.defaults
+alwaysOnTop	windows/settings.json	/^  "alwaysOnTop": false,$/;"	b
+alwaysShowTabs	windows/settings.json	/^  "alwaysShowTabs": true,$/;"	b
+antialiasingMode	windows/settings.json	/^      "antialiasingMode": "cleartype",$/;"	s	object:profiles.defaults
+autoload_plug_path	init.vim	/^    let autoload_plug_path = stdpath('data') . '\/site\/autoload\/plug.vim'$/;"	v
+background	windows/settings.json	/^      "background": "#000000",$/;"	s	object:schemes.2
+background	windows/settings.json	/^      "background": "#000000",$/;"	s	object:schemes.7
+background	windows/settings.json	/^      "background": "#002B36",$/;"	s	object:schemes.5
+background	windows/settings.json	/^      "background": "#012456",$/;"	s	object:schemes.1
+background	windows/settings.json	/^      "background": "#0C0C0C",$/;"	s	object:schemes.0
+background	windows/settings.json	/^      "background": "#0E0E0E",$/;"	s	object:schemes.9
+background	windows/settings.json	/^      "background": "#0F0F23",$/;"	s	object:schemes.20
+background	windows/settings.json	/^      "background": "#0F1610",$/;"	s	object:schemes.18
+background	windows/settings.json	/^      "background": "#1C1C1C",$/;"	s	object:schemes.19
+background	windows/settings.json	/^      "background": "#1D2021",$/;"	s	object:schemes.11
+background	windows/settings.json	/^      "background": "#1F1F1F",$/;"	s	object:schemes.16
+background	windows/settings.json	/^      "background": "#1F1F1F",$/;"	s	object:schemes.17
+background	windows/settings.json	/^      "background": "#272822",$/;"	s	object:schemes.15
+background	windows/settings.json	/^      "background": "#282A36",$/;"	s	object:schemes.12
+background	windows/settings.json	/^      "background": "#282C34",$/;"	s	object:schemes.3
+background	windows/settings.json	/^      "background": "#2C001E",$/;"	s	object:schemes.10
+background	windows/settings.json	/^      "background": "#2E3440",$/;"	s	object:schemes.13
+background	windows/settings.json	/^      "background": "#332A57",$/;"	s	object:schemes.14
+background	windows/settings.json	/^      "background": "#FAFAFA",$/;"	s	object:schemes.4
+background	windows/settings.json	/^      "background": "#FDF6E3",$/;"	s	object:schemes.6
+background	windows/settings.json	/^      "background": "#FFFFFF",$/;"	s	object:schemes.8
+black	windows/settings.json	/^      "black": "#000000",$/;"	s	object:schemes.14
+black	windows/settings.json	/^      "black": "#000000",$/;"	s	object:schemes.2
+black	windows/settings.json	/^      "black": "#000000",$/;"	s	object:schemes.7
+black	windows/settings.json	/^      "black": "#000000",$/;"	s	object:schemes.8
+black	windows/settings.json	/^      "black": "#000000",$/;"	s	object:schemes.9
+black	windows/settings.json	/^      "black": "#002B36",$/;"	s	object:schemes.5
+black	windows/settings.json	/^      "black": "#002B36",$/;"	s	object:schemes.6
+black	windows/settings.json	/^      "black": "#073642",$/;"	s	object:schemes.11
+black	windows/settings.json	/^      "black": "#0C0C0C",$/;"	s	object:schemes.0
+black	windows/settings.json	/^      "black": "#0C0C0C",$/;"	s	object:schemes.1
+black	windows/settings.json	/^      "black": "#112616",$/;"	s	object:schemes.18
+black	windows/settings.json	/^      "black": "#1D1F21",$/;"	s	object:schemes.20
+black	windows/settings.json	/^      "black": "#1E2320",$/;"	s	object:schemes.19
+black	windows/settings.json	/^      "black": "#1F1F1F",$/;"	s	object:schemes.16
+black	windows/settings.json	/^      "black": "#21222C",$/;"	s	object:schemes.12
+black	windows/settings.json	/^      "black": "#272822",$/;"	s	object:schemes.15
+black	windows/settings.json	/^      "black": "#272822",$/;"	s	object:schemes.17
+black	windows/settings.json	/^      "black": "#282C34",$/;"	s	object:schemes.3
+black	windows/settings.json	/^      "black": "#383A42",$/;"	s	object:schemes.4
+black	windows/settings.json	/^      "black": "#3B4252",$/;"	s	object:schemes.13
+black	windows/settings.json	/^      "black": "#4E9A06",$/;"	s	object:schemes.10
+blue	windows/settings.json	/^      "blue": "#000080",$/;"	s	object:schemes.2
+blue	windows/settings.json	/^      "blue": "#0037DA",$/;"	s	object:schemes.0
+blue	windows/settings.json	/^      "blue": "#0037DA",$/;"	s	object:schemes.1
+blue	windows/settings.json	/^      "blue": "#0066FF",$/;"	s	object:schemes.20
+blue	windows/settings.json	/^      "blue": "#00BFFF",$/;"	s	object:schemes.14
+blue	windows/settings.json	/^      "blue": "#01549E",$/;"	s	object:schemes.15
+blue	windows/settings.json	/^      "blue": "#0184BC",$/;"	s	object:schemes.4
+blue	windows/settings.json	/^      "blue": "#2472C8",$/;"	s	object:schemes.9
+blue	windows/settings.json	/^      "blue": "#268BD2",$/;"	s	object:schemes.5
+blue	windows/settings.json	/^      "blue": "#268BD2",$/;"	s	object:schemes.6
+blue	windows/settings.json	/^      "blue": "#2F6A7F",$/;"	s	object:schemes.18
+blue	windows/settings.json	/^      "blue": "#3465A4",$/;"	s	object:schemes.10
+blue	windows/settings.json	/^      "blue": "#3465A4",$/;"	s	object:schemes.7
+blue	windows/settings.json	/^      "blue": "#3465A4",$/;"	s	object:schemes.8
+blue	windows/settings.json	/^      "blue": "#458588",$/;"	s	object:schemes.11
+blue	windows/settings.json	/^      "blue": "#506070",$/;"	s	object:schemes.19
+blue	windows/settings.json	/^      "blue": "#61AFEF",$/;"	s	object:schemes.3
+blue	windows/settings.json	/^      "blue": "#6699DF",$/;"	s	object:schemes.16
+blue	windows/settings.json	/^      "blue": "#81A1C1",$/;"	s	object:schemes.13
+blue	windows/settings.json	/^      "blue": "#F1FA8C",$/;"	s	object:schemes.12
+blue	windows/settings.json	/^      "blue": "#F8F8F0",$/;"	s	object:schemes.17
+brightBlack	windows/settings.json	/^      "brightBlack": "#002B36",$/;"	s	object:schemes.11
+brightBlack	windows/settings.json	/^      "brightBlack": "#073642",$/;"	s	object:schemes.5
+brightBlack	windows/settings.json	/^      "brightBlack": "#073642",$/;"	s	object:schemes.6
+brightBlack	windows/settings.json	/^      "brightBlack": "#3C4812",$/;"	s	object:schemes.18
+brightBlack	windows/settings.json	/^      "brightBlack": "#4C566A",$/;"	s	object:schemes.13
+brightBlack	windows/settings.json	/^      "brightBlack": "#4F525D",$/;"	s	object:schemes.4
+brightBlack	windows/settings.json	/^      "brightBlack": "#555753",$/;"	s	object:schemes.10
+brightBlack	windows/settings.json	/^      "brightBlack": "#555753",$/;"	s	object:schemes.7
+brightBlack	windows/settings.json	/^      "brightBlack": "#555753",$/;"	s	object:schemes.8
+brightBlack	windows/settings.json	/^      "brightBlack": "#5A6374",$/;"	s	object:schemes.3
+brightBlack	windows/settings.json	/^      "brightBlack": "#6272A4",$/;"	s	object:schemes.12
+brightBlack	windows/settings.json	/^      "brightBlack": "#666666",$/;"	s	object:schemes.9
+brightBlack	windows/settings.json	/^      "brightBlack": "#6C6C6C",$/;"	s	object:schemes.14
+brightBlack	windows/settings.json	/^      "brightBlack": "#709080",$/;"	s	object:schemes.19
+brightBlack	windows/settings.json	/^      "brightBlack": "#75715E",$/;"	s	object:schemes.16
+brightBlack	windows/settings.json	/^      "brightBlack": "#75715E",$/;"	s	object:schemes.17
+brightBlack	windows/settings.json	/^      "brightBlack": "#767676",$/;"	s	object:schemes.0
+brightBlack	windows/settings.json	/^      "brightBlack": "#767676",$/;"	s	object:schemes.1
+brightBlack	windows/settings.json	/^      "brightBlack": "#7C7C7C",$/;"	s	object:schemes.15
+brightBlack	windows/settings.json	/^      "brightBlack": "#808080",$/;"	s	object:schemes.2
+brightBlack	windows/settings.json	/^      "brightBlack": "#969896",$/;"	s	object:schemes.20
+brightBlue	windows/settings.json	/^      "brightBlue": "#0000FF",$/;"	s	object:schemes.2
+brightBlue	windows/settings.json	/^      "brightBlue": "#0066FF",$/;"	s	object:schemes.20
+brightBlue	windows/settings.json	/^      "brightBlue": "#00AAE0",$/;"	s	object:schemes.18
+brightBlue	windows/settings.json	/^      "brightBlue": "#0383F5",$/;"	s	object:schemes.15
+brightBlue	windows/settings.json	/^      "brightBlue": "#1BCCFD",$/;"	s	object:schemes.14
+brightBlue	windows/settings.json	/^      "brightBlue": "#3B78FF",$/;"	s	object:schemes.0
+brightBlue	windows/settings.json	/^      "brightBlue": "#3B78FF",$/;"	s	object:schemes.1
+brightBlue	windows/settings.json	/^      "brightBlue": "#3B8EEA",$/;"	s	object:schemes.9
+brightBlue	windows/settings.json	/^      "brightBlue": "#61AFEF",$/;"	s	object:schemes.3
+brightBlue	windows/settings.json	/^      "brightBlue": "#61AFEF",$/;"	s	object:schemes.4
+brightBlue	windows/settings.json	/^      "brightBlue": "#66D9EF",$/;"	s	object:schemes.16
+brightBlue	windows/settings.json	/^      "brightBlue": "#66D9EF",$/;"	s	object:schemes.17
+brightBlue	windows/settings.json	/^      "brightBlue": "#729FCF",$/;"	s	object:schemes.10
+brightBlue	windows/settings.json	/^      "brightBlue": "#729FCF",$/;"	s	object:schemes.7
+brightBlue	windows/settings.json	/^      "brightBlue": "#729FCF",$/;"	s	object:schemes.8
+brightBlue	windows/settings.json	/^      "brightBlue": "#81A1C1",$/;"	s	object:schemes.13
+brightBlue	windows/settings.json	/^      "brightBlue": "#839496",$/;"	s	object:schemes.11
+brightBlue	windows/settings.json	/^      "brightBlue": "#839496",$/;"	s	object:schemes.5
+brightBlue	windows/settings.json	/^      "brightBlue": "#839496",$/;"	s	object:schemes.6
+brightBlue	windows/settings.json	/^      "brightBlue": "#94BFF3",$/;"	s	object:schemes.19
+brightBlue	windows/settings.json	/^      "brightBlue": "#D6ACFF",$/;"	s	object:schemes.12
+brightCyan	windows/settings.json	/^      "brightCyan": "#0066FF",$/;"	s	object:schemes.20
+brightCyan	windows/settings.json	/^      "brightCyan": "#00E0C4",$/;"	s	object:schemes.18
+brightCyan	windows/settings.json	/^      "brightCyan": "#00FFFF",$/;"	s	object:schemes.2
+brightCyan	windows/settings.json	/^      "brightCyan": "#0383F5",$/;"	s	object:schemes.15
+brightCyan	windows/settings.json	/^      "brightCyan": "#29B8DB",$/;"	s	object:schemes.9
+brightCyan	windows/settings.json	/^      "brightCyan": "#34E2E2",$/;"	s	object:schemes.10
+brightCyan	windows/settings.json	/^      "brightCyan": "#34E2E2",$/;"	s	object:schemes.7
+brightCyan	windows/settings.json	/^      "brightCyan": "#34E2E2",$/;"	s	object:schemes.8
+brightCyan	windows/settings.json	/^      "brightCyan": "#56B5C1",$/;"	s	object:schemes.4
+brightCyan	windows/settings.json	/^      "brightCyan": "#56B6C2",$/;"	s	object:schemes.3
+brightCyan	windows/settings.json	/^      "brightCyan": "#61D6D6",$/;"	s	object:schemes.0
+brightCyan	windows/settings.json	/^      "brightCyan": "#61D6D6",$/;"	s	object:schemes.1
+brightCyan	windows/settings.json	/^      "brightCyan": "#66D9EF",$/;"	s	object:schemes.17
+brightCyan	windows/settings.json	/^      "brightCyan": "#8FBCBB",$/;"	s	object:schemes.13
+brightCyan	windows/settings.json	/^      "brightCyan": "#93A1A1",$/;"	s	object:schemes.11
+brightCyan	windows/settings.json	/^      "brightCyan": "#93A1A1",$/;"	s	object:schemes.5
+brightCyan	windows/settings.json	/^      "brightCyan": "#93A1A1",$/;"	s	object:schemes.6
+brightCyan	windows/settings.json	/^      "brightCyan": "#93E0E3",$/;"	s	object:schemes.19
+brightCyan	windows/settings.json	/^      "brightCyan": "#99D6FC",$/;"	s	object:schemes.14
+brightCyan	windows/settings.json	/^      "brightCyan": "#A4FFFF",$/;"	s	object:schemes.12
+brightCyan	windows/settings.json	/^      "brightCyan": "#E69F66",$/;"	s	object:schemes.16
+brightGreen	windows/settings.json	/^      "brightGreen": "#00CC00",$/;"	s	object:schemes.20
+brightGreen	windows/settings.json	/^      "brightGreen": "#00FF00",$/;"	s	object:schemes.2
+brightGreen	windows/settings.json	/^      "brightGreen": "#16C60C",$/;"	s	object:schemes.0
+brightGreen	windows/settings.json	/^      "brightGreen": "#16C60C",$/;"	s	object:schemes.1
+brightGreen	windows/settings.json	/^      "brightGreen": "#18E000",$/;"	s	object:schemes.18
+brightGreen	windows/settings.json	/^      "brightGreen": "#21F6BC",$/;"	s	object:schemes.14
+brightGreen	windows/settings.json	/^      "brightGreen": "#23D18B",$/;"	s	object:schemes.9
+brightGreen	windows/settings.json	/^      "brightGreen": "#586E75",$/;"	s	object:schemes.5
+brightGreen	windows/settings.json	/^      "brightGreen": "#586E75",$/;"	s	object:schemes.6
+brightGreen	windows/settings.json	/^      "brightGreen": "#69FF94",$/;"	s	object:schemes.12
+brightGreen	windows/settings.json	/^      "brightGreen": "#8AE234",$/;"	s	object:schemes.10
+brightGreen	windows/settings.json	/^      "brightGreen": "#8AE234",$/;"	s	object:schemes.7
+brightGreen	windows/settings.json	/^      "brightGreen": "#8AE234",$/;"	s	object:schemes.8
+brightGreen	windows/settings.json	/^      "brightGreen": "#8DD006",$/;"	s	object:schemes.15
+brightGreen	windows/settings.json	/^      "brightGreen": "#98C379",$/;"	s	object:schemes.3
+brightGreen	windows/settings.json	/^      "brightGreen": "#98C379",$/;"	s	object:schemes.4
+brightGreen	windows/settings.json	/^      "brightGreen": "#A3BE8C",$/;"	s	object:schemes.13
+brightGreen	windows/settings.json	/^      "brightGreen": "#A6E22E",$/;"	s	object:schemes.17
+brightGreen	windows/settings.json	/^      "brightGreen": "#A6e22E",$/;"	s	object:schemes.16
+brightGreen	windows/settings.json	/^      "brightGreen": "#B8BB26",$/;"	s	object:schemes.11
+brightGreen	windows/settings.json	/^      "brightGreen": "#C3BF9F",$/;"	s	object:schemes.19
+brightPurple	windows/settings.json	/^      "brightPurple": "#0058E0",$/;"	s	object:schemes.18
+brightPurple	windows/settings.json	/^      "brightPurple": "#6C71C4",$/;"	s	object:schemes.5
+brightPurple	windows/settings.json	/^      "brightPurple": "#6C71C4",$/;"	s	object:schemes.6
+brightPurple	windows/settings.json	/^      "brightPurple": "#990099",$/;"	s	object:schemes.20
+brightPurple	windows/settings.json	/^      "brightPurple": "#A87DB8",$/;"	s	object:schemes.15
+brightPurple	windows/settings.json	/^      "brightPurple": "#AD7FA8",$/;"	s	object:schemes.10
+brightPurple	windows/settings.json	/^      "brightPurple": "#AD7FA8",$/;"	s	object:schemes.7
+brightPurple	windows/settings.json	/^      "brightPurple": "#AD7FA8",$/;"	s	object:schemes.8
+brightPurple	windows/settings.json	/^      "brightPurple": "#AE81FF",$/;"	s	object:schemes.16
+brightPurple	windows/settings.json	/^      "brightPurple": "#B4009E",$/;"	s	object:schemes.0
+brightPurple	windows/settings.json	/^      "brightPurple": "#B4009E",$/;"	s	object:schemes.1
+brightPurple	windows/settings.json	/^      "brightPurple": "#B48EAD",$/;"	s	object:schemes.13
+brightPurple	windows/settings.json	/^      "brightPurple": "#C577DD",$/;"	s	object:schemes.4
+brightPurple	windows/settings.json	/^      "brightPurple": "#C678DD",$/;"	s	object:schemes.3
+brightPurple	windows/settings.json	/^      "brightPurple": "#D3869B",$/;"	s	object:schemes.11
+brightPurple	windows/settings.json	/^      "brightPurple": "#D670D6",$/;"	s	object:schemes.9
+brightPurple	windows/settings.json	/^      "brightPurple": "#E6AEFE",$/;"	s	object:schemes.14
+brightPurple	windows/settings.json	/^      "brightPurple": "#EC93D3",$/;"	s	object:schemes.19
+brightPurple	windows/settings.json	/^      "brightPurple": "#F92672",$/;"	s	object:schemes.17
+brightPurple	windows/settings.json	/^      "brightPurple": "#FF00FF",$/;"	s	object:schemes.2
+brightPurple	windows/settings.json	/^      "brightPurple": "#FF92DF",$/;"	s	object:schemes.12
+brightRed	windows/settings.json	/^      "brightRed": "#BF616A",$/;"	s	object:schemes.13
+brightRed	windows/settings.json	/^      "brightRed": "#CB064D",$/;"	s	object:schemes.17
+brightRed	windows/settings.json	/^      "brightRed": "#CB4B16",$/;"	s	object:schemes.5
+brightRed	windows/settings.json	/^      "brightRed": "#CB4B16",$/;"	s	object:schemes.6
+brightRed	windows/settings.json	/^      "brightRed": "#DCA3A3",$/;"	s	object:schemes.19
+brightRed	windows/settings.json	/^      "brightRed": "#DF6C75",$/;"	s	object:schemes.4
+brightRed	windows/settings.json	/^      "brightRed": "#E06C75",$/;"	s	object:schemes.3
+brightRed	windows/settings.json	/^      "brightRed": "#E08009",$/;"	s	object:schemes.18
+brightRed	windows/settings.json	/^      "brightRed": "#E74856",$/;"	s	object:schemes.0
+brightRed	windows/settings.json	/^      "brightRed": "#E74856",$/;"	s	object:schemes.1
+brightRed	windows/settings.json	/^      "brightRed": "#EF2929",$/;"	s	object:schemes.10
+brightRed	windows/settings.json	/^      "brightRed": "#EF2929",$/;"	s	object:schemes.7
+brightRed	windows/settings.json	/^      "brightRed": "#EF2929",$/;"	s	object:schemes.8
+brightRed	windows/settings.json	/^      "brightRed": "#F14C4C",$/;"	s	object:schemes.9
+brightRed	windows/settings.json	/^      "brightRed": "#F3044B",$/;"	s	object:schemes.15
+brightRed	windows/settings.json	/^      "brightRed": "#F92672",$/;"	s	object:schemes.16
+brightRed	windows/settings.json	/^      "brightRed": "#FB4934",$/;"	s	object:schemes.11
+brightRed	windows/settings.json	/^      "brightRed": "#FF0000",$/;"	s	object:schemes.2
+brightRed	windows/settings.json	/^      "brightRed": "#FF0000",$/;"	s	object:schemes.20
+brightRed	windows/settings.json	/^      "brightRed": "#FF6E6E",$/;"	s	object:schemes.12
+brightRed	windows/settings.json	/^      "brightRed": "#FF8AA4",$/;"	s	object:schemes.14
+brightWhite	windows/settings.json	/^      "brightWhite": "#73FA91",$/;"	s	object:schemes.18
+brightWhite	windows/settings.json	/^      "brightWhite": "#DCDFE4",$/;"	s	object:schemes.3
+brightWhite	windows/settings.json	/^      "brightWhite": "#E5E5E5",$/;"	s	object:schemes.9
+brightWhite	windows/settings.json	/^      "brightWhite": "#ECEFF4",$/;"	s	object:schemes.13
+brightWhite	windows/settings.json	/^      "brightWhite": "#EEEEEC",$/;"	s	object:schemes.7
+brightWhite	windows/settings.json	/^      "brightWhite": "#EEEEEC",$/;"	s	object:schemes.8
+brightWhite	windows/settings.json	/^      "brightWhite": "#EEEEEE",$/;"	s	object:schemes.10
+brightWhite	windows/settings.json	/^      "brightWhite": "#F2F2F2",$/;"	s	object:schemes.0
+brightWhite	windows/settings.json	/^      "brightWhite": "#F2F2F2",$/;"	s	object:schemes.1
+brightWhite	windows/settings.json	/^      "brightWhite": "#F2F2F2",$/;"	s	object:schemes.15
+brightWhite	windows/settings.json	/^      "brightWhite": "#F8F8F0",$/;"	s	object:schemes.17
+brightWhite	windows/settings.json	/^      "brightWhite": "#F8F8F2",$/;"	s	object:schemes.16
+brightWhite	windows/settings.json	/^      "brightWhite": "#FBF1C7",$/;"	s	object:schemes.11
+brightWhite	windows/settings.json	/^      "brightWhite": "#FDF6E3",$/;"	s	object:schemes.5
+brightWhite	windows/settings.json	/^      "brightWhite": "#FDF6E3",$/;"	s	object:schemes.6
+brightWhite	windows/settings.json	/^      "brightWhite": "#FFFFFF",$/;"	s	object:schemes.12
+brightWhite	windows/settings.json	/^      "brightWhite": "#FFFFFF",$/;"	s	object:schemes.14
+brightWhite	windows/settings.json	/^      "brightWhite": "#FFFFFF",$/;"	s	object:schemes.19
+brightWhite	windows/settings.json	/^      "brightWhite": "#FFFFFF",$/;"	s	object:schemes.2
+brightWhite	windows/settings.json	/^      "brightWhite": "#FFFFFF",$/;"	s	object:schemes.20
+brightWhite	windows/settings.json	/^      "brightWhite": "#FFFFFF",$/;"	s	object:schemes.4
+brightYellow	windows/settings.json	/^      "brightYellow": "#657B83",$/;"	s	object:schemes.5
+brightYellow	windows/settings.json	/^      "brightYellow": "#657B83",$/;"	s	object:schemes.6
+brightYellow	windows/settings.json	/^      "brightYellow": "#BDE000",$/;"	s	object:schemes.18
+brightYellow	windows/settings.json	/^      "brightYellow": "#CCCC81",$/;"	s	object:schemes.15
+brightYellow	windows/settings.json	/^      "brightYellow": "#E4C07A",$/;"	s	object:schemes.4
+brightYellow	windows/settings.json	/^      "brightYellow": "#E5C07B",$/;"	s	object:schemes.3
+brightYellow	windows/settings.json	/^      "brightYellow": "#E6DB74",$/;"	s	object:schemes.16
+brightYellow	windows/settings.json	/^      "brightYellow": "#EBCB8B",$/;"	s	object:schemes.13
+brightYellow	windows/settings.json	/^      "brightYellow": "#F0DFAF",$/;"	s	object:schemes.19
+brightYellow	windows/settings.json	/^      "brightYellow": "#F5F543",$/;"	s	object:schemes.9
+brightYellow	windows/settings.json	/^      "brightYellow": "#F9F1A5",$/;"	s	object:schemes.0
+brightYellow	windows/settings.json	/^      "brightYellow": "#F9F1A5",$/;"	s	object:schemes.1
+brightYellow	windows/settings.json	/^      "brightYellow": "#FABD2F",$/;"	s	object:schemes.11
+brightYellow	windows/settings.json	/^      "brightYellow": "#FCE94F",$/;"	s	object:schemes.10
+brightYellow	windows/settings.json	/^      "brightYellow": "#FCE94F",$/;"	s	object:schemes.7
+brightYellow	windows/settings.json	/^      "brightYellow": "#FCE94F",$/;"	s	object:schemes.8
+brightYellow	windows/settings.json	/^      "brightYellow": "#FD971F",$/;"	s	object:schemes.17
+brightYellow	windows/settings.json	/^      "brightYellow": "#FF9900",$/;"	s	object:schemes.20
+brightYellow	windows/settings.json	/^      "brightYellow": "#FFF787",$/;"	s	object:schemes.14
+brightYellow	windows/settings.json	/^      "brightYellow": "#FFFF00",$/;"	s	object:schemes.2
+brightYellow	windows/settings.json	/^      "brightYellow": "#FFFFA5",$/;"	s	object:schemes.12
+c	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function c {bat.ps1 --paging=never $args[0]}$/;"	f
+closeOnExit	windows/settings.json	/^      "closeOnExit": "graceful",$/;"	s	object:profiles.defaults
+colorScheme	windows/settings.json	/^            "colorScheme": "${scheme.name}"$/;"	s	object:actions.68.commands.0.command
+colorScheme	windows/settings.json	/^        "colorScheme": "Cyberpunk",$/;"	s	object:profiles.list.1
+colorScheme	windows/settings.json	/^        "colorScheme": "Nord",$/;"	s	object:profiles.list.2
+colorScheme	windows/settings.json	/^        "colorScheme": "One Half Dark",$/;"	s	object:profiles.list.0
+colorScheme	windows/settings.json	/^        "colorScheme": "Solarized Dark",$/;"	s	object:profiles.list.3
+command	windows/settings.json	/^              "command": {$/;"	o	object:actions.70.commands.0.commands.0
+command	windows/settings.json	/^              "command": {$/;"	o	object:actions.70.commands.0.commands.1
+command	windows/settings.json	/^              "command": {$/;"	o	object:actions.70.commands.0.commands.2
+command	windows/settings.json	/^          "command": {$/;"	o	object:actions.68.commands.0
+command	windows/settings.json	/^          "command": {$/;"	o	object:actions.69.commands.0
+command	windows/settings.json	/^      "command": "closeOtherTabs"$/;"	s	object:actions.12
+command	windows/settings.json	/^      "command": "closePane",$/;"	s	object:actions.36
+command	windows/settings.json	/^      "command": "closeTabsAfter"$/;"	s	object:actions.13
+command	windows/settings.json	/^      "command": "closeWindow",$/;"	s	object:actions.0
+command	windows/settings.json	/^      "command": "commandPalette",$/;"	s	object:actions.11
+command	windows/settings.json	/^      "command": "duplicateTab",$/;"	s	object:actions.24
+command	windows/settings.json	/^      "command": "find",$/;"	s	object:actions.8
+command	windows/settings.json	/^      "command": "newTab",$/;"	s	object:actions.14
+command	windows/settings.json	/^      "command": "nextTab",$/;"	s	object:actions.25
+command	windows/settings.json	/^      "command": "openNewTabDropdown",$/;"	s	object:actions.5
+command	windows/settings.json	/^      "command": "openSettings",$/;"	s	object:actions.6
+command	windows/settings.json	/^      "command": "openTabColorPicker"$/;"	s	object:actions.10
+command	windows/settings.json	/^      "command": "paste",$/;"	s	object:actions.59
+command	windows/settings.json	/^      "command": "paste",$/;"	s	object:actions.60
+command	windows/settings.json	/^      "command": "prevTab",$/;"	s	object:actions.26
+command	windows/settings.json	/^      "command": "resetFontSize",$/;"	s	object:actions.67
+command	windows/settings.json	/^      "command": "scrollDown",$/;"	s	object:actions.61
+command	windows/settings.json	/^      "command": "scrollDownPage",$/;"	s	object:actions.62
+command	windows/settings.json	/^      "command": "scrollUp",$/;"	s	object:actions.63
+command	windows/settings.json	/^      "command": "scrollUpPage",$/;"	s	object:actions.64
+command	windows/settings.json	/^      "command": "toggleAlwaysOnTop"$/;"	s	object:actions.4
+command	windows/settings.json	/^      "command": "toggleFocusMode"$/;"	s	object:actions.3
+command	windows/settings.json	/^      "command": "toggleFullscreen",$/;"	s	object:actions.1
+command	windows/settings.json	/^      "command": "toggleFullscreen",$/;"	s	object:actions.2
+command	windows/settings.json	/^      "command": "togglePaneZoom"$/;"	s	object:actions.47
+command	windows/settings.json	/^      "command": "toggleRetroEffect"$/;"	s	object:actions.9
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.15
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.16
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.17
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.18
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.19
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.20
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.21
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.22
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.23
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.27
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.28
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.29
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.30
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.31
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.32
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.33
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.34
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.35
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.37
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.38
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.39
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.40
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.41
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.42
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.43
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.44
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.45
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.46
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.48
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.49
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.50
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.51
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.52
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.53
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.54
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.55
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.56
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.57
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.58
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.65
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.66
+command	windows/settings.json	/^      "command": {$/;"	o	object:actions.7
+commandline	windows/settings.json	/^        "commandline": "%ProgramFiles%\\\\PowerShell\\\\7\\\\pwsh.exe",$/;"	s	object:profiles.list.0
+commandline	windows/settings.json	/^        "commandline": "%SystemRoot%\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe"/;"	s	object:profiles.list.1
+commandline	windows/settings.json	/^        "commandline": "%SystemRoot%\\\\System32\\\\cmd.exe \/K %USERPROFILE%\\\\.config\\\\init/;"	s	object:profiles.list.2
+commandline	windows/settings.json	/^        "commandline": "%USERPROFILE%\\\\archwsl\\\\Arch2.exe",$/;"	s	object:profiles.list.3
+commands	windows/settings.json	/^          "commands": [$/;"	a	object:actions.70.commands.0
+commands	windows/settings.json	/^      "commands": [$/;"	a	object:actions.68
+commands	windows/settings.json	/^      "commands": [$/;"	a	object:actions.69
+commands	windows/settings.json	/^      "commands": [$/;"	a	object:actions.70
+confirmCloseAllTabs	windows/settings.json	/^  "confirmCloseAllTabs": true,$/;"	b
+copyFormatting	windows/settings.json	/^  "copyFormatting": false,$/;"	b
+copyOnSelect	windows/settings.json	/^  "copyOnSelect": true,$/;"	b
+cursorColor	windows/settings.json	/^      "cursorColor": "#000000",$/;"	s	object:schemes.8
+cursorColor	windows/settings.json	/^      "cursorColor": "#002B36",$/;"	s	object:schemes.6
+cursorColor	windows/settings.json	/^      "cursorColor": "#4F525D",$/;"	s	object:schemes.4
+cursorColor	windows/settings.json	/^      "cursorColor": "#FFFFFF",$/;"	s	object:schemes.0
+cursorColor	windows/settings.json	/^      "cursorColor": "#FFFFFF",$/;"	s	object:schemes.1
+cursorColor	windows/settings.json	/^      "cursorColor": "#FFFFFF",$/;"	s	object:schemes.2
+cursorColor	windows/settings.json	/^      "cursorColor": "#FFFFFF",$/;"	s	object:schemes.3
+cursorColor	windows/settings.json	/^      "cursorColor": "#FFFFFF",$/;"	s	object:schemes.5
+cursorColor	windows/settings.json	/^      "cursorColor": "#FFFFFF",$/;"	s	object:schemes.7
+cursorShape	windows/settings.json	/^        "cursorShape": "bar",$/;"	s	object:profiles.list.1
+cursorShape	windows/settings.json	/^        "cursorShape": "bar",$/;"	s	object:profiles.list.2
+cursorShape	windows/settings.json	/^        "cursorShape": "emptyBox",$/;"	s	object:profiles.list.3
+cursorShape	windows/settings.json	/^        "cursorShape": "filledBox",$/;"	s	object:profiles.list.0
+cyan	windows/settings.json	/^      "cyan": "#0066FF",$/;"	s	object:schemes.20
+cyan	windows/settings.json	/^      "cyan": "#008080",$/;"	s	object:schemes.2
+cyan	windows/settings.json	/^      "cyan": "#01549E",$/;"	s	object:schemes.15
+cyan	windows/settings.json	/^      "cyan": "#06989A",$/;"	s	object:schemes.10
+cyan	windows/settings.json	/^      "cyan": "#06989A",$/;"	s	object:schemes.7
+cyan	windows/settings.json	/^      "cyan": "#06989A",$/;"	s	object:schemes.8
+cyan	windows/settings.json	/^      "cyan": "#0997B3",$/;"	s	object:schemes.4
+cyan	windows/settings.json	/^      "cyan": "#11A8CD",$/;"	s	object:schemes.9
+cyan	windows/settings.json	/^      "cyan": "#2AA198",$/;"	s	object:schemes.11
+cyan	windows/settings.json	/^      "cyan": "#2AA198",$/;"	s	object:schemes.5
+cyan	windows/settings.json	/^      "cyan": "#2AA198",$/;"	s	object:schemes.6
+cyan	windows/settings.json	/^      "cyan": "#327F77",$/;"	s	object:schemes.18
+cyan	windows/settings.json	/^      "cyan": "#3A96DD",$/;"	s	object:schemes.0
+cyan	windows/settings.json	/^      "cyan": "#3A96DD",$/;"	s	object:schemes.1
+cyan	windows/settings.json	/^      "cyan": "#56B6C2",$/;"	s	object:schemes.3
+cyan	windows/settings.json	/^      "cyan": "#86CBFE",$/;"	s	object:schemes.14
+cyan	windows/settings.json	/^      "cyan": "#88C0D0",$/;"	s	object:schemes.13
+cyan	windows/settings.json	/^      "cyan": "#8BE9FD",$/;"	s	object:schemes.12
+cyan	windows/settings.json	/^      "cyan": "#8CD0D3",$/;"	s	object:schemes.19
+cyan	windows/settings.json	/^      "cyan": "#E69F66",$/;"	s	object:schemes.16
+cyan	windows/settings.json	/^      "cyan": "#E6DB74",$/;"	s	object:schemes.17
+defaultProfile	windows/settings.json	/^  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",$/;"	s
+defaults	windows/settings.json	/^    "defaults": {$/;"	o	object:profiles
+delta	windows/settings.json	/^        "delta": -1$/;"	n	object:actions.66.command
+delta	windows/settings.json	/^        "delta": 1$/;"	n	object:actions.65.command
+direction	windows/settings.json	/^        "direction": "down"$/;"	s	object:actions.39.command
+direction	windows/settings.json	/^        "direction": "down"$/;"	s	object:actions.43.command
+direction	windows/settings.json	/^        "direction": "left"$/;"	s	object:actions.40.command
+direction	windows/settings.json	/^        "direction": "left"$/;"	s	object:actions.44.command
+direction	windows/settings.json	/^        "direction": "right"$/;"	s	object:actions.41.command
+direction	windows/settings.json	/^        "direction": "right"$/;"	s	object:actions.45.command
+direction	windows/settings.json	/^        "direction": "up"$/;"	s	object:actions.42.command
+direction	windows/settings.json	/^        "direction": "up"$/;"	s	object:actions.46.command
+dotfiles	README.md	/^# dotfiles$/;"	c
+edal	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function edal {nvim \/mnt\/c\/Users\/$env:USERNAME\/Documents\/PowerShell\/Microsoft.PowerShell_/;"	f
+fontFace	windows/settings.json	/^        "fontFace": "DejaVuSansMono NF",$/;"	s	object:profiles.list.1
+fontFace	windows/settings.json	/^        "fontFace": "DejaVuSansMono NF",$/;"	s	object:profiles.list.2
+fontFace	windows/settings.json	/^        "fontFace": "MesloLGS NF",$/;"	s	object:profiles.list.0
+fontFace	windows/settings.json	/^        "fontFace": "MesloLGS NF",$/;"	s	object:profiles.list.3
+fontSize	windows/settings.json	/^      "fontSize": 9,$/;"	n	object:profiles.defaults
+foreground	windows/settings.json	/^      "foreground": "#383A42",$/;"	s	object:schemes.4
+foreground	windows/settings.json	/^      "foreground": "#555753",$/;"	s	object:schemes.8
+foreground	windows/settings.json	/^      "foreground": "#637D75",$/;"	s	object:schemes.18
+foreground	windows/settings.json	/^      "foreground": "#657B83",$/;"	s	object:schemes.6
+foreground	windows/settings.json	/^      "foreground": "#839496",$/;"	s	object:schemes.5
+foreground	windows/settings.json	/^      "foreground": "#C0C0C0",$/;"	s	object:schemes.2
+foreground	windows/settings.json	/^      "foreground": "#C5C8C6",$/;"	s	object:schemes.20
+foreground	windows/settings.json	/^      "foreground": "#CCCCCC",$/;"	s	object:schemes.0
+foreground	windows/settings.json	/^      "foreground": "#CCCCCC",$/;"	s	object:schemes.1
+foreground	windows/settings.json	/^      "foreground": "#CCCCCC",$/;"	s	object:schemes.15
+foreground	windows/settings.json	/^      "foreground": "#CCCCCC",$/;"	s	object:schemes.9
+foreground	windows/settings.json	/^      "foreground": "#D3D7CF",$/;"	s	object:schemes.7
+foreground	windows/settings.json	/^      "foreground": "#D8DEE9",$/;"	s	object:schemes.13
+foreground	windows/settings.json	/^      "foreground": "#DCDCCC",$/;"	s	object:schemes.19
+foreground	windows/settings.json	/^      "foreground": "#DCDFE4",$/;"	s	object:schemes.3
+foreground	windows/settings.json	/^      "foreground": "#E5E5E5",$/;"	s	object:schemes.14
+foreground	windows/settings.json	/^      "foreground": "#EBDBB2",$/;"	s	object:schemes.11
+foreground	windows/settings.json	/^      "foreground": "#EEEEEE",$/;"	s	object:schemes.10
+foreground	windows/settings.json	/^      "foreground": "#F8F8F2",$/;"	s	object:schemes.12
+foreground	windows/settings.json	/^      "foreground": "#F8F8F8",$/;"	s	object:schemes.16
+foreground	windows/settings.json	/^      "foreground": "#F8F8F8",$/;"	s	object:schemes.17
+g/	init.vim	/^map g\/ <Plug>(incsearch-stay)$/;"	m
+g:NERDTreeShowHidden	init.vim	/^let g:NERDTreeShowHidden=1$/;"	v
+g:airline#extensions#ctrlp#enabled	init.vim	/^let g:airline#extensions#ctrlp#enabled=1$/;"	v
+g:airline#extensions#fugitive#enabled	init.vim	/^let g:airline#extensions#fugitive#enabled=1$/;"	v
+g:airline#extensions#gutentags#enabled	init.vim	/^let g:airline#extensions#gutentags#enabled=1$/;"	v
+g:airline#extensions#syntastic#enabled	init.vim	/^let g:airline#extensions#syntastic#enabled=1$/;"	v
+g:airline#extensions#tabline#enabled	init.vim	/^let g:airline#extensions#tabline#enabled=1$/;"	v
+g:airline#extensions#tabline#formatter	init.vim	/^let g:airline#extensions#tabline#formatter='unique_tail'$/;"	v
+g:airline#extensions#tagbar#enabled	init.vim	/^let g:airline#extensions#tagbar#enabled=1$/;"	v
+g:airline#extensions#whitespace#enabled	init.vim	/^let g:airline#extensions#whitespace#enabled=0$/;"	v
+g:airline#extensions#wordcount#enabled	init.vim	/^let g:airline#extensions#wordcount#enabled=1$/;"	v
+g:airline_powerline_fonts	init.vim	/^let g:airline_powerline_fonts=1$/;"	v
+g:asyncrun_exit	init.vim	/^        let g:asyncrun_exit = ''$/;"	v
+g:asyncrun_exit	init.vim	/^        let g:asyncrun_exit = 'call Run()'$/;"	v
+g:asyncrun_open	init.vim	/^    let g:asyncrun_open = 10$/;"	v
+g:gutentags_background_update	init.vim	/^let g:gutentags_background_update=1$/;"	v
+g:incsearch#auto_nohlsearch	init.vim	/^let g:incsearch#auto_nohlsearch=1$/;"	v
+g:os	init.vim	/^    let g:os = 'linux'$/;"	v
+g:os	init.vim	/^    let g:os = 'mac'$/;"	v
+g:os	init.vim	/^    let g:os = 'win'$/;"	v
+g:solarized_italics	init.vim	/^let g:solarized_italics=1$/;"	v
+g:solarized_termtrans	init.vim	/^let g:solarized_termtrans=1$/;"	v
+g:webdevicons_enable_airline_tabline	init.vim	/^let g:webdevicons_enable_airline_tabline=0$/;"	v
+g:ycm_always_populate_location_list	init.vim	/^let g:ycm_always_populate_location_list=1$/;"	v
+g:ycm_auto_populate_location_list	init.vim	/^let g:ycm_auto_populate_location_list=1$/;"	v
+g:ycm_clangd_binary_path	init.vim	/^let g:ycm_clangd_binary_path='\/usr\/bin\/clangd'$/;"	v
+g:ycm_clangd_uses_ycmd_caching	init.vim	/^let g:ycm_clangd_uses_ycmd_caching=0$/;"	v
+g:ycm_collect_identifiers_from_tags_files	init.vim	/^let g:ycm_collect_identifiers_from_tags_files=1$/;"	v
+g:ycm_complete_in_comments	init.vim	/^let g:ycm_complete_in_comments=1$/;"	v
+g:ycm_error_symbol	init.vim	/^let g:ycm_error_symbol='✗'$/;"	v
+g:ycm_extra_conf_vim_data	init.vim	/^let g:ycm_extra_conf_vim_data = ['g:ycm_python_interpreter_path', 'g:ycm_python_sys_path']$/;"	v
+g:ycm_global_ycm_extra_conf	init.vim	/^let g:ycm_global_ycm_extra_conf = '~\/.local\/global_extra_conf.py'$/;"	v
+g:ycm_python_interpreter_path	init.vim	/^let g:ycm_python_interpreter_path = ''$/;"	v
+g:ycm_python_sys_path	init.vim	/^let g:ycm_python_sys_path = []$/;"	v
+g:ycm_seed_identifiers_with_syntax	init.vim	/^let g:ycm_seed_identifiers_with_syntax=1$/;"	v
+g:ycm_use_clangd	init.vim	/^let g:ycm_use_clangd=1$/;"	v
+g:ycm_warning_symbol	init.vim	/^let g:ycm_warning_symbol='⚠'$/;"	v
+green	windows/settings.json	/^      "green": "#008000",$/;"	s	object:schemes.2
+green	windows/settings.json	/^      "green": "#00CC00",$/;"	s	object:schemes.20
+green	windows/settings.json	/^      "green": "#00FBAC",$/;"	s	object:schemes.14
+green	windows/settings.json	/^      "green": "#0DBC79",$/;"	s	object:schemes.9
+green	windows/settings.json	/^      "green": "#13A10E",$/;"	s	object:schemes.0
+green	windows/settings.json	/^      "green": "#13A10E",$/;"	s	object:schemes.1
+green	windows/settings.json	/^      "green": "#2F7E25",$/;"	s	object:schemes.18
+green	windows/settings.json	/^      "green": "#300A24",$/;"	s	object:schemes.10
+green	windows/settings.json	/^      "green": "#4E9A06",$/;"	s	object:schemes.7
+green	windows/settings.json	/^      "green": "#4E9A06",$/;"	s	object:schemes.8
+green	windows/settings.json	/^      "green": "#50A14F",$/;"	s	object:schemes.4
+green	windows/settings.json	/^      "green": "#50FA7B",$/;"	s	object:schemes.12
+green	windows/settings.json	/^      "green": "#60B48A",$/;"	s	object:schemes.19
+green	windows/settings.json	/^      "green": "#74AA04",$/;"	s	object:schemes.15
+green	windows/settings.json	/^      "green": "#859900",$/;"	s	object:schemes.5
+green	windows/settings.json	/^      "green": "#859900",$/;"	s	object:schemes.6
+green	windows/settings.json	/^      "green": "#85BB1A",$/;"	s	object:schemes.17
+green	windows/settings.json	/^      "green": "#98971A",$/;"	s	object:schemes.11
+green	windows/settings.json	/^      "green": "#98C379",$/;"	s	object:schemes.3
+green	windows/settings.json	/^      "green": "#A3BE8C",$/;"	s	object:schemes.13
+green	windows/settings.json	/^      "green": "#A6E22E",$/;"	s	object:schemes.16
+guid	windows/settings.json	/^        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",$/;"	s	object:profiles.list.2
+guid	windows/settings.json	/^        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",$/;"	s	object:profiles.list.0
+guid	windows/settings.json	/^        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",$/;"	s	object:profiles.list.1
+guid	windows/settings.json	/^        "guid": "{96be24fd-152c-5812-90bb-b4bd046f9785}",$/;"	s	object:profiles.list.3
+guid	windows/settings.json	/^        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",$/;"	s	object:profiles.list.4
+hidden	windows/settings.json	/^        "hidden": false,$/;"	b	object:profiles.list.1
+hidden	windows/settings.json	/^        "hidden": false,$/;"	b	object:profiles.list.2
+hidden	windows/settings.json	/^        "hidden": false,$/;"	b	object:profiles.list.3
+hidden	windows/settings.json	/^        "hidden": true,$/;"	b	object:profiles.list.4
+historySize	windows/settings.json	/^      "historySize": 50000,$/;"	n	object:profiles.defaults
+icon	windows/settings.json	/^          "icon": "${profile.icon}",$/;"	s	object:actions.69.commands.0
+icon	windows/settings.json	/^          "icon": "${profile.icon}",$/;"	s	object:actions.70.commands.0
+icon	windows/settings.json	/^        "icon": "%USERPROFILE%\\\\.config\\\\ProfileIcons\\\\arch.png",$/;"	s	object:profiles.list.3
+icon	windows/settings.json	/^        "icon": "%USERPROFILE%\\\\.config\\\\ProfileIcons\\\\cmd.png",$/;"	s	object:profiles.list.2
+icon	windows/settings.json	/^        "icon": "%USERPROFILE%\\\\.config\\\\ProfileIcons\\\\pwsh_core.png",$/;"	s	object:profiles.list.0
+icon	windows/settings.json	/^        "icon": "%USERPROFILE%\\\\.config\\\\ProfileIcons\\\\pwsh_win.png",$/;"	s	object:profiles.list.1
+index	windows/settings.json	/^        "index": 0$/;"	n	object:actions.15.command
+index	windows/settings.json	/^        "index": 0$/;"	n	object:actions.27.command
+index	windows/settings.json	/^        "index": 0,$/;"	n	object:actions.48.command
+index	windows/settings.json	/^        "index": 0,$/;"	n	object:actions.52.command
+index	windows/settings.json	/^        "index": 1$/;"	n	object:actions.16.command
+index	windows/settings.json	/^        "index": 1$/;"	n	object:actions.28.command
+index	windows/settings.json	/^        "index": 1,$/;"	n	object:actions.49.command
+index	windows/settings.json	/^        "index": 1,$/;"	n	object:actions.53.command
+index	windows/settings.json	/^        "index": 2$/;"	n	object:actions.17.command
+index	windows/settings.json	/^        "index": 2$/;"	n	object:actions.29.command
+index	windows/settings.json	/^        "index": 2,$/;"	n	object:actions.50.command
+index	windows/settings.json	/^        "index": 2,$/;"	n	object:actions.54.command
+index	windows/settings.json	/^        "index": 3$/;"	n	object:actions.18.command
+index	windows/settings.json	/^        "index": 3$/;"	n	object:actions.30.command
+index	windows/settings.json	/^        "index": 3,$/;"	n	object:actions.51.command
+index	windows/settings.json	/^        "index": 3,$/;"	n	object:actions.55.command
+index	windows/settings.json	/^        "index": 4$/;"	n	object:actions.19.command
+index	windows/settings.json	/^        "index": 4$/;"	n	object:actions.31.command
+index	windows/settings.json	/^        "index": 5$/;"	n	object:actions.20.command
+index	windows/settings.json	/^        "index": 5$/;"	n	object:actions.32.command
+index	windows/settings.json	/^        "index": 6$/;"	n	object:actions.21.command
+index	windows/settings.json	/^        "index": 6$/;"	n	object:actions.33.command
+index	windows/settings.json	/^        "index": 7$/;"	n	object:actions.22.command
+index	windows/settings.json	/^        "index": 7$/;"	n	object:actions.34.command
+index	windows/settings.json	/^        "index": 8$/;"	n	object:actions.23.command
+index	windows/settings.json	/^        "index": 8$/;"	n	object:actions.35.command
+initialCols	windows/settings.json	/^  "initialCols": 145,$/;"	n
+initialRows	windows/settings.json	/^  "initialRows": 35,$/;"	n
+instant_prompt_example	.p10k.zsh	/^  function instant_prompt_example() {$/;"	f
+iterateOn	windows/settings.json	/^          "iterateOn": "profiles",$/;"	s	object:actions.69.commands.0
+iterateOn	windows/settings.json	/^          "iterateOn": "profiles",$/;"	s	object:actions.70.commands.0
+iterateOn	windows/settings.json	/^          "iterateOn": "schemes",$/;"	s	object:actions.68.commands.0
+key	windows/settings.json	/^        "key": "NewTabParentCommandName"$/;"	s	object:actions.69.name
+key	windows/settings.json	/^        "key": "SetColorSchemeParentCommandName"$/;"	s	object:actions.68.name
+key	windows/settings.json	/^        "key": "SplitPaneParentCommandName"$/;"	s	object:actions.70.name
+keys	windows/settings.json	/^      "keys": "alt+1"$/;"	s	object:actions.27
+keys	windows/settings.json	/^      "keys": "alt+2"$/;"	s	object:actions.28
+keys	windows/settings.json	/^      "keys": "alt+3"$/;"	s	object:actions.29
+keys	windows/settings.json	/^      "keys": "alt+4"$/;"	s	object:actions.30
+keys	windows/settings.json	/^      "keys": "alt+5"$/;"	s	object:actions.31
+keys	windows/settings.json	/^      "keys": "alt+6"$/;"	s	object:actions.32
+keys	windows/settings.json	/^      "keys": "alt+7"$/;"	s	object:actions.33
+keys	windows/settings.json	/^      "keys": "alt+8"$/;"	s	object:actions.34
+keys	windows/settings.json	/^      "keys": "alt+9"$/;"	s	object:actions.35
+keys	windows/settings.json	/^      "keys": "alt+down"$/;"	s	object:actions.43
+keys	windows/settings.json	/^      "keys": "alt+enter"$/;"	s	object:actions.1
+keys	windows/settings.json	/^      "keys": "alt+f4"$/;"	s	object:actions.0
+keys	windows/settings.json	/^      "keys": "alt+h"$/;"	s	object:actions.37
+keys	windows/settings.json	/^      "keys": "alt+left"$/;"	s	object:actions.44
+keys	windows/settings.json	/^      "keys": "alt+right"$/;"	s	object:actions.45
+keys	windows/settings.json	/^      "keys": "alt+shift+down"$/;"	s	object:actions.39
+keys	windows/settings.json	/^      "keys": "alt+shift+left"$/;"	s	object:actions.40
+keys	windows/settings.json	/^      "keys": "alt+shift+right"$/;"	s	object:actions.41
+keys	windows/settings.json	/^      "keys": "alt+shift+up"$/;"	s	object:actions.42
+keys	windows/settings.json	/^      "keys": "alt+up"$/;"	s	object:actions.46
+keys	windows/settings.json	/^      "keys": "alt+v"$/;"	s	object:actions.38
+keys	windows/settings.json	/^      "keys": "ctrl+,"$/;"	s	object:actions.6
+keys	windows/settings.json	/^      "keys": "ctrl+-"$/;"	s	object:actions.66
+keys	windows/settings.json	/^      "keys": "ctrl+0"$/;"	s	object:actions.67
+keys	windows/settings.json	/^      "keys": "ctrl+="$/;"	s	object:actions.65
+keys	windows/settings.json	/^      "keys": "ctrl+alt+,"$/;"	s	object:actions.7
+keys	windows/settings.json	/^      "keys": "ctrl+alt+1"$/;"	s	object:actions.52
+keys	windows/settings.json	/^      "keys": "ctrl+alt+2"$/;"	s	object:actions.53
+keys	windows/settings.json	/^      "keys": "ctrl+alt+3"$/;"	s	object:actions.54
+keys	windows/settings.json	/^      "keys": "ctrl+alt+4"$/;"	s	object:actions.55
+keys	windows/settings.json	/^      "keys": "ctrl+c"$/;"	s	object:actions.56
+keys	windows/settings.json	/^      "keys": "ctrl+insert"$/;"	s	object:actions.58
+keys	windows/settings.json	/^      "keys": "ctrl+shift+1"$/;"	s	object:actions.15
+keys	windows/settings.json	/^      "keys": "ctrl+shift+2"$/;"	s	object:actions.16
+keys	windows/settings.json	/^      "keys": "ctrl+shift+3"$/;"	s	object:actions.17
+keys	windows/settings.json	/^      "keys": "ctrl+shift+4"$/;"	s	object:actions.18
+keys	windows/settings.json	/^      "keys": "ctrl+shift+5"$/;"	s	object:actions.19
+keys	windows/settings.json	/^      "keys": "ctrl+shift+6"$/;"	s	object:actions.20
+keys	windows/settings.json	/^      "keys": "ctrl+shift+7"$/;"	s	object:actions.21
+keys	windows/settings.json	/^      "keys": "ctrl+shift+8"$/;"	s	object:actions.22
+keys	windows/settings.json	/^      "keys": "ctrl+shift+9"$/;"	s	object:actions.23
+keys	windows/settings.json	/^      "keys": "ctrl+shift+c"$/;"	s	object:actions.57
+keys	windows/settings.json	/^      "keys": "ctrl+shift+d"$/;"	s	object:actions.24
+keys	windows/settings.json	/^      "keys": "ctrl+shift+down"$/;"	s	object:actions.61
+keys	windows/settings.json	/^      "keys": "ctrl+shift+f"$/;"	s	object:actions.8
+keys	windows/settings.json	/^      "keys": "ctrl+shift+p"$/;"	s	object:actions.11
+keys	windows/settings.json	/^      "keys": "ctrl+shift+space"$/;"	s	object:actions.5
+keys	windows/settings.json	/^      "keys": "ctrl+shift+t"$/;"	s	object:actions.14
+keys	windows/settings.json	/^      "keys": "ctrl+shift+tab"$/;"	s	object:actions.26
+keys	windows/settings.json	/^      "keys": "ctrl+shift+up"$/;"	s	object:actions.63
+keys	windows/settings.json	/^      "keys": "ctrl+shift+v"$/;"	s	object:actions.59
+keys	windows/settings.json	/^      "keys": "ctrl+shift+w"$/;"	s	object:actions.36
+keys	windows/settings.json	/^      "keys": "ctrl+tab"$/;"	s	object:actions.25
+keys	windows/settings.json	/^      "keys": "f11"$/;"	s	object:actions.2
+keys	windows/settings.json	/^      "keys": "shift+alt+1"$/;"	s	object:actions.48
+keys	windows/settings.json	/^      "keys": "shift+alt+2"$/;"	s	object:actions.49
+keys	windows/settings.json	/^      "keys": "shift+alt+3"$/;"	s	object:actions.50
+keys	windows/settings.json	/^      "keys": "shift+alt+4"$/;"	s	object:actions.51
+keys	windows/settings.json	/^      "keys": "shift+insert"$/;"	s	object:actions.60
+keys	windows/settings.json	/^      "keys": "shift+pgdn"$/;"	s	object:actions.62
+keys	windows/settings.json	/^      "keys": "shift+pgup"$/;"	s	object:actions.64
+l	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function l {wsl -e exa -amFg --group-directories-first --color=always --color-scale $args[0]}$/;"	f
+largePasteWarning	windows/settings.json	/^  "largePasteWarning": false,$/;"	b
+launchMode	windows/settings.json	/^  "launchMode": "default",$/;"	s
+list	windows/settings.json	/^    "list": [$/;"	a	object:profiles
+ll	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function ll {wsl -e exa -lamgF@ --group-directories-first --git --color=always --color-scale --t/;"	f
+lo	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function lo {Invoke-command -ScriptBlock {exit}}$/;"	f
+mapleader	init.vim	/^let mapleader=","$/;"	v
+multiLinePasteWarning	windows/settings.json	/^  "multiLinePasteWarning": false,$/;"	b
+my_git_formatter	.p10k.zsh	/^  function my_git_formatter() {$/;"	f
+n	init.vim	/^map n <Plug>(incsearch-nohl-n)$/;"	m
+name	windows/settings.json	/^          "name": "${profile.name}"$/;"	s	object:actions.69.commands.0
+name	windows/settings.json	/^          "name": "${profile.name}..."$/;"	s	object:actions.70.commands.0
+name	windows/settings.json	/^          "name": "${scheme.name}"$/;"	s	object:actions.68.commands.0
+name	windows/settings.json	/^        "name": "ArchWSL",$/;"	s	object:profiles.list.3
+name	windows/settings.json	/^        "name": "Azure Cloud Shell",$/;"	s	object:profiles.list.4
+name	windows/settings.json	/^        "name": "Command Prompt",$/;"	s	object:profiles.list.2
+name	windows/settings.json	/^        "name": "PowerShell Core",$/;"	s	object:profiles.list.0
+name	windows/settings.json	/^        "name": "Windows PowerShell",$/;"	s	object:profiles.list.1
+name	windows/settings.json	/^      "name": "Advent",$/;"	s	object:schemes.20
+name	windows/settings.json	/^      "name": "Alien Blood",$/;"	s	object:schemes.18
+name	windows/settings.json	/^      "name": "Campbell Powershell",$/;"	s	object:schemes.1
+name	windows/settings.json	/^      "name": "Campbell",$/;"	s	object:schemes.0
+name	windows/settings.json	/^      "name": "Cyberpunk",$/;"	s	object:schemes.14
+name	windows/settings.json	/^      "name": "Dark+",$/;"	s	object:schemes.9
+name	windows/settings.json	/^      "name": "Dracula",$/;"	s	object:schemes.12
+name	windows/settings.json	/^      "name": "Gruvbox",$/;"	s	object:schemes.11
+name	windows/settings.json	/^      "name": "Monokai Accent",$/;"	s	object:schemes.17
+name	windows/settings.json	/^      "name": "Monokai Night",$/;"	s	object:schemes.16
+name	windows/settings.json	/^      "name": "Monokai",$/;"	s	object:schemes.15
+name	windows/settings.json	/^      "name": "Nord",$/;"	s	object:schemes.13
+name	windows/settings.json	/^      "name": "One Half Dark",$/;"	s	object:schemes.3
+name	windows/settings.json	/^      "name": "One Half Light",$/;"	s	object:schemes.4
+name	windows/settings.json	/^      "name": "Solarized Dark",$/;"	s	object:schemes.5
+name	windows/settings.json	/^      "name": "Solarized Light",$/;"	s	object:schemes.6
+name	windows/settings.json	/^      "name": "Tango Dark",$/;"	s	object:schemes.7
+name	windows/settings.json	/^      "name": "Tango Light",$/;"	s	object:schemes.8
+name	windows/settings.json	/^      "name": "Ubuntu",$/;"	s	object:schemes.10
+name	windows/settings.json	/^      "name": "Vintage",$/;"	s	object:schemes.2
+name	windows/settings.json	/^      "name": "Zenburn",$/;"	s	object:schemes.19
+name	windows/settings.json	/^      "name": {$/;"	o	object:actions.68
+name	windows/settings.json	/^      "name": {$/;"	o	object:actions.69
+name	windows/settings.json	/^      "name": {$/;"	o	object:actions.70
+nvim	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function nvim {wsl -e nvim -c "let g:airline_theme='onehalfdark' | colorscheme onehalfdark | red/;"	f
+padding	windows/settings.json	/^      "padding": "0, 0, 0, 0",$/;"	s	object:profiles.defaults
+profile	windows/settings.json	/^                "profile": "${profile.name}",$/;"	s	object:actions.70.commands.0.commands.0.command
+profile	windows/settings.json	/^                "profile": "${profile.name}",$/;"	s	object:actions.70.commands.0.commands.1.command
+profile	windows/settings.json	/^                "profile": "${profile.name}",$/;"	s	object:actions.70.commands.0.commands.2.command
+profile	windows/settings.json	/^            "profile": "${profile.name}"$/;"	s	object:actions.69.commands.0.command
+profiles	windows/settings.json	/^  "profiles": {$/;"	o
+prompt_example	.p10k.zsh	/^  function prompt_example() {$/;"	f
+purple	windows/settings.json	/^      "purple": "#47587F",$/;"	s	object:schemes.18
+purple	windows/settings.json	/^      "purple": "#75507B",$/;"	s	object:schemes.10
+purple	windows/settings.json	/^      "purple": "#75507B",$/;"	s	object:schemes.7
+purple	windows/settings.json	/^      "purple": "#75507B",$/;"	s	object:schemes.8
+purple	windows/settings.json	/^      "purple": "#800080",$/;"	s	object:schemes.2
+purple	windows/settings.json	/^      "purple": "#881798",$/;"	s	object:schemes.0
+purple	windows/settings.json	/^      "purple": "#881798",$/;"	s	object:schemes.1
+purple	windows/settings.json	/^      "purple": "#89569C",$/;"	s	object:schemes.15
+purple	windows/settings.json	/^      "purple": "#990099",$/;"	s	object:schemes.20
+purple	windows/settings.json	/^      "purple": "#A626A4",$/;"	s	object:schemes.4
+purple	windows/settings.json	/^      "purple": "#AE81FF",$/;"	s	object:schemes.16
+purple	windows/settings.json	/^      "purple": "#AE81FF",$/;"	s	object:schemes.17
+purple	windows/settings.json	/^      "purple": "#B16286",$/;"	s	object:schemes.11
+purple	windows/settings.json	/^      "purple": "#B48EAD",$/;"	s	object:schemes.13
+purple	windows/settings.json	/^      "purple": "#BC3FBC",$/;"	s	object:schemes.9
+purple	windows/settings.json	/^      "purple": "#BD93F9",$/;"	s	object:schemes.12
+purple	windows/settings.json	/^      "purple": "#C678DD",$/;"	s	object:schemes.3
+purple	windows/settings.json	/^      "purple": "#D33682",$/;"	s	object:schemes.5
+purple	windows/settings.json	/^      "purple": "#D33682",$/;"	s	object:schemes.6
+purple	windows/settings.json	/^      "purple": "#DC8CC3",$/;"	s	object:schemes.19
+purple	windows/settings.json	/^      "purple": "#DF95FF",$/;"	s	object:schemes.14
+red	windows/settings.json	/^      "red": "#7F2B27",$/;"	s	object:schemes.18
+red	windows/settings.json	/^      "red": "#800000",$/;"	s	object:schemes.2
+red	windows/settings.json	/^      "red": "#A70334",$/;"	s	object:schemes.15
+red	windows/settings.json	/^      "red": "#BF616A",$/;"	s	object:schemes.13
+red	windows/settings.json	/^      "red": "#C50F1F",$/;"	s	object:schemes.0
+red	windows/settings.json	/^      "red": "#C50F1F",$/;"	s	object:schemes.1
+red	windows/settings.json	/^      "red": "#CC0000",$/;"	s	object:schemes.10
+red	windows/settings.json	/^      "red": "#CC0000",$/;"	s	object:schemes.7
+red	windows/settings.json	/^      "red": "#CC0000",$/;"	s	object:schemes.8
+red	windows/settings.json	/^      "red": "#CC241D",$/;"	s	object:schemes.11
+red	windows/settings.json	/^      "red": "#CD3131",$/;"	s	object:schemes.9
+red	windows/settings.json	/^      "red": "#D78787",$/;"	s	object:schemes.19
+red	windows/settings.json	/^      "red": "#DC322F",$/;"	s	object:schemes.5
+red	windows/settings.json	/^      "red": "#DC322F",$/;"	s	object:schemes.6
+red	windows/settings.json	/^      "red": "#E06C75",$/;"	s	object:schemes.3
+red	windows/settings.json	/^      "red": "#E45649",$/;"	s	object:schemes.4
+red	windows/settings.json	/^      "red": "#F92672",$/;"	s	object:schemes.16
+red	windows/settings.json	/^      "red": "#FD971F",$/;"	s	object:schemes.17
+red	windows/settings.json	/^      "red": "#FF0000",$/;"	s	object:schemes.20
+red	windows/settings.json	/^      "red": "#FF5555",$/;"	s	object:schemes.12
+red	windows/settings.json	/^      "red": "#FF7092",$/;"	s	object:schemes.14
+schemes	windows/settings.json	/^  "schemes": [$/;"	a
+scrollbarState	windows/settings.json	/^      "scrollbarState": "hidden",$/;"	s	object:profiles.defaults
+showTabsInTitlebar	windows/settings.json	/^  "showTabsInTitlebar": true,$/;"	b
+showTerminalTitleInTitlebar	windows/settings.json	/^  "showTerminalTitleInTitlebar": true,$/;"	b
+singleLine	windows/settings.json	/^        "singleLine": false$/;"	b	object:actions.56.command
+singleLine	windows/settings.json	/^        "singleLine": false$/;"	b	object:actions.57.command
+singleLine	windows/settings.json	/^        "singleLine": false$/;"	b	object:actions.58.command
+snapOnInput	windows/settings.json	/^      "snapOnInput": false,$/;"	b	object:profiles.defaults
+snapToGridOnResize	windows/settings.json	/^  "snapToGridOnResize": true,$/;"	b
+source	windows/settings.json	/^        "source": "Windows.Terminal.Azure"$/;"	s	object:profiles.list.4
+split	windows/settings.json	/^                "split": "auto"$/;"	s	object:actions.70.commands.0.commands.0.command
+split	windows/settings.json	/^                "split": "horizontal"$/;"	s	object:actions.70.commands.0.commands.2.command
+split	windows/settings.json	/^                "split": "vertical"$/;"	s	object:actions.70.commands.0.commands.1.command
+split	windows/settings.json	/^        "split": "horizontal"$/;"	s	object:actions.37.command
+split	windows/settings.json	/^        "split": "horizontal"$/;"	s	object:actions.52.command
+split	windows/settings.json	/^        "split": "horizontal"$/;"	s	object:actions.53.command
+split	windows/settings.json	/^        "split": "horizontal"$/;"	s	object:actions.54.command
+split	windows/settings.json	/^        "split": "horizontal"$/;"	s	object:actions.55.command
+split	windows/settings.json	/^        "split": "vertical"$/;"	s	object:actions.38.command
+split	windows/settings.json	/^        "split": "vertical"$/;"	s	object:actions.48.command
+split	windows/settings.json	/^        "split": "vertical"$/;"	s	object:actions.49.command
+split	windows/settings.json	/^        "split": "vertical"$/;"	s	object:actions.50.command
+split	windows/settings.json	/^        "split": "vertical"$/;"	s	object:actions.51.command
+startOnUserLogin	windows/settings.json	/^  "startOnUserLogin": false,$/;"	b
+startingDirectory	windows/settings.json	/^        "startingDirectory": "%USERPROFILE%"$/;"	s	object:profiles.list.0
+startingDirectory	windows/settings.json	/^        "startingDirectory": "%USERPROFILE%"$/;"	s	object:profiles.list.1
+startingDirectory	windows/settings.json	/^        "startingDirectory": "%USERPROFILE%"$/;"	s	object:profiles.list.2
+startingDirectory	windows/settings.json	/^        "startingDirectory": "\\\\\\\\wsl$\\\\Arch2\\\\home\\\\g4cm4n"$/;"	s	object:profiles.list.3
+tabWidthMode	windows/settings.json	/^  "tabWidthMode": "equal",$/;"	s
+target	windows/settings.json	/^        "target": "defaultsFile"$/;"	s	object:actions.7.command
+theme	windows/settings.json	/^  "theme": "system",$/;"	s
+useAcrylic	windows/settings.json	/^      "useAcrylic": false$/;"	b	object:profiles.defaults
+useTabSwitcher	windows/settings.json	/^  "useTabSwitcher": true,$/;"	b
+v	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function v {wsl -e nvim -c "let g:airline_theme='onehalfdark' | colorscheme onehalfdark | redraw/;"	f
+vi	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function vi {wsl -e nvim -c "let g:airline_theme='onehalfdark' | colorscheme onehalfdark | redra/;"	f
+vim	windows/%USERPROFILE%/Documents/PowerShell/Microsoft.PowerShell_profile.ps1	/^function vim {wsl -e nvim -c "let g:airline_theme='onehalfdark' | colorscheme onehalfdark | redr/;"	f
+vimrcEx	init.vim	/^augroup vimrcEx$/;"	a
+white	windows/settings.json	/^      "white": "#647D75",$/;"	s	object:schemes.18
+white	windows/settings.json	/^      "white": "#C0C0C0",$/;"	s	object:schemes.2
+white	windows/settings.json	/^      "white": "#CCCCCC",$/;"	s	object:schemes.0
+white	windows/settings.json	/^      "white": "#CCCCCC",$/;"	s	object:schemes.1
+white	windows/settings.json	/^      "white": "#CCCCCC",$/;"	s	object:schemes.15
+white	windows/settings.json	/^      "white": "#CCCCCC",$/;"	s	object:schemes.20
+white	windows/settings.json	/^      "white": "#D3D7CF",$/;"	s	object:schemes.10
+white	windows/settings.json	/^      "white": "#D3D7CF",$/;"	s	object:schemes.7
+white	windows/settings.json	/^      "white": "#D3D7CF",$/;"	s	object:schemes.8
+white	windows/settings.json	/^      "white": "#DCDCCC",$/;"	s	object:schemes.19
+white	windows/settings.json	/^      "white": "#DCDFE4",$/;"	s	object:schemes.3
+white	windows/settings.json	/^      "white": "#E5E5E5",$/;"	s	object:schemes.9
+white	windows/settings.json	/^      "white": "#E5E9F0",$/;"	s	object:schemes.13
+white	windows/settings.json	/^      "white": "#EBDBB2",$/;"	s	object:schemes.11
+white	windows/settings.json	/^      "white": "#EEE8D5",$/;"	s	object:schemes.5
+white	windows/settings.json	/^      "white": "#EEE8D5",$/;"	s	object:schemes.6
+white	windows/settings.json	/^      "white": "#F8F8F2",$/;"	s	object:schemes.12
+white	windows/settings.json	/^      "white": "#F8F8F2",$/;"	s	object:schemes.16
+white	windows/settings.json	/^      "white": "#F8F8F2",$/;"	s	object:schemes.17
+white	windows/settings.json	/^      "white": "#FAFAFA",$/;"	s	object:schemes.4
+white	windows/settings.json	/^      "white": "#FFFFFF",$/;"	s	object:schemes.14
+wordDelimiters	windows/settings.json	/^  "wordDelimiters": " \/\\\\()\\"'-.,:;<>~!@#$%^&*|+=[]{}~?\\u2502"$/;"	s
+yellow	windows/settings.json	/^      "yellow": "#717F24"$/;"	s	object:schemes.18
+yellow	windows/settings.json	/^      "yellow": "#808000"$/;"	s	object:schemes.2
+yellow	windows/settings.json	/^      "yellow": "#A5A290"$/;"	s	object:schemes.17
+yellow	windows/settings.json	/^      "yellow": "#B58900"$/;"	s	object:schemes.5
+yellow	windows/settings.json	/^      "yellow": "#B58900"$/;"	s	object:schemes.6
+yellow	windows/settings.json	/^      "yellow": "#B6B649"$/;"	s	object:schemes.15
+yellow	windows/settings.json	/^      "yellow": "#C18301"$/;"	s	object:schemes.4
+yellow	windows/settings.json	/^      "yellow": "#C19C00"$/;"	s	object:schemes.0
+yellow	windows/settings.json	/^      "yellow": "#C19C00"$/;"	s	object:schemes.1
+yellow	windows/settings.json	/^      "yellow": "#C4A000"$/;"	s	object:schemes.10
+yellow	windows/settings.json	/^      "yellow": "#C4A000"$/;"	s	object:schemes.7
+yellow	windows/settings.json	/^      "yellow": "#C4A000"$/;"	s	object:schemes.8
+yellow	windows/settings.json	/^      "yellow": "#D79921"$/;"	s	object:schemes.11
+yellow	windows/settings.json	/^      "yellow": "#DFAF8F"$/;"	s	object:schemes.19
+yellow	windows/settings.json	/^      "yellow": "#E5C07B"$/;"	s	object:schemes.3
+yellow	windows/settings.json	/^      "yellow": "#E5E510"$/;"	s	object:schemes.9
+yellow	windows/settings.json	/^      "yellow": "#E6DB74"$/;"	s	object:schemes.16
+yellow	windows/settings.json	/^      "yellow": "#EBCB8B"$/;"	s	object:schemes.13
+yellow	windows/settings.json	/^      "yellow": "#F1FA8C"$/;"	s	object:schemes.12
+yellow	windows/settings.json	/^      "yellow": "#FF9900"$/;"	s	object:schemes.20
+yellow	windows/settings.json	/^      "yellow": "#FFFA6A"$/;"	s	object:schemes.14
