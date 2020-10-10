@@ -54,12 +54,14 @@ cp ~/dotfiles/.zshenv ~/.zshenv
 cp ~/dotfiles/.zshrc ~/.zsh
 echo ""
 echo "Installing fzf..."
-echo "You will get prompted about enabling fuzzy autocompletions/fzf keybindings and updating shell configuration files."
-echo -e "\e[31mIt is NOT neccesary though! Select [n] three times to avoid redundant files and duplicated instructions in zshrc\e[0m"
+echo "You will get prompted about enabling fuzzy autocompletions/fzf keybindings and updating shell configuration files..."
+echo -e "\e[31mIt is NOT neccesary though! Select [n] three times to avoid duplicated instructions in zshrc\e[0m"
 echo ""
 sleep 10
 git clone -q --depth 1 https://github.com/junegunn/fzf.git ~/.zsh/fzf && ~/.zsh/fzf/install
 cp ~/dotfiles/.fzf.zsh ~/.zsh
+echo "Cleaning after fzf..."
+rm -rf ~/.fzf.bash ~/.fzf.zsh
 echo "You can find zsh configuration files and plugins in \$ZDOTDIR which is now: ~/.zsh"
 echo "Done!"
 echo "Do you want to remove \$HOME/dotfiles (y/n)"
@@ -69,6 +71,6 @@ if [[ $input == "y" || $input == "Y" ]]; then
     echo "~/dotfiles has been removed"
 fi
 echo "Restart prompt to apply changes and don't forget to run :PlugInstall when using neovim for the first time."
-echo "(Optional) If you have su rights, you can place 'ZDOTDIR=$HOME/.zsh' in /etc/zshenv and delete .zshenv from \$HOME directory."
+echo "(Optional) If you have su rights, you can place 'ZDOTDIR=\$HOME/.zsh' in /etc/zshenv and delete .zshenv from \$HOME directory."
 echo "Enjoy!"
 exit
