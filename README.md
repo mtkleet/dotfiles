@@ -11,7 +11,6 @@ Personal development-environment preferences. Using this configuration in ArcoLi
 
 ```
 git clone https://github.com/g4cm4n/dotfiles.git ~/dotfiles
-cd ~/dotfiles
 bash ~/dotfiles/install.sh
 ```
 
