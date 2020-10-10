@@ -15,7 +15,7 @@ cd ~/dotfiles
 bash ~/dotfiles/install.sh
 ```
 
-4. \(Optional\) If you have superuser rights you can remove ```.zshenv``` from your ```$HOME``` to keep it clean. Instead set ```ZDOTDIR=$HOME/.zsh``` inside ```/etc/zsh/zshenv``` (if it doesn't exist, create it first)
+\(Optional\) If you have superuser rights you can remove ```.zshenv``` from your ```$HOME``` to keep it clean as good practice suggests. Instead set ```ZDOTDIR=$HOME/.zsh``` in ```/etc/zsh/zshenv``` (if it doesn't exist, create it first).
 
 ## Instructions for WSL: 
 1. Copy contents of ```dotfiles\windows\%USERPROFILE%\.config\Fonts``` to ```C:\Windows\Fonts```.
