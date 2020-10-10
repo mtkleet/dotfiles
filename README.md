@@ -24,6 +24,7 @@ bash ~/dotfiles/install.sh
 4. Customize options which are different \(unique\) in every W10/WSL environment like ```startingDirectory```, ```keybindings```, etc...
 4. Run ```bash ~/dotfiles/install.sh``` inside your WSL distro.
 5. Restart prompt.
-My theme of choice is [Solarized Dark](https://github.com/altercation/solarized). However, I included many different themes are in [my settings.json](https://github.com/g4cm4n/dotfiles/blob/master/windows/settings.json). If you decide to use another one, remeber about installing according dircolors to it.
+My theme of choice is [Solarized Dark](https://github.com/altercation/solarized). 
+However, I included many different themes are in [my settings.json](https://github.com/g4cm4n/dotfiles/blob/master/windows/settings.json). If you decide to use another one, remeber about installing according dircolors to it.
 
 If you want to achieve similar look for [posh](https://github.com/PowerShell/PowerShell) or cmd, inspect files inside ```dotfiles\windows```. Try to adapt them to your environment, as my config has many dependencies. Most of them can be installed with the help of [scoop: command line installer for windows](https://github.com/lukesampson/scoop). Bare in mind, these settings are experimental and I frequently change them along with development progression of [Windows Subsystem for Linux](https://github.com/microsoft/WSL) and [Windows Terminal](https://github.com/microsoft/terminal). Surely though, with improved interoperability between Win10 and WSL2, in the near future it should be possible to optimize them easily and eliminate most exisiting annoyances/issues.
