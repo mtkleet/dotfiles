@@ -132,19 +132,20 @@ else
 fi
 alias l='ls -lACFH --color --color=auto --group-directories-first'
 
-# other useful aliases
+#other useful aliases
 alias actips="echo '$(ip -o addr show up primary scope global | while read -r num dev fam addr rest; do echo ${addr%/*}; done)'"    #display all active ips
 alias lanip='ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1'    #get lan ip
 alias pubip='curl icanhazip.com'    #print public ip
 
 alias ytd='youtube-dl -f bestvideo+bestaudio'    #download yt file in highest quality available
-alias ytdmp3='youtube-dl -x --audio-format mp3 --audio-quality 320k'    #download yt file and convert it to mp3@320kbps format
+alias ytdmp3='youtube-dl -x --audio-format mp3 --audio-quality 320k'    # download yt file and convert it to mp3@320kbps format
 alias urd='/opt/urserver/urserver --daemon'    #unified remote - turn your smartphone into a universal remote control (https://github.com/unifiedremote)
-if [[ $(uname -r)] == ^*Microsoft$ ]]; then
-    alias s='s -b wslview'    #WSL workaround for s - web search from the terminal (https://github.com/zquestz/s) 
-                              #using wslview feature from wslu (https://github.com/wslutilities/wslu)
+if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
+    alias s='s -b wslview'    #s - web search from the terminal (https://github.com/zquestz/s) 
+                              #using wslview from wslu (https://github.com/wslutilities/wslu) as binary
 fi    
-ex ()    #ex = EXtractor for all kinds of archives
+
+ex ()    #ex - EXtractor for all kinds of archives
 {    
   if [ -f $1 ] ; then    
     case $1 in    
@@ -165,5 +166,5 @@ ex ()    #ex = EXtractor for all kinds of archives
     esac    
   else    
     echo "'$1' is not a valid file"    
-  fi    
+  fi 
 }
