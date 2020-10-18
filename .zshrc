@@ -14,6 +14,7 @@ export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 eval `dircolors $ZDOTDIR/dircolors/dircolors.ansi-dark`
 fpath=($ZDOTDIR/zsh-completions/src $fpath)
+fpath=($ZDOTDIR/zsh-more-completions/src $fpath)
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
@@ -61,7 +62,7 @@ bindkey '^[[3~' delete-char
 bindkey '^H' backward-kill-word
 bindkey '^?' backward-delete-char
 
-# plugins loading
+# load plugins
 [ -f $ZDOTDIR/.fzf.zsh ] && source $ZDOTDIR/.fzf.zsh
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
@@ -73,16 +74,17 @@ if [[ $commands[yay] ]]; then   #yay - n AUR Helper written in Go (https://githu
     alias upkg='yay -Y --gendb && yay -Syu --devel --timeupdate'
     alias yayskip='yay -S --mflags --skipinteg'
 else
-    alias ipkg='sudo pacman -S'
     alias upkg='sudo pacman -Syyu'
-    alias spkg='sudo pacman -Ss'
-    alias rpkg='sudo pacman -R'
-    alias cpkg='sudo pacman -Rns $(pacman -Qtdq)'
 fi
+alias ipkg='sudo pacman -S'
+alias rpkg='sudo pacman -Rsc'
+alias spkg='sudo pacman -Ss'
+alias cpkg='sudo pacman -Rns $(pacman -Qtdq)'
 alias unlock='sudo rm /var/lib/pacman/db.lck'
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -100"
+if [[ $commands[expac] ]]; then
+    alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -100"
+fi
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias colortest='for i in {0..255}; do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
 
 # neovim assignments
 if [[ $commands[nvim] ]]; then
@@ -126,13 +128,14 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias -- -='cd -'
 if [[ $commands[exa] ]]; then   #exa - a modern version of ls (https://github.com/ogham/exa)
-    alias ll='exa -lamgFH@ --group-directories-first --git --color=always --color-scale --time-style=long-iso'
+    alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=long-iso'
 else
     alias ll='ls -lAFHh --color=auto --group-directories-first'
 fi
 alias l='ls -lACFH --color --color=auto --group-directories-first'
 
 #other useful aliases
+alias colortest='for i in {0..255}; do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
 alias actips="echo '$(ip -o addr show up primary scope global | while read -r num dev fam addr rest; do echo ${addr%/*}; done)'"    #display all active ips
 alias lanip='ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1'    #get lan ip
 alias pubip='curl icanhazip.com'    #print public ip

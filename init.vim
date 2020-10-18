@@ -28,14 +28,12 @@ call plug#begin('~/.vim/plugged')
     "Plug 'OmniSharp/omnisharp—vim'
 call plug#end()
 
-"todo
-if has('win32')
+if has('win32') || has('win64')
     let $VIMFILES=$VIM.'/vimfiles'
     let g:os = 'win'
 elseif has('mac')
     let $VIMFILES=$HOME.'/.vim'
     let g:os = 'mac'
-"end of todo
 else
     let $VIMFILES=$HOME.'/.vim'
     let g:os = 'linux'
@@ -122,15 +120,13 @@ colorscheme solarized8
 
 let airline_theme='solarized_flood'
 let g:airline_powerline_fonts=1
-let g:airline#extensions#whitespace#enabled=0
+let g:airline#extensions#whitespace#enabled=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline#extensions#wordcount#enabled=1
-let g:airline#extensions#syntastic#enabled=1
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#fugitive#enabled=1
 let g:airline#extensions#gutentags#enabled=1
-let g:airline#extensions#ctrlp#enabled=1
 let DevIconsEnableFolderExtensionPatternMatching=1
 let DevIconsEnableFoldersOpenClose=1
 let g:webdevicons_enable_airline_tabline=0
@@ -164,16 +160,10 @@ map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 map n <Plug>(incsearch-nohl-n)
 map N <Plug>(incsearch-nohl-N)
-"let g:syntastic_error_symbol=‘X‘
-"let syntastic_style_error_symbol =‘X'
-"let g:syntastic_warning_symbol="-'
-"let syntastic_style_warning_symbol="-‘
 
 let mapleader=","
+cnoremap Q <Nop>
 noremap<R> :redo<CR>
-nnoremap<leader>vrc :vs $MYVIMRC<CR>
-nnoremap<leader>v :vsplit \| :enew<CR>
-nnoremap<leader>h :split \| :enew<CR>
 nnoremap <Leader>[ :b#<CR>
 nnoremap <Leader>] :bn<CR>
 nnoremap<leader>q :q<CR>
@@ -187,8 +177,7 @@ nnoremap<F4> :NERDTreeToggle<CR><F3>
 nnoremap<F5> :TagbarToggle<CR><F4>
 nnoremap<F8> :call CompileRun()<CR>
 nnoremap<leader>o :call OpenContainerFolder()<CR><CR>
-cnoremap Q <Nop>
-" strip all trailing whitespace in the current file
+nnoremap<leader>vrc :vs $MYVIMRC<CR>
 nnoremap <leader>st :%s/\s\+$//e<cr>:let @/=''<CR>
 
 func! CompileRun()

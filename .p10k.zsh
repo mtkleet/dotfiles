@@ -1595,7 +1595,7 @@
   # User-defined prompt segments can be customized the same way as built-in segments.
   # typeset -g POWERLEVEL9K_EXAMPLE_FOREGROUND=3
   # typeset -g POWERLEVEL9K_EXAMPLE_VISUAL_IDENTIFIER_EXPANSION='⭐'
-  
+
   ####################################[ user: current user ]####################################
   typeset -g POWERLEVEL9K_USER_DEFAULT_BACKGROUND=255
   typeset -g POWERLEVEL9K_USER_DEFAULT_FOREGROUND=16
