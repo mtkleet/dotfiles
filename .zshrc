@@ -116,6 +116,7 @@ alias ssn='sudo shutdown now'
 if [[ $commands[bat] ]]; then    #bat - a cat clone with wings (https://github.com/sharkdp/bat)
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
     alias c='bat'
+    alias cat='bat --style="plain"'
     alias bfzf='fzf --preview="bat {} --color=always"'
 fi
 
