@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 VIM_DIR=~/.vim
 NVIM_DIR=~/.config/nvim
-BAT_DIR=~/.config/bat
+BAT_DIR=~/.config/bat/themes
 FONTS_DIR=~/.local/fonts
 echo "Setting dircolors for Solarized Dark theme..."
 mkdir -p ~/.zsh/dircolors
@@ -27,6 +27,7 @@ if [ ! -d "BAT_DIR" ]; then
     echo "Creating ~/.config/bat directory..."
     mkdir -p $BAT_DIR
     cp ~/dotfiles/config ~/.config/bat
+    cp ~/dotfiles/solarizedbat.tmTheme ~/.config/bat/themes
     echo "bat config moved to ~/.config/bat/"
 else
     echo "~/.config/bat already exists! Skipping..."
