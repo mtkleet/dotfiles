@@ -29,6 +29,7 @@ if [ ! -d "BAT_DIR" ]; then
     cp ~/dotfiles/config ~/.config/bat
     cp ~/dotfiles/solarizedbat.tmTheme ~/.config/bat/themes
     echo "bat config moved to ~/.config/bat/"
+    bat cache --build
 else
     echo "~/.config/bat already exists! Skipping..."
 fi
