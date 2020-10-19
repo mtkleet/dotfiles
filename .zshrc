@@ -12,7 +12,9 @@ export EDITOR=nvim
 export HISTFILE=$ZDOTDIR/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
-eval `dircolors $ZDOTDIR/dircolors/dircolors.ansi-dark`
+if [[ -r $ZDOTDIR/dircolors/dircolors.ansi-dark ]]; then
+    eval `dircolors $ZDOTDIR/dircolors/dircolors.ansi-dark`
+fi
 fpath=($ZDOTDIR/zsh-completions/src $fpath)
 fpath=($ZDOTDIR/zsh-more-completions/src $fpath)
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -137,6 +139,7 @@ alias l='ls -lACFH --color --color=auto --group-directories-first'
 
 #other useful aliases
 alias colortest='for i in {0..255}; do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
+alias gethostname='cat /proc/sys/kernel/hostname'
 alias actips="echo '$(ip -o addr show up primary scope global | while read -r num dev fam addr rest; do echo ${addr%/*}; done)'"    #display all active ips
 alias lanip='ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1'    #get lan ip
 alias pubip='curl icanhazip.com'    #print public ip
