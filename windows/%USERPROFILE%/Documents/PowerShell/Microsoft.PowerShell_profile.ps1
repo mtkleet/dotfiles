@@ -1,27 +1,38 @@
-Import-Module posh-git
-Import-Module oh-my-posh
-Import-Module $env:SCOOP\modules\scoop-completion
 Set-PSReadlineOption -BellStyle None
-Set-Theme pure
+Set-PSReadLineOption -EditMode Emacs
+#Set-PSReadlineKeyHandler -Key DownArrow -ScriptBlock { Invoke-GuiCompletion }
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+#Set-PSReadlineOption -PredictionSource History
+#Set-PSReadlineOption -PredictionViewStyle ListView
+#Set-PSReadlineOption -ShowToolTip
 
-function nvim {wsl -e nvim -c "let g:airline_theme='onehalfdark' | colorscheme onehalfdark | redrawtabline" $args[0]}
-function vim {wsl -e nvim -c "let g:airline_theme='onehalfdark' | colorscheme onehalfdark | redrawtabline" $args[0]}
-function vi {wsl -e nvim -c "let g:airline_theme='onehalfdark' | colorscheme onehalfdark | redrawtabline" $args[0]}
-function v {wsl -e nvim -c "let g:airline_theme='onehalfdark' | colorscheme onehalfdark | redrawtabline" $args[0]}
-Set-Alias 'npp' 'notepad++.exe'
-Set-Alias 'reboot' 'Restart-Computer'
-function .. {cd ..}
-function ... {cd ..\..}
-function .... {cd ..\..\..}
-function ~ {cd $HOME}
-function lo {Invoke-command -ScriptBlock {exit}}
-function :q {Invoke-command -ScriptBlock {exit}}
-function l {wsl -e exa -amFg --group-directories-first --color=always --color-scale $args[0]}
-function ll {wsl -e exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=long-iso $args[0]}
-#function / {cd \}
-#function \ {cd \}
-#function l {ls.ps1 -ALCFH --color=auto}
-#function ll {ls.ps1 -lLAFHh --color=auto}
-function edal {nvim /mnt/c/Users/$env:USERNAME/Documents/PowerShell/Microsoft.PowerShell_profile.ps1}
-#function vrc {nvim $HOME\AppData\Local\nvim\init.vim}
-function c {bat.ps1 --paging=never $args[0]}
+oh-my-posh init pwsh -c $HOME\scoop\apps\oh-my-posh\current\themes\powerlevel10k_lean.omp.json | Invoke-Expression
+Import-Module '$HOME\scoop\apps\scoop\current\supporting\completion\Scoop-Completion.psd1' -ErrorAction SilentlyContinue
+Import-Module Terminal-Icons
+Import-Module cd-extras
+Set-Alias 'vim' 'nvim'
+Set-Alias 'v' 'nvim'
+Set-Alias 'vi' 'nvim'
+function .{cd .}
+function ..{cd ..}
+function ...{cd ..\..}
+function ....{cd ..\..\..}
+function .....{cd ..\..\..\..}
+function l{ls | Format-Wide -Column 5}
+function ll{Get-ChildItem -Force}
+function ~{cd $env:USERPROFILE}
+function /{cd \}
+function \{cd \}
+function lo{Invoke-command -ScriptBlock {exit}}
+function edal{nvim $env:USERPROFILE\\Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1}
+function wtrc{nvim $env:LOCALAPPDATA\\Packages\\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\\LocalState\\settings.json}
+function vrc{nvim $env:LOCALAPPDATA\\nvim\\lua\\custom\\init.lua}
+function hsts{gsudo nvim $env:SystemRoot\\System32\\drivers\\etc\\hosts}
+function vdir{cd $env:LOCALAPPDATA\nvim}
+function upkg{shovel update *}
+
+Enable-PoshTooltips
+Enable-PoshTransientPrompt
+#try { $null = gcm pshazz -ea stop; pshazz init 'default' } catch { }
