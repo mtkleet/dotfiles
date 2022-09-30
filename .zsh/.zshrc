@@ -7,8 +7,8 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export MANROFFOPT='-c'
 export LESSHISTFILE=-
-export PATH=$PATH:$HOME/.local/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:/mnt/c/Windows/System32
-eval "$(perl -I$HOME/.local/perl5 -Mlocal::lib=$HOME/.local/perl5)"
+export PATH=$PATH:$HOME/.local/bin
+#eval "$(perl -I$HOME/.local/perl5 -Mlocal::lib=$HOME/.local/perl5)"
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -20,6 +20,7 @@ export ZLE_RPROMPT_INDENT=0
 
 # translate %USERPROFILE% and %LOCALAPPDATA% to unix envs
 if [[ -n "$IS_WSL" || -n "$WSL_DISTRO_NAME" ]]; then
+    export PATH=$PATH:/mnt/c/Windows/System32
     pushd /mnt/c > /dev/null # avoid UNC path error, then restore current path
     export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | tr -d '\r'))
     popd > /dev/null
@@ -272,18 +273,18 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
 # yay - An AUR Helper written in Go (https://github.com/Jguer/yay)
 if [[ $commands[yay] ]]; then
+    alias ipkg='yay -S'
     alias upkg='yay -Y --gendb && yay -Syu --devel --timeupdate'
     alias rpkg='yay -Rsc'
-    alias yayskip='yay -S --mflags --skipinteg'
     alias rpkgf='yay -R --nodeps'
+    alias yayskip='yay -S --mflags --skipinteg'
 else
+    alias ipkg='sudo pacman -S'
     alias upkg='sudo pacman -Syyu'
+    alias spkg='sudo pacman -Ss'
     alias rpkg='sudo pacman -Rsc'
     alias rpkgf='sudo pacman -R --nodeps'
 fi
-alias ipkg='sudo pacman -S'
-alias rpkg='sudo pacman -Rsc'
-alias spkg='sudo pacman -Ss'
 alias cpkg='sudo pacman -Rns $(pacman -Qtdq)'
 alias unlock='sudo rm /var/lib/pacman/db.lck'
 if [[ $commands[expac] ]]; then
@@ -318,8 +319,10 @@ alias ssn='sudo shutdown now'
 # bat - a cat clone with wings (https://github.com/sharkdp/bat)
 if [[ $commands[bat] ]]; then
     alias c='bat --theme="Solarized (dark)"'
-    alias cat='bat --style="plain" --theme="Solarized (dark)"'
+    alias cat="bat --paging=never --style='plain'"
     alias bfzf='fzf --preview="bat {} --color=always"'
+    alias ripgrep='batgrep'
+    alias man='batman'
 fi
 
 alias dc='cd'
@@ -354,7 +357,7 @@ alias lanip='ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6
 alias pubip='curl icanhazip.com'
 
 # youtube-dl - command-line program to download videos from YouTube.com and other video sites (https://github.com/ytdl-org/youtube-dl)
-if [[ $commands[ffmpeg] ]]; then
+if [[ $commands[youtube-dl] ]]; then
     # download youtube video in fhd resolution and convert it to mp4
     alias ytd='youtube-dl --format "bestvideo[height<=1080,ext=mp4]+bestaudio[ext=m4a]"'
     # download video from youtube and convert it to mp3@320kbps file
@@ -362,7 +365,9 @@ if [[ $commands[ffmpeg] ]]; then
 fi
 
 # unified remote - turn your smartphone into a universal remote control (https://github.com/unifiedremote)
-alias urd='/opt/urserver/urserver --daemon'
+if [[ $commands[urserver] ]]; then
+    alias urd='/opt/urserver/urserver --daemon'
+fi
 
 # ex function - extractor for all kinds of archives
 ex ()    {
