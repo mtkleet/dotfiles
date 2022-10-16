@@ -7,8 +7,8 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export MANROFFOPT='-c'
 export LESSHISTFILE=-
-export PATH=$PATH:$HOME/.local/bin
-#eval "$(perl -I$HOME/.local/perl5 -Mlocal::lib=$HOME/.local/perl5)"
+export PATH=$PATH:$HOME/.local/bin:/home/g4cm4n/.local/share/gem/ruby/3.0.0/bin
+eval "$(perl -I$HOME/.local/perl5 -Mlocal::lib=$HOME/.local/perl5/lib)"
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -19,7 +19,7 @@ export WORDCHARS=${WORDCHARS/\/}
 export ZLE_RPROMPT_INDENT=0
 
 # translate %USERPROFILE% and %LOCALAPPDATA% to unix envs
-if [[ -n "$IS_WSL" || -n "$WSL_DISTRO_NAME" ]]; then
+if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     export PATH=$PATH:/mnt/c/Windows/System32
     pushd /mnt/c > /dev/null # avoid UNC path error, then restore current path
     export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | tr -d '\r'))
@@ -28,20 +28,25 @@ if [[ -n "$IS_WSL" || -n "$WSL_DISTRO_NAME" ]]; then
     export WINAPPDATA=$(wslpath $(cmd.exe /C "echo %LOCALAPPDATA%" | tr -d '\r' ))
     popd > /dev/null
     # s - web search from the terminal (https://github.com/zquestz/s)
-    # using wslview from wslu (https://github.com/wslutilities/wslu) as binary and google as search engine
-    alias s='s -b wslview -p google'
+    # using wslview from wslu (https://github.com/wslutilities/wslu) as binary and brave search as engine
+    alias s='s -b wslview -p brave'
     # open windows terminal settings in neovim
     pushd $WINAPPDATA > /dev/null
     export WSL_JSON=$WINAPPDATA/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
     popd > /dev/null
     alias edal="nvim \${WSL_JSON}"
+    alias dwnl="cd \${WINHOME}/Downloads"
+else
+    alias s='s -p brave'
 fi
 
 # dircolors-solarized (https://github.com/seebi/dircolors-solarized)
 if [[ -r $ZDOTDIR/dircolors/dircolors.ansi-dark ]]; then
     eval `dircolors $ZDOTDIR/dircolors/dircolors.ansi-dark`;
     # vivid - A themeable LS_COLORS generator with a rich filetype datebase (https://github.com/sharkdp/vivid)
-    export LS_COLORS="$(vivid generate solarized-dark)"
+    if [[ [$commands]vivid ]] then;
+        export LS_COLORS="$(vivid generate solarized-dark)"
+    fi
 fi
 
 # fzf - A command-line fuzzy finder (https://github.com/junegunn/fzf)
@@ -62,7 +67,7 @@ fi
 ### --- ZSH OPTIONS --- ####
 
 # zsh 'cd' and directory stack command behaviour
-setopt	    AUTO_CD              # type the name of a directory and it will become current directory
+setopt	  AUTO_CD              # type the name of a directory and it will become current directory
 setopt		AUTO_PUSHD           # make 'cd' push the old directory onto the directory stack
 unsetopt	CDABLE_VARS          # type the name of variable and if it matches valid direcory it will become current directory
 unsetopt	CHASE_LINKS          # resolve symbolic links to their true values when changing directory
@@ -77,7 +82,7 @@ setopt		AUTO_NAME_DIRS       # any parameter that is set to the absolute name of
 setopt		AUTO_PARAM_KEYS      # automatically prepare viable key after parameter completion
 setopt		AUTO_PARAM_SLASH     # add a slash after completion if it was performed on direcory name
 unsetopt	AUTO_REMOVE_SLASH    # do not remove slash after completion, let user handle it
-setopt	    BASH_AUTO_LIST       # on an ambiguous completion, automatically list viable hoices, like in bash
+setopt	  BASH_AUTO_LIST       # on an ambiguous completion, automatically list viable hoices, like in bash
 unsetopt	COMPLETE_ALIASES     # do not make alias a distinct command for completion
 setopt		COMPLETE_IN_WORD     # completion is done from both ends
 unsetopt	GLOB_COMPLETE        # when current word has a glob pattern generate matches as for completion and cycle through them
@@ -111,7 +116,7 @@ setopt		UNSET                # don't error out when unset parameters are used
 unsetopt	WARN_CREATE_GLOBAL   # disable warnings if a global variable is defined implicitly
 # input/output
 setopt		ALIASES              # expand aliases
-setopt	    NO_CLOBBER           # don’t write over existing files with >, use >! instead
+setopt	  NO_CLOBBER           # don’t write over existing files with >, use >! instead
 setopt		CORRECT              # spelling correction for commands
 unsetopt	CORRECT_ALL          # spelling correction for commands and everything else
 unsetopt	IGNORE_EOF           # do not exit on end-of-file, require the use of exit or logout instead
@@ -127,7 +132,7 @@ setopt		AUTO_CONTINUE        # stopped jobs
 unsetopt	AUTO_RESUME          # treat single word commands without redirection as candidates for resumption of an existing job
 setopt		BG_NICE              # run all background jobs at a lower priority
 setopt		CHECK_JOBS           # report the status of background and suspended jobs before exiting a shell
-setopt      NO_HUP               # don't send HUP to jobs when shell exits
+setopt    NO_HUP               # don't send HUP to jobs when shell exits
 unsetopt	FLOWCONTROL          # disable output flow control via start/stop character in the shell's editor
 setopt		LONG_LIST_JOBS       # list jobs in long format by default
 setopt		MONITOR              # allow job control
@@ -276,14 +281,13 @@ if [[ $commands[yay] ]]; then
     alias ipkg='yay -S'
     alias upkg='yay -Y --gendb && yay -Syu --devel --timeupdate'
     alias rpkg='yay -Rsc'
-    alias rpkgf='yay -R --nodeps'
-    alias yayskip='yay -S --mflags --skipinteg'
+    alias rpkgf='yay -Rd --nodeps'
 else
     alias ipkg='sudo pacman -S'
     alias upkg='sudo pacman -Syyu'
     alias spkg='sudo pacman -Ss'
     alias rpkg='sudo pacman -Rsc'
-    alias rpkgf='sudo pacman -R --nodeps'
+    alias rpkgf='sudo pacman -Rd --nodeps'
 fi
 alias cpkg='sudo pacman -Rns $(pacman -Qtdq)'
 alias unlock='sudo rm /var/lib/pacman/db.lck'
@@ -308,7 +312,7 @@ alias free='free -mlt'
 alias grep='grep --color -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
 alias ps='ps auxf'
 alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
-alias wget="wget --hsts-file='\${HOME}/.cache/.wget-hsts'"
+alias wget='wget --hsts-file="${HOME}/.cache/.wget-hsts"'
 alias userlist='cut -d: -f1 /etc/passwd'
 alias jctl='journalctl -p 3 -xb'
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
@@ -319,9 +323,9 @@ alias ssn='sudo shutdown now'
 # bat - a cat clone with wings (https://github.com/sharkdp/bat)
 if [[ $commands[bat] ]]; then
     alias c='bat --theme="Solarized (dark)"'
-    alias cat="bat --paging=never --style='plain'"
+    alias cat='bat --paging=never --style="plain"'
     alias bfzf='fzf --preview="bat {} --color=always"'
-    alias ripgrep='batgrep'
+    alias rg='batgrep'
     alias man='batman'
 fi
 
@@ -333,12 +337,12 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias -- -='cd -'
-alias cp='rsync -ah --partial --inplace --info=progress2'
+# alias cp='rsync -ah --partial --inplace --info=progress2'
 
 # exa - a modern version of ls (https://github.com/ogham/exa)
 if [[ $commands[exa] ]]; then
-    alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=long-iso'
-    alias lll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=long-iso | less -r'
+    alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default'
+    alias lll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default less -r'
 else
     alias ll='ls -lAFHh --color=auto --group-directories-first'
     alias lll='ls -lAFHh --color=auto -group-directories-first | less -r'

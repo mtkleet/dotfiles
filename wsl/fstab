@@ -1,0 +1,6 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+C: /mnt/c drvfs rw,noatime,uid=1000,gid=1000,fmask=0027,dmask=0027,metadata 0 0
+#F: /mnt/f drvfs rw,noatime,uid=1000,gid=1000,fmask=0027,dmask=0027,metadata 0 0
