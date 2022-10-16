@@ -132,7 +132,7 @@ setopt		AUTO_CONTINUE        # stopped jobs
 unsetopt	AUTO_RESUME          # treat single word commands without redirection as candidates for resumption of an existing job
 setopt		BG_NICE              # run all background jobs at a lower priority
 setopt		CHECK_JOBS           # report the status of background and suspended jobs before exiting a shell
-setopt    NO_HUP               # don't send HUP to jobs when shell exits
+setopt    	NO_HUP               # don't send HUP to jobs when shell exits
 unsetopt	FLOWCONTROL          # disable output flow control via start/stop character in the shell's editor
 setopt		LONG_LIST_JOBS       # list jobs in long format by default
 setopt		MONITOR              # allow job control
