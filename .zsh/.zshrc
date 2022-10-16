@@ -67,7 +67,7 @@ fi
 ### --- ZSH OPTIONS --- ####
 
 # zsh 'cd' and directory stack command behaviour
-setopt	  AUTO_CD              # type the name of a directory and it will become current directory
+setopt	    AUTO_CD              # type the name of a directory and it will become current directory
 setopt		AUTO_PUSHD           # make 'cd' push the old directory onto the directory stack
 unsetopt	CDABLE_VARS          # type the name of variable and if it matches valid direcory it will become current directory
 unsetopt	CHASE_LINKS          # resolve symbolic links to their true values when changing directory
@@ -82,7 +82,7 @@ setopt		AUTO_NAME_DIRS       # any parameter that is set to the absolute name of
 setopt		AUTO_PARAM_KEYS      # automatically prepare viable key after parameter completion
 setopt		AUTO_PARAM_SLASH     # add a slash after completion if it was performed on direcory name
 unsetopt	AUTO_REMOVE_SLASH    # do not remove slash after completion, let user handle it
-setopt	  BASH_AUTO_LIST       # on an ambiguous completion, automatically list viable hoices, like in bash
+setopt	    BASH_AUTO_LIST       # on an ambiguous completion, automatically list viable hoices, like in bash
 unsetopt	COMPLETE_ALIASES     # do not make alias a distinct command for completion
 setopt		COMPLETE_IN_WORD     # completion is done from both ends
 unsetopt	GLOB_COMPLETE        # when current word has a glob pattern generate matches as for completion and cycle through them
@@ -116,7 +116,7 @@ setopt		UNSET                # don't error out when unset parameters are used
 unsetopt	WARN_CREATE_GLOBAL   # disable warnings if a global variable is defined implicitly
 # input/output
 setopt		ALIASES              # expand aliases
-setopt	  NO_CLOBBER           # don’t write over existing files with >, use >! instead
+setopt	    NO_CLOBBER           # don’t write over existing files with >, use >! instead
 setopt		CORRECT              # spelling correction for commands
 unsetopt	CORRECT_ALL          # spelling correction for commands and everything else
 unsetopt	IGNORE_EOF           # do not exit on end-of-file, require the use of exit or logout instead
