@@ -62,102 +62,102 @@ fi
 
 ### --- ZSH OPTIONS --- ####
 # zsh 'cd' and directory stack command behaviour
-setopt    AUTO_CD              # type the name of a directory and it will become current directory
-setopt		AUTO_PUSHD           # make 'cd' push the old directory onto the directory stack
-unsetopt	CDABLE_VARS          # type the name of variable and if it matches valid direcory it will become current directory
-unsetopt	CHASE_LINKS          # resolve symbolic links to their true values when changing directory
-setopt		PUSHD_IGNORE_DUPS    # don't push multiple copies of the same directory onto the directory stack
-setopt		PUSHD_MINUS          # exchanges the meanings of `+' and `-' when used with a number to specify a directory in the stack
-setopt		PUSHD_SILENT         # parameter expansion, command substitution and arithmetic expansion are performed in prompts
+setopt    AUTO_CD                 # type the name of a directory and it will become current directory
+setopt    AUTO_PUSHD              # make 'cd' push the old directory onto the directory stack
+unsetopt  CDABLE_VARS             # type the name of variable and if it matches valid direcory it will become current directory
+unsetopt  CHASE_LINKS             # resolve symbolic links to their true values when changing directory
+setopt    PUSHD_IGNORE_DUPS       # don't push multiple copies of the same directory onto the directory stack
+setopt    PUSHD_MINUS             # exchanges the meanings of `+' and `-' when used with a number to specify a directory in the stack
+setopt    PUSHD_SILENT            # parameter expansion, command substitution and arithmetic expansion are performed in prompts
 # completion
-setopt		ALWAYS_LAST_PROMPT   # try to return to the last prompt if given no numeric argument
-setopt		AUTO_LIST            # automatically list choices on an ambiguous completion
-setopt		AUTO_MENU            # automatically use menu completion after the second consecutive request for completion
-setopt		AUTO_NAME_DIRS       # any parameter that is set to the absolute name of a directory will be available for completion
-setopt		AUTO_PARAM_KEYS      # automatically prepare viable key after parameter completion
-setopt		AUTO_PARAM_SLASH     # add a slash after completion if it was performed on direcory name
-unsetopt	AUTO_REMOVE_SLASH    # do not remove slash after completion, let user handle it
-setopt    BASH_AUTO_LIST       # on an ambiguous completion, automatically list viable hoices, like in bash
-unsetopt	COMPLETE_ALIASES     # do not make alias a distinct command for completion
-setopt		COMPLETE_IN_WORD     # completion is done from both ends
-unsetopt	GLOB_COMPLETE        # when current word has a glob pattern generate matches as for completion and cycle through them
-setopt		HASH_LIST_ALL        # make sure the entire command path is hashed first
-setopt		LIST_AMBIGUOUS       # if there is an unambiguous prefix to insert, it's done without list being displayed or after third call
-unsetopt	LIST_BEEP            # do not beep on an ambigous completion
-setopt		LIST_PACKED          # try to make completion list smaller
-setopt		LIST_ROWS_FIRST      # matches are listed in a horizontal fashion
-setopt		LIST_TYPES           # when listing files that are possible completions, show the type of each one
-unsetopt	MENU_COMPLETE        # don't iterate through every possible match in menu
-unsetopt	REC_EXACT            # don't accept exact match if there are other possible completions
+setopt    ALWAYS_LAST_PROMPT      # try to return to the last prompt if given no numeric argument
+setopt    AUTO_LIST               # automatically list choices on an ambiguous completion
+setopt    AUTO_MENU               # automatically use menu completion after the second consecutive request for completion
+setopt    AUTO_NAME_DIRS          # any parameter that is set to the absolute name of a directory will be available for completion
+setopt    AUTO_PARAM_KEYS         # automatically prepare viable key after parameter completion
+setopt    AUTO_PARAM_SLASH        # add a slash after completion if it was performed on direcory name
+unsetopt  AUTO_REMOVE_SLASH       # do not remove slash after completion, let user handle it
+setopt    BASH_AUTO_LIST          # on an ambiguous completion, automatically list viable hoices, like in bash
+unsetopt  COMPLETE_ALIASES        # do not make alias a distinct command for completion
+setopt    COMPLETE_IN_WORD        # completion is done from both ends
+unsetopt  GLOB_COMPLETE           # when current word has a glob pattern generate matches as for completion and cycle through them
+setopt    HASH_LIST_ALL           # make sure the entire command path is hashed first
+setopt    LIST_AMBIGUOUS          # if there is an unambiguous prefix to insert, it's done without list being displayed or after third call
+unsetopt  LIST_BEEP               # do not beep on an ambigous completion
+setopt    LIST_PACKED             # try to make completion list smaller
+setopt    LIST_ROWS_FIRST         # matches are listed in a horizontal fashion
+setopt    LIST_TYPES              # when listing files that are possible completions, show the type of each one
+unsetopt  MENU_COMPLETE           # don't iterate through every possible match in menu
+unsetopt  REC_EXACT               # don't accept exact match if there are other possible completions
 # expansion & globbing
-setopt		BAD_PATTERN          # if a pattern for filename generation is badly formed, print an error message
-setopt		BARE_GLOB_QUAL       # in a glob pattern, treat a trailing set of parentheses as a qualifier list, if it doesn't contain `|', `(, `~'
-setopt		BRACE_CCL            # expands pattern in braces like: $ print 1{abw-z}2 to $ 1a2 1b2 1w2 1x2 1y2 1z2
-unsetopt	CASE_GLOB            # case insensitive globbing
-setopt		EXTENDED_GLOB        # treat the '#', '~' and '^' characters as part of patterns for filename generation, grepping etc.
-setopt		GLOB                 # perform filename generation
-unsetopt	GLOB_ASSIGN          # prevent globbing from unpredictable results
-unsetopt	GLOB_SUBST           # don't treat every characters as eligible for expansion
-unsetopt	IGNORE_BRACES        # do not perform brace expansion
-unsetopt	KSH_GLOB             # use native syntax for globbing
-setopt		MARK_DIRS            # append a trailing `/' to directory
-setopt		MULTIBYTE            # utf-8 support for zsh
-setopt		NOMATCH              # if a pattern for filename generation has no matches print an error
-unsetopt	CSH_NULL_GLOB        # if a pattern for filename generation has no matches print an error, overrides NOMATCH
-setopt		NUMERIC_GLOBSORT     # if numeric filenames are matched by generation pattern, sort the filenames numerically
-setopt		RC_EXPAND_PARAM      # set array expansions
-unsetopt	REMATCH_PCRE         # regular expressions will use the extended regexp syntax provided by the system libraries
-setopt		UNSET                # don't error out when unset parameters are used
-unsetopt	WARN_CREATE_GLOBAL   # disable warnings if a global variable is defined implicitly
+setopt    BAD_PATTERN             # if a pattern for filename generation is badly formed, print an error message
+setopt    BARE_GLOB_QUAL          # in a glob pattern, treat a trailing set of parentheses as a qualifier list, if it doesn't contain `|', `(, `~'
+setopt    BRACE_CCL               # expands pattern in braces like: $ print 1{abw-z}2 to $ 1a2 1b2 1w2 1x2 1y2 1z2
+unsetopt  CASE_GLOB               # case insensitive globbing
+setopt    EXTENDED_GLOB           # treat the '#', '~' and '^' characters as part of patterns for filename generation, grepping etc.
+setopt    GLOB                    # perform filename generation
+unsetopt  GLOB_ASSIGN             # prevent globbing from unpredictable results
+unsetopt  GLOB_SUBST              # don't treat every characters as eligible for expansion
+unsetopt  IGNORE_BRACES           # do not perform brace expansion
+unsetopt  KSH_GLOB                # use native syntax for globbing
+setopt    MARK_DIRS               # append a trailing `/' to directory
+setopt    MULTIBYTE               # utf-8 support for zsh
+setopt    NOMATCH                 # if a pattern for filename generation has no matches print an error
+unsetopt  CSH_NULL_GLOB           # if a pattern for filename generation has no matches print an error, overrides NOMATCH
+setopt    NUMERIC_GLOBSORT        # if numeric filenames are matched by generation pattern, sort the filenames numerically
+setopt    RC_EXPAND_PARAM         # set array expansions
+unsetopt  REMATCH_PCRE            # regular expressions will use the extended regexp syntax provided by the system libraries
+setopt    UNSET                   # don't error out when unset parameters are used
+unsetopt  WARN_CREATE_GLOBAL      # disable warnings if a global variable is defined implicitly
 # input/output
-setopt		ALIASES              # expand aliases
-setopt    NO_CLOBBER           # don’t write over existing files with >, use >! instead
-setopt		CORRECT              # spelling correction for commands
-unsetopt	CORRECT_ALL          # spelling correction for commands and everything else
-unsetopt	IGNORE_EOF           # do not exit on end-of-file, require the use of exit or logout instead
-setopt		INTERACTIVE_COMMENTS # allow comments, even in interactive shells
-setopt		HASH_CMDS            # place the location of each command in the hash table the first time it is executed
-setopt		HASH_DIRS            # hash the directory of command's path whenever you execute it and all directories that occur earlier in the path
-unsetopt	PRINT_EXIT_VALUE     # print a newline showing previous command's return value
-unsetopt	RM_STAR_SILENT       # don't query the user before executing 'rm *'
-unsetopt	RM_STAR_WAIT         # don't wait before executing 'rm *''
-setopt		SHORT_LOOPS          # allow the short forms of for, select, if, and function constructs
+setopt    ALIASES                 # expand aliases
+setopt    NO_CLOBBER              # don’t write over existing files with >, use >! instead
+setopt    CORRECT                 # spelling correction for commands
+unsetopt  CORRECT_ALL             # spelling correction for commands and everything else
+unsetopt  IGNORE_EOF              # do not exit on end-of-file, require the use of exit or logout instead
+setopt    INTERACTIVE_COMMENTS    # allow comments, even in interactive shells
+setopt    HASH_CMDS               # place the location of each command in the hash table the first time it is executed
+setopt    HASH_DIRS               # hash the directory of command's path whenever you execute it and all directories that occur earlier in the path
+unsetopt  PRINT_EXIT_VALUE        # print a newline showing previous command's return value
+unsetopt  RM_STAR_SILENT          # don't query the user before executing 'rm *'
+unsetopt  RM_STAR_WAIT            # don't wait before executing 'rm *''
+setopt    SHORT_LOOPS             # allow the short forms of for, select, if, and function constructs
 # job control
-setopt		AUTO_CONTINUE        # stopped jobs
-unsetopt	AUTO_RESUME          # treat single word commands without redirection as candidates for resumption of an existing job
-setopt		BG_NICE              # run all background jobs at a lower priority
-setopt		CHECK_JOBS           # report the status of background and suspended jobs before exiting a shell
-setopt    NO_HUP               # don't send HUP to jobs when shell exits
-unsetopt	FLOWCONTROL          # disable output flow control via start/stop character in the shell's editor
-setopt		LONG_LIST_JOBS       # list jobs in long format by default
-setopt		MONITOR              # allow job control
-setopt		NOTIFY               # report the status of background jobs immediately
+setopt    AUTO_CONTINUE           # stopped jobs
+unsetopt  AUTO_RESUME             # treat single word commands without redirection as candidates for resumption of an existing job
+setopt    BG_NICE                 # run all background jobs at a lower priority
+setopt    CHECK_JOBS              # report the status of background and suspended jobs before exiting a shell
+setopt    NO_HUP                  # don't send HUP to jobs when shell exits
+unsetopt  FLOWCONTROL             # disable output flow control via start/stop character in the shell's editor
+setopt    LONG_LIST_JOBS          # list jobs in long format by default
+setopt    MONITOR                 # allow job control
+setopt    NOTIFY                  # report the status of background jobs immediately
 # prompt
-unsetopt	PROMPT_BANG          # if set, `!' is treated specially in prompt expansion
-setopt		PROMPT_CR            # print a carriage return just before printing a prompt in the line editor
-setopt		PROMPT_SP            # attempt to preserve a partial line that would otherwise be cover up by PROMPT_CR
-setopt		PROMPT_PERCENT       # if set, `%' is treated specially in prompt expansion
-setopt		PROMPT_SUBST         # if set, parameter expansion, command substitution and arithmetic expansion are performed in prompts
+unsetopt  PROMPT_BANG             # if set, `!' is treated specially in prompt expansion
+setopt    PROMPT_CR               # print a carriage return just before printing a prompt in the line editor
+setopt    PROMPT_SP               # attempt to preserve a partial line that would otherwise be cover up by PROMPT_CR
+setopt    PROMPT_PERCENT          # if set, `%' is treated specially in prompt expansion
+setopt    PROMPT_SUBST            # if set, parameter expansion, command substitution and arithmetic expansion are performed in prompts
 # scripts & functions
-setopt		C_BASES              # output hexadecinal number in the standard C format: 0xFF instead of 16#FF
-unsetopt 	C_PRECEDENCES        # use precendence of operators found in C
-unsetopt	DEBUG_BEFORE_CMD     # run the DEBUG trap after each command
-unsetopt	ERR_EXIT             # if a command has a non-zero exit status, don't execute the ZERR trap and exit
-unsetopt	ERR_RETURN           # if set and command has a non-zero exit status, return immediately from the enclosing function
-setopt		EVAL_LINENO          # line numbers of expressions evaluated by 'eval' are tracked separately of the enclosing environment
-setopt		EXEC                 # do execute commands
-setopt		FUNCTION_ARGZERO     # set $0 temporarily to the name of the function/script when executing
-setopt		LOCAL_OPTIONS        # allow functions to have local options
-setopt		LOCAL_TRAPS          # allow functions to have local traps
-setopt		MULTIOS              # perform multiple implicit tees and cats with redirection
-unsetopt	VERBOSE              # don't print shell input as they are read
+setopt    C_BASES                 # output hexadecinal number in the standard C format: 0xFF instead of 16#FF
+unsetopt  C_PRECEDENCES           # use precendence of operators found in C
+unsetopt  DEBUG_BEFORE_CMD        # run the DEBUG trap after each command
+unsetopt  ERR_EXIT                # if a command has a non-zero exit status, don't execute the ZERR trap and exit
+unsetopt  ERR_RETURN              # if set and command has a non-zero exit status, return immediately from the enclosing function
+setopt    EVAL_LINENO             # line numbers of expressions evaluated by 'eval' are tracked separately of the enclosing environment
+setopt    EXEC                    # do execute commands
+setopt    FUNCTION_ARGZERO        # set $0 temporarily to the name of the function/script when executing
+setopt    LOCAL_OPTIONS           # allow functions to have local options
+setopt    LOCAL_TRAPS             # allow functions to have local traps
+setopt    MULTIOS                 # perform multiple implicit tees and cats with redirection
+unsetopt  VERBOSE                 # don't print shell input as they are read
 # zle
-unsetopt	BEEP                 # don't beep on error
-unsetopt	COMBINING_CHARS      # don't handle combining characters specially
-unsetopt	OVERSTRIKE           # don't start up the line editor in overstrike mode
-unsetopt	SINGLE_LINE_ZLE      # don't use single line command line
-setopt		ZLE                  # use the zsh line editor
-setopt    EMACS                # emacs keybindings
+unsetopt  BEEP                    # don't beep on error
+unsetopt  COMBINING_CHARS         # don't handle combining characters specially
+unsetopt  OVERSTRIKE              # don't start up the line editor in overstrike mode
+unsetopt  SINGLE_LINE_ZLE         # don't use single line command line
+setopt    ZLE                     # use the zsh line editor
+setopt    EMACS                   # emacs keybindings
 # basic keybindings
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
