@@ -77,7 +77,7 @@ setopt		AUTO_NAME_DIRS       # any parameter that is set to the absolute name of
 setopt		AUTO_PARAM_KEYS      # automatically prepare viable key after parameter completion
 setopt		AUTO_PARAM_SLASH     # add a slash after completion if it was performed on direcory name
 unsetopt	AUTO_REMOVE_SLASH    # do not remove slash after completion, let user handle it
-setopt    BASH_AUTO_LIST       # on an ambiguous completion, automatically list viable hoices, like in bash
+setopt      BASH_AUTO_LIST       # on an ambiguous completion, automatically list viable hoices, like in bash
 unsetopt	COMPLETE_ALIASES     # do not make alias a distinct command for completion
 setopt		COMPLETE_IN_WORD     # completion is done from both ends
 unsetopt	GLOB_COMPLETE        # when current word has a glob pattern generate matches as for completion and cycle through them
@@ -111,7 +111,7 @@ setopt		UNSET                # don't error out when unset parameters are used
 unsetopt	WARN_CREATE_GLOBAL   # disable warnings if a global variable is defined implicitly
 # input/output
 setopt		ALIASES              # expand aliases
-setopt    NO_CLOBBER           # don’t write over existing files with >, use >! instead
+setopt      NO_CLOBBER           # don’t write over existing files with >, use >! instead
 setopt		CORRECT              # spelling correction for commands
 unsetopt	CORRECT_ALL          # spelling correction for commands and everything else
 unsetopt	IGNORE_EOF           # do not exit on end-of-file, require the use of exit or logout instead
@@ -127,7 +127,7 @@ setopt		AUTO_CONTINUE        # stopped jobs
 unsetopt	AUTO_RESUME          # treat single word commands without redirection as candidates for resumption of an existing job
 setopt		BG_NICE              # run all background jobs at a lower priority
 setopt		CHECK_JOBS           # report the status of background and suspended jobs before exiting a shell
-setopt    NO_HUP               # don't send HUP to jobs when shell exits
+setopt      NO_HUP               # don't send HUP to jobs when shell exits
 unsetopt	FLOWCONTROL          # disable output flow control via start/stop character in the shell's editor
 setopt		LONG_LIST_JOBS       # list jobs in long format by default
 setopt		MONITOR              # allow job control
@@ -157,7 +157,7 @@ unsetopt	COMBINING_CHARS      # don't handle combining characters specially
 unsetopt	OVERSTRIKE           # don't start up the line editor in overstrike mode
 unsetopt	SINGLE_LINE_ZLE      # don't use single line command line
 setopt		ZLE                  # use the zsh line editor
-setopt    EMACS                # emacs keybindings
+setopt      EMACS                # emacs keybindings
 # basic keybindings
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
