@@ -12,26 +12,34 @@ local config = {
 		auto_quit = false, -- automatically quit the current session after a successful update
 	},
 
-	colorscheme = "solarized",
-	highlights = {},
+	colorscheme = "neosolarized",
+	highlights = {
+		-- init = { -- this table overrides highlights in all themes
+		--	Normal = { bg = "#073642" },
+		-- },
+		-- duskfox = { -- a table of overrides/changes to the duskfox theme
+		--   Normal = { bg = "#000000" },
+		-- },
+	},
 
 	options = {
 		opt = {
 			termguicolors = true,
-			background = "dark",
 			relativenumber = true,
 			number = true,
 			spell = false,
 			signcolumn = "auto",
 			wrap = false,
+			ignorecase = true,
 		},
 		g = {
-			mapleader = " ", -- sets vim.g.mapleader
+			mapleader = " ",
+			autoformat_enabled = true,
 			cmp_enabled = true,
 			autopairs_enabled = true,
 			diagnostics_enabled = true,
 			status_diagnostics_enabled = true,
-			solarized_termtrans = 1,
+			icons_enabled = true
 		},
 	},
 
@@ -48,70 +56,67 @@ local config = {
 		"    ██  ██ ██  ██  ██  ██ ██  ██  ██",
 		"    ██   ████   ████   ██ ██      ██",
 	},
-
 	default_theme = {
-		-- Modify the color palette for the default theme
 		colors = {
 			-- fg = "#abb2bf",
 			bg = "none",
 		},
 		highlights = function(hl) -- or a function that returns a new table of colors to set
-			local C = require("solarized.colors")
-
+			local C = require("default_theme.colors")
 			hl.Normal = { fg = C.fg, bg = C.bg }
-
 			hl.DiagnosticError.italic = true
 			hl.DiagnosticHint.italic = true
 			hl.DiagnosticInfo.italic = true
 			hl.DiagnosticWarn.italic = true
-
 			return hl
 		end,
-		-- enable or disable highlighting for extra plugins
 		plugins = {
 			aerial = true,
-			beacon = true,
+			beacon = false,
 			bufferline = true,
 			dashboard = true,
 			highlighturl = true,
-			hop = true,
-			indent_blankline = true,
-			lightspeed = true,
+			hop = false,
+			lightspeed = false,
+			luasnip = true,
 			["neo-tree"] = true,
 			notify = true,
-			["nvim-tree"] = true,
+			["nvim-tree"] = false,
 			["nvim-web-devicons"] = true,
 			rainbow = true,
-			symbols_outline = true,
+			snipmate = true,
+			symbols_outline = false,
 			telescope = true,
-			vimwiki = true,
+			treesitter = true,
+			vimwiki = false,
 			["which-key"] = true,
 		},
 	},
 
-	-- Diagnostics configuration (for vim.diagnostics.config({...}))
 	diagnostics = {
 		virtual_text = true,
 		underline = true,
-		update_on_insert = false,
+		update_in_insert = false,
 	},
 
-	-- Extend LSP configuration
 	lsp = {
 		-- enable servers that you already have installed without mason
 		servers = {
 			-- "pyright"
 		},
 		formatting = {
-			format_on_save = true,
+			format_on_save = {
+				enabled = true,
+				disabled_filetypes = {},
+			},
 			disabled = {
-				-- "sumneko_lua"
+				-- sumneko_lua
 			},
 			-- filter = function(client) -- fully override the default formatting function
-			--   return true
+			--		return true
 			-- end
 		},
-		-- easily add or disable built in mappings added during LSP attaching
+
 		mappings = {
 			n = {
 				-- ["<leader>lf"] = false -- disable formatting keymap
@@ -134,40 +139,39 @@ local config = {
 	},
 
 	mappings = {
-		-- first key is the mode
 		n = {
-			-- second key is the lefthand side of the map
-			-- mappings seen under group name "Buffer"
 			["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
 			["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
 			["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
 			["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-			["<C-s>"] = { ":w!<cr>", desc = "Save File" },
-			["<esc>"] = { ":noh<cr>", desc = "No highlight" },
+			["<ESC>"] = { ":noh<cr>", desc = "Remove highlights from search results" },
+			["<C-s>"] = { ":w!<cr>", desc = "Save file" },
+			["<C-c>"] = { "<cmd> %y+ <cr>", desc = "Copy to clipboard" },
+			["<leader>a"] = { "ggVG", desc = "Select all" }
 		},
-		t = {
-			-- setting a mapping to false will disable it
-		},
+		t = {},
 	},
 
-	-- Configure plugins
 	plugins = {
 		init = {
-			{ "ishan9299/nvim-solarized-lua" },
-			["vladdoster/remember.nvim"] = {
+			{ "svrana/neosolarized.nvim" },
+			{ "tjdevries/colorbuddy.nvim" },
+			{ "sheerun/vim-polyglot" },
+			["michaelb/sniprun"] = { run = "bash ./install.sh" },
+			["rcarriga/nvim-notify"] = {
 				config = function()
-					require("remember")
-				end,
+					require("notify").setup({ background_colour = "#073642" })
+					vim.notify = require("notify")
+				end
 			},
+			["vladdoster/remember.nvim"] = { config = function() require("remember") end },
 			["declancm/cinnamon.nvim"] = { disable = true },
-			["lukas-reineke/indent-blankline.nvim"] = { disable = true },
+			["max397574/better-escape.nvim"] = { disable = true },
+			["lukas-reineke/indent-blankline.nvim"] = { disable = true }
 		},
-		["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
-			config.sources = {
-				-- Set a formatter
-				-- null_ls.builtins.formatting.stylua,
-				-- null_ls.builtins.formatting.prettier,
-			}
+
+		["null-ls"] = function(config)
+			config.sources = {}
 			return config
 		end,
 		treesitter = { -- overrides `require("treesitter").setup(...)`
@@ -177,14 +181,17 @@ local config = {
 		["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
 			-- ensure_installed = { "sumneko_lua" },
 		},
-		["mason-null-ls"] = {
+		-- use mason-tool-installer to configure DAP/Formatters/Linter installation
+		["mason-null-ls"] = { -- overrides `require("mason-tool-installer").setup(...)`
 			-- ensure_installed = { "prettier", "stylua" },
-		},
+		}
 	},
 
 	luasnip = {
 		vscode_snippet_paths = {},
-		filetype_extend = {},
+		filetype_extend = {
+			--	javascript = { "javascriptreact" },
+		}
 	},
 
 	cmp = {
@@ -192,20 +199,25 @@ local config = {
 			nvim_lsp = 1000,
 			luasnip = 750,
 			buffer = 500,
-			path = 250,
-		},
+			path = 250
+		}
 	},
 
-	-- Modify which-key registration (Use this with mappings table in the above.)
+	sniprun = {
+		inline_messages = 0,
+		display = { "NvimNotifyOk", "NvimNotifyErr" },
+		display_options = { notification_timeout = 5 },
+		interpreter_options = {
+			Python3_original = { error_truncate = "long" }
+		},
+		borders = "single",
+		live_mode_toogle = "off"
+	},
+
 	["which-key"] = {
-		-- Add bindings which show up as group name
-		register_mappings = {
-			-- first key is the mode, n == normal mode
+		register = {
 			n = {
-				-- second key is the prefix, <leader> prefixes
 				["<leader>"] = {
-					-- third key is the key to bring up next level and its displayed
-					-- group name in which-key top level menu
 					["b"] = { name = "Buffer" },
 				},
 			},
@@ -213,13 +225,12 @@ local config = {
 	},
 
 	polish = function()
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			command = "hi LineNr guibg=clear",
-		})
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			command = "hi CursorLineNr guibg=clear",
-		})
-		vim.cmd("colorscheme solarized")
-	end,
+		n = require("neosolarized").setup({ comment_italics = true })
+		n.Group.new("TODO", n.colors.blue)
+		-- vim.api.nvim_create_autocmd("ColorScheme", {
+		--	command = "hi CursorLineNr guibg=clear",
+		-- })
+		vim.cmd("colorscheme neosolarized")
+	end
 }
 return config
