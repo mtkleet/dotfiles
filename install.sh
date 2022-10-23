@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-FONTS_DIR=$HOME/.local/fonts
 echo "Do you want install dependiencies (Arch-based distros only)? [y/n]"
 read input
 if [[ $input == "y" || $input == "Y" ]]; then
@@ -26,8 +25,8 @@ fi
 cp -r ~/dotfiles/astronvim ~/.config/
 echo "AstroNvim config moved to ~/.config/astronvim/"
 echo "Downloading patched Meslo fonts..."
-if [ ! -d "FONTS_DIR" ]; then
-    mkdir -p "$FONTS_DIR"
+if [ ! -d "$HOME/.local/fonts" ]; then
+    mkdir -p "$HOME/.local/fonts"
 fi
 cd $FONTS_DIR
 curl -O https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf
