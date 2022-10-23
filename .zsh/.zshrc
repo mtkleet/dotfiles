@@ -157,7 +157,7 @@ unsetopt	COMBINING_CHARS      # don't handle combining characters specially
 unsetopt	OVERSTRIKE           # don't start up the line editor in overstrike mode
 unsetopt	SINGLE_LINE_ZLE      # don't use single line command line
 setopt		ZLE                  # use the zsh line editor
-setopt      EMACS                # emacs keybindings
+setopt    EMACS                # emacs keybindings
 # basic keybindings
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
