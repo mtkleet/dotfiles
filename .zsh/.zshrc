@@ -2,10 +2,10 @@
 export TERM=xterm-256color
 export COLORTERM=truecolor
 export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export SHELL="$(which zsh)"
 export MANROFFOPT='-c'
-export LESSHISTFILE=-
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR=nvim
 export VISUAL=nvim
@@ -165,6 +165,8 @@ bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^H' backward-kill-word
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
 # history
 HISTFILE=$ZDOTDIR/.zsh_history    # specify history file location
 HISTSIZE=10000                    # how many lines of history keep in memory
@@ -257,18 +259,19 @@ _fzf_complete_kill_post() {
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
 
+# zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
+source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh
+
 # zsh-autosuggestions - Fish-like autosuggestions for zsh (https://github.com/zsh-users/zsh-autosuggestions)
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
-# The Fuck - Magnificent app which corrects your previous console command (https://github.com/nvbn/thefuck)
-#source '/usr/share/zsh/plugins/zsh-thefuck-git/zsh-thefuck.plugin.zsh'
-#eval $(thefuck --alias --enable-experimental-instant-mode)
-
 # zsh-syntax-highlighting - Fish shell like syntax highlighting for Zsh (https://github.com/zsh-users/zsh-syntax-highlighting)
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+# zsh-history-substring-search - ZSH port of Fish history search (https://github.com/zsh-users/zsh-history-substring-search)
+source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 ### --- ALIASES --- ###
 # yay - An AUR Helper written in Go (https://github.com/Jguer/yay)
@@ -306,7 +309,7 @@ alias free='free -mlt'
 alias grep='grep --color -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
 alias ps='ps auxf'
 alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
-alias wget="wget --hsts-file=${HOME}/.cache/.wget-hsts"
+alias -g wget="wget --hsts-file=${XDG_CACHE_HOME}/wget-hsts"
 alias userlist='cut -d: -f1 /etc/passwd'
 alias jctl='journalctl -p 3 -xb'
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
@@ -392,7 +395,6 @@ ex ()    {
             *.Z)         uncompress $1 ;;
             *.7z)        7z x $1      ;;
             *.deb)       ar x $1      ;;
-            *.tar.xz)    tar xf $1    ;;
             *)           echo "'$1' cannot be extracted via ex()" ;;
         esac
     else

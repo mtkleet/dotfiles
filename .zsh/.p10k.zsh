@@ -90,7 +90,7 @@
         # midnight_commander    # midnight commander shell (https://midnight-commander.org/)
         # nix_shell             # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
         # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
-        vpn_ip                  # virtual private network indicator
+        # vpn_ip                # virtual private network indicator
         # load                  # CPU load
         # disk_usage            # disk usage
         # ram                   # free RAM
@@ -504,36 +504,36 @@
         # it will signify success by turning green.
         typeset -g POWERLEVEL9K_STATUS_OK=true
         typeset -g POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_EXPANSION='✔'
-        typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=7
+        typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=226
         typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=23
 
         # Status when some part of a pipe command fails but the overall exit status is zero. It may look
         # like this: 1|0.
         typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
         typeset -g POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION='✔'
-        typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=7
+        typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=226
         typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=23
 
         # Status when it's just an error code (e.g., '1'). No need to show it if prompt_char is enabled as
         # it will signify error by turning red.
         typeset -g POWERLEVEL9K_STATUS_ERROR=true
-        typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION='✘'
-        typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=88
+        typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION='%196F✘'
+        typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=7
         typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=23
 
         # Status when the last command was terminated by a signal.
         typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
         # Use terse signal names: "INT" instead of "SIGINT(2)".
         typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=true
-        typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION='✘'
-        typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=88
+        typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION='%196F✘'
+        typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=7
         typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_BACKGROUND=23
 
         # Status when some part of a pipe command fails and the overall exit status is also non-zero.
         # It may look like this: 1|0.
         typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
-        typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='✘'
-        typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=88
+        typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='%196F✘'
+        typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=7
         typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_BACKGROUND=23
 
         ###################[ command_execution_time: duration of the last command ]###################
@@ -553,12 +553,12 @@
 
         #######################[ background_jobs: presence of background jobs ]#######################
         # Background jobs color.
-        typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=25
-        typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=94
+        typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=7
+        typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=23
         # Don't show the number of background jobs.
         typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
         # Custom icon.
-        typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='%25B%25F'
+        typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION=''
 
         #######################[ direnv: direnv status (https://direnv.net/) ]########################
         # Direnv color.
@@ -831,16 +831,20 @@
         # Show average CPU load over this many last minutes. Valid values are 1, 5 and 15.
         # typeset -g POWERLEVEL9K_LOAD_WHICH=5
         # Load color when load is under 50%.
-        # typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=0
-        # typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=2
+        # typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=7
+        # typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=23
         # Load color when load is between 50% and 70%.
-        # typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=0
-        # typeset -g POWERLEVEL9K_LOAD_WARNING_BACKGROUND=3
+        # typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=7
+        # typeset -g POWERLEVEL9K_LOAD_WARNING_BACKGROUND=23
         # Load color when load is over 70%.
-        # typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND=14
-        # typeset -g POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND=1
+        # typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND=7
+        # typeset -g POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND=23
         # Custom icon.
-        # typeset -g POWERLEVEL9K_LOAD_VISUAL_IDENTIFIER_EXPANSION='⭐'
+        # typeset -g POWERLEVEL9K_LOAD_VISUAL_IDENTIFIER_EXPANSION='%124F '
+        # typeset -g POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_EXPANSION='%9F '
+        # typeset -g POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_EXPANSION='%124F '
+        # typeset -g POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_EXPANSION='%7F '
+
 
         ################[ todo: todo items (https://github.com/todotxt/todo.txt-cli) ]################
         # Todo color.
@@ -1684,7 +1688,7 @@
         typeset -g POWERLEVEL9K_USER_DEFAULT_FOREGROUND=230
         typeset -g POWERLEVEL9K_USER_ICON='\uF415' # 
         typeset -g POWERLEVEL9K_ROOT_ICON='#'
-        typeset -g POWERLEVEL9K_SUDO_ICON='\uF09C' # "
+        typeset -g POWERLEVEL9K_SUDO_ICON='\uF09C' # 
         typeset -g POWERLEVEL9K_HOME_ICON=''
         typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
         typeset -g POWERLEVEL9K_FOLDER_ICON=''

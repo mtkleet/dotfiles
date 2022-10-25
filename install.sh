@@ -41,6 +41,7 @@ git clone -q https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-complet
 git clone -q https://github.com/MenkeTechnologies/zsh-more-completions.git ~/.zsh/zsh-more-completions
 git clone -q https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+git clone -q https://github.com/MenkeTechnologies/zsh-very-colorful-manuals.git ~/.zsh/zsh-very-colorful-manuals
 git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
 echo "Placing RC files in ~/.zsh..."
 cp -r ~/dotfiles/.zsh ~/.

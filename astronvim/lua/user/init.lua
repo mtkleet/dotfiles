@@ -1,15 +1,15 @@
 local config = {
 	updater = {
-		remote = "origin", -- remote to use
-		channel = "nightly", -- "stable" or "nightly"
-		version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-		branch = "main", -- branch name (NIGHTLY ONLY)
-		commit = nil, -- commit hash (NIGHTLY ONLY)
-		pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-		skip_prompts = false, -- skip prompts about breaking changes
-		show_changelog = true, -- show the changelog after performing an update
-		auto_reload = false, -- automatically reload and sync packer after a successful update
-		auto_quit = false, -- automatically quit the current session after a successful update
+		remote = "origin",
+		channel = "nightly",
+		version = "latest",
+		branch = "main",
+		commit = nil,
+		pin_plugins = nil,
+		skip_prompts = false,
+		show_changelog = true,
+		auto_reload = false,
+		auto_quit = false,
 	},
 
 	colorscheme = "neosolarized",
@@ -25,12 +25,14 @@ local config = {
 	options = {
 		opt = {
 			termguicolors = true,
+
+			ignorecase = true,
+			wildignorecase = true,
 			relativenumber = true,
 			number = true,
 			spell = false,
 			signcolumn = "auto",
 			wrap = false,
-			ignorecase = true,
 		},
 		g = {
 			mapleader = " ",
@@ -39,7 +41,7 @@ local config = {
 			autopairs_enabled = true,
 			diagnostics_enabled = true,
 			status_diagnostics_enabled = true,
-			icons_enabled = true
+			icons_enabled = true,
 		},
 	},
 
@@ -49,7 +51,7 @@ local config = {
 		"███████ ███████    ██    ██████  ██    ██",
 		"██   ██      ██    ██    ██   ██ ██    ██",
 		"██   ██ ███████    ██    ██   ██  ██████",
-		" ",
+		" 																	 ",
 		"    ███    ██ ██    ██ ██ ███    ███",
 		"    ████   ██ ██    ██ ██ ████  ████",
 		"    ██ ██  ██ ██    ██ ██ ██ ████ ██",
@@ -58,8 +60,8 @@ local config = {
 	},
 	default_theme = {
 		colors = {
-			-- fg = "#abb2bf",
-			bg = "none",
+			fg = "#abb2bf",
+			bg = "#1e222a",
 		},
 		highlights = function(hl) -- or a function that returns a new table of colors to set
 			local C = require("default_theme.colors")
@@ -74,11 +76,11 @@ local config = {
 			aerial = true,
 			beacon = false,
 			bufferline = true,
+			cmp = true,
 			dashboard = true,
 			highlighturl = true,
 			hop = false,
 			lightspeed = false,
-			luasnip = true,
 			["neo-tree"] = true,
 			notify = true,
 			["nvim-tree"] = false,
@@ -107,11 +109,13 @@ local config = {
 		formatting = {
 			format_on_save = {
 				enabled = true,
-				disabled_filetypes = {},
+				allow_filetypes = {},
+				ignore_filetypes = {},
 			},
 			disabled = {
 				-- sumneko_lua
 			},
+			timeout_ms = 1000,
 			-- filter = function(client) -- fully override the default formatting function
 			--		return true
 			-- end
@@ -140,6 +144,10 @@ local config = {
 
 	mappings = {
 		n = {
+			["<leader>ff"] = { "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Find files" },
+			["<leader>fg"] = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "Find in files" },
+			["<leader>fb"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "View buffers" },
+			["<leader>fh"] = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", desc = "Find tags" },
 			["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
 			["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
 			["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
@@ -147,7 +155,7 @@ local config = {
 			["<ESC>"] = { ":noh<cr>", desc = "Remove highlights from search results" },
 			["<C-s>"] = { ":w!<cr>", desc = "Save file" },
 			["<C-c>"] = { "<cmd> %y+ <cr>", desc = "Copy to clipboard" },
-			["<leader>a"] = { "ggVG", desc = "Select all" }
+			["<leader>a"] = { "ggVG", desc = "Select all" },
 		},
 		t = {},
 	},
@@ -157,23 +165,22 @@ local config = {
 			{ "svrana/neosolarized.nvim" },
 			{ "tjdevries/colorbuddy.nvim" },
 			{ "sheerun/vim-polyglot" },
-			["michaelb/sniprun"] = { run = "bash ./install.sh" },
+			["michaelb/sniprun"] = {
+				run = "bash ./install.sh",
+			},
 			["rcarriga/nvim-notify"] = {
 				config = function()
 					require("notify").setup({ background_colour = "#073642" })
 					vim.notify = require("notify")
-				end
+				end,
 			},
-			["vladdoster/remember.nvim"] = { config = function() require("remember") end },
+			["vladdoster/remember.nvim"] = { config = function() require("remember") end, },
 			["declancm/cinnamon.nvim"] = { disable = true },
 			["max397574/better-escape.nvim"] = { disable = true },
-			["lukas-reineke/indent-blankline.nvim"] = { disable = true }
+			["lukas-reineke/indent-blankline.nvim"] = { disable = true },
 		},
 
-		["null-ls"] = function(config)
-			config.sources = {}
-			return config
-		end,
+		["null-ls"] = function(config) config.sources = {} return config end,
 		treesitter = { -- overrides `require("treesitter").setup(...)`
 			-- ensure_installed = { "lua" },
 		},
@@ -184,35 +191,26 @@ local config = {
 		-- use mason-tool-installer to configure DAP/Formatters/Linter installation
 		["mason-null-ls"] = { -- overrides `require("mason-tool-installer").setup(...)`
 			-- ensure_installed = { "prettier", "stylua" },
-		}
+		},
+	},
+
+	sniprun = {
+		inline_messages = 0,
+		display = { "NvimNotifyOk", "NvimNotifyErr", },
+		borders = "single",
+		display_options = { notification_timeout = 5, },
+		interpreter_options = { Python3_original = { error_truncate = "long", }, },
+		live_mode_toogle = "off",
 	},
 
 	luasnip = {
 		vscode_snippet_paths = {},
 		filetype_extend = {
 			--	javascript = { "javascriptreact" },
-		}
-	},
-
-	cmp = {
-		source_priority = {
-			nvim_lsp = 1000,
-			luasnip = 750,
-			buffer = 500,
-			path = 250
-		}
-	},
-
-	sniprun = {
-		inline_messages = 0,
-		display = { "NvimNotifyOk", "NvimNotifyErr" },
-		display_options = { notification_timeout = 5 },
-		interpreter_options = {
-			Python3_original = { error_truncate = "long" }
 		},
-		borders = "single",
-		live_mode_toogle = "off"
 	},
+
+	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 }, },
 
 	["which-key"] = {
 		register = {
@@ -231,6 +229,10 @@ local config = {
 		--	command = "hi CursorLineNr guibg=clear",
 		-- })
 		vim.cmd("colorscheme neosolarized")
-	end
+	  vim.cmd("set tabstop=2")
+		vim.cmd("set softtabstop=0")
+		vim.cmd("set noexpandtab")
+		vim.cmd("set shiftwidth=2")
+	end,
 }
 return config
