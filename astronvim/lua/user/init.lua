@@ -245,3 +245,4 @@ local config = {
 	end,
 }
 return config
+--tood map save as root: cmap w!! w !sudo sh -c "cat > %
