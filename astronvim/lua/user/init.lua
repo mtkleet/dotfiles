@@ -25,7 +25,7 @@ local config = {
 	options = {
 		opt = {
 			termguicolors = true,
-
+			background = "dark",
 			ignorecase = true,
 			wildignorecase = true,
 			relativenumber = true,
@@ -98,7 +98,6 @@ local config = {
 	diagnostics = {
 		virtual_text = true,
 		underline = true,
-		update_in_insert = false,
 	},
 
 	lsp = {
@@ -158,6 +157,9 @@ local config = {
 			["<leader>a"] = { "ggVG", desc = "Select all" },
 		},
 		t = {},
+		v = {
+			["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual and selection mode" },
+		},
 	},
 
 	plugins = {
@@ -174,13 +176,20 @@ local config = {
 					vim.notify = require("notify")
 				end,
 			},
-			["vladdoster/remember.nvim"] = { config = function() require("remember") end, },
+			["vladdoster/remember.nvim"] = {
+				config = function()
+					require("remember")
+				end,
+			},
 			["declancm/cinnamon.nvim"] = { disable = true },
 			["max397574/better-escape.nvim"] = { disable = true },
 			["lukas-reineke/indent-blankline.nvim"] = { disable = true },
 		},
 
-		["null-ls"] = function(config) config.sources = {} return config end,
+		["null-ls"] = function(config)
+			config.sources = {}
+			return config
+		end,
 		treesitter = { -- overrides `require("treesitter").setup(...)`
 			-- ensure_installed = { "lua" },
 		},
@@ -196,10 +205,10 @@ local config = {
 
 	sniprun = {
 		inline_messages = 0,
-		display = { "NvimNotifyOk", "NvimNotifyErr", },
+		display = { "NvimNotifyOk", "NvimNotifyErr" },
 		borders = "single",
-		display_options = { notification_timeout = 5, },
-		interpreter_options = { Python3_original = { error_truncate = "long", }, },
+		display_options = { notification_timeout = 5 },
+		interpreter_options = { Python3_original = { error_truncate = "long" } },
 		live_mode_toogle = "off",
 	},
 
@@ -210,7 +219,7 @@ local config = {
 		},
 	},
 
-	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 }, },
+	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 } },
 
 	["which-key"] = {
 		register = {
@@ -229,7 +238,7 @@ local config = {
 		--	command = "hi CursorLineNr guibg=clear",
 		-- })
 		vim.cmd("colorscheme neosolarized")
-	  vim.cmd("set tabstop=2")
+		vim.cmd("set tabstop=2")
 		vim.cmd("set softtabstop=0")
 		vim.cmd("set noexpandtab")
 		vim.cmd("set shiftwidth=2")
