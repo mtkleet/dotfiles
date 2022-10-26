@@ -10,13 +10,13 @@ export PATH=$PATH:$HOME/.local/bin
 export EDITOR=nvim
 export VISUAL=nvim
 
-# set WORDCHARDS to delete backwards to slash, no further
+# set WORDCHARDS for 'backward-kill-word' to stop at forward slash
 export WORDCHARS=${WORDCHARS/\/}
 
 # remove empty space from right part of the prompt
 export ZLE_RPROMPT_INDENT=0
 
-# translate %USERPROFILE% and %LOCALAPPDATA% to unix envs
+# translate Windows-specific envs: %USERPROFILE% and %LOCALAPPDATA% to those gain acces to these directories
 # make sure WSLInterop is enabled in /etc/wsl.conf
 if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     export PATH=$PATH:/mnt/c/Windows/System32
