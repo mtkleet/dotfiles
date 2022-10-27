@@ -323,7 +323,6 @@ if [[ $commands[bat] ]]; then
     alias c='bat --style="full" --theme="Solarized (dark)"'
     alias cat='bat --paging=never --style="plain" --theme="Solarized (dark)"'
     alias bfzf='fzf --preview="bat {} --color=always"'
-    #alias man='batman'
 fi
 
 alias dc='cd'
