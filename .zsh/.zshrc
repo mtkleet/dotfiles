@@ -16,9 +16,9 @@ export WORDCHARS=${WORDCHARS/\/}
 # remove empty space from right part of the prompt
 export ZLE_RPROMPT_INDENT=0
 
-# translate Windows-specific envs: %USERPROFILE% and %LOCALAPPDATA% to those gain acces to these directories
+# translate Windows envs: %USERPROFILE% and %LOCALAPPDATA%
 # make sure WSLInterop is enabled in /etc/wsl.conf
-if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
+if [ -n "${WSL_DISTRO_NAME}+1" ]; then
     export PATH=$PATH:/mnt/c/Windows/System32
     pushd /mnt/c > /dev/null # avoid UNC path error, then restore current path
     export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | tr -d '\r'))
@@ -31,6 +31,7 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     alias s='s -b wslview -p brave'
     # open windows terminal settings inside wsl's neovim
     pushd $WINAPPDATA > /dev/null
+    # path to settings in Windows Terminal Preview version
     export WSL_JSON=$WINAPPDATA/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
     popd > /dev/null
     alias edal="nvim \${WSL_JSON}"
@@ -166,8 +167,6 @@ bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^H' backward-kill-word
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
 # history
 HISTFILE=$ZDOTDIR/.zsh_history    # specify history file location
 HISTSIZE=10000                    # how many lines of history keep in memory
@@ -259,20 +258,15 @@ _fzf_complete_kill_post() {
 # powerlevel10k - A Zsh theme (https://github.com/romkatv/powerlevel10k)
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
-
 # zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
 source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh
-
 # zsh-autosuggestions - Fish-like autosuggestions for zsh (https://github.com/zsh-users/zsh-autosuggestions)
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
-
 # zsh-syntax-highlighting - Fish shell like syntax highlighting for Zsh (https://github.com/zsh-users/zsh-syntax-highlighting)
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-# zsh-history-substring-search - ZSH port of Fish history search (https://github.com/zsh-users/zsh-history-substring-search)
-source $ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 ### --- ALIASES --- ###
 # yay - An AUR Helper written in Go (https://github.com/Jguer/yay)
@@ -351,8 +345,6 @@ else
     alias lss='du -h --max-depth=1'
 fi
 
-# print terminal colors
-alias colortest='for i in {0..255}; do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
 # print real hostname
 alias gethostname='cat /proc/sys/kernel/hostname'
 # display all active ips
@@ -379,7 +371,11 @@ if [[ $commands[urserver] ]]; then
     alias urd='/opt/urserver/urserver --daemon'
 fi
 
-# ex function - extractor for all kinds of archives
+### --- FUNCTIONS --- ###
+# 256-colors test pattern
+alias colortest='for i in {0..255}; do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
+
+# ex - extractor for all kinds of archives
 ex ()    {
     if [ -f $1 ] ; then
         case $1 in

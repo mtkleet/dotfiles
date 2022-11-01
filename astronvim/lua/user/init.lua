@@ -65,7 +65,7 @@ local config = {
 			bg = "#1e222a",
 		},
 		highlights = function(hl) -- or a function that returns a new table of colors to set
-			local C = require("default_theme.colors")
+			local C = require "default_theme.colors"
 			hl.Normal = { fg = C.fg, bg = C.bg }
 			hl.DiagnosticError.italic = true
 			hl.DiagnosticHint.italic = true
@@ -87,7 +87,6 @@ local config = {
 			["nvim-tree"] = false,
 			["nvim-web-devicons"] = true,
 			rainbow = true,
-			snipmate = true,
 			symbols_outline = false,
 			telescope = true,
 			treesitter = true,
@@ -96,11 +95,7 @@ local config = {
 		},
 	},
 
-	diagnostics = {
-		virtual_text = true,
-		underline = true,
-		update_in_insert = true,
-	},
+	diagnostics = { virtual_text = true, underline = true, update_in_insert = true, },
 
 	lsp = {
 		-- enable servers that you already have installed without mason
@@ -108,11 +103,7 @@ local config = {
 			-- "pyright"
 		},
 		formatting = {
-			format_on_save = {
-				enabled = true,
-				allow_filetypes = {},
-				ignore_filetypes = {},
-			},
+			format_on_save = { enabled = true, allow_filetypes = {}, ignore_filetypes = {}, },
 			disabled = {
 				-- sumneko_lua
 			},
@@ -121,12 +112,7 @@ local config = {
 			--		return true
 			-- end
 		},
-
-		mappings = {
-			n = {
-				-- ["<leader>lf"] = false -- disable formatting keymap
-			},
-		},
+		mappings = { n = {}, }, -- ["<leader>lf"] = false -- disable formatting keymap
 		["server-settings"] = {
 			-- example for addings schemas to yamlls
 			-- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
@@ -157,10 +143,12 @@ local config = {
 			["<C-s>"] = { ":w!<cr>", desc = "Save file" },
 			["<C-c>"] = { "<cmd> %y+ <cr>", desc = "Copy to clipboard" },
 			["<leader>a"] = { "ggVG", desc = "Select all" },
+			["<F4>"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial (tag viewer)" },
+			["<F3>"] = { "<cmd>Neotree<cr>", desc = "Open Neotree (file explorer)" },
 		},
 		t = {},
 		v = {
-			["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual and selection mode" },
+			["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual-selection mode" },
 		},
 	},
 
@@ -172,6 +160,15 @@ local config = {
 			{ "lambdalisue/suda.vim" },
 			["michaelb/sniprun"] = {
 				run = "bash ./install.sh",
+				config = function()
+					require("sniprun").setup({
+						inline_messages = 0,
+						display = { "NvimNotify" },
+						borders = "single",
+						display_options = { notification_timeout = 9 },
+						interpreter_options = { Python3_original = { error_truncate = "long" }, },
+					})
+				end,
 			},
 			["rcarriga/nvim-notify"] = {
 				config = function()
@@ -184,6 +181,36 @@ local config = {
 			["max397574/better-escape.nvim"] = { disable = true },
 			["lukas-reineke/indent-blankline.nvim"] = { disable = true },
 		},
+		["heirline"] = function()
+			return {
+				-- Status line:
+				{
+					hl = { fg = "fg", bg = "bg" },
+					astronvim.status.component.mode(),
+					astronvim.status.component.git_branch(),
+					astronvim.status.component.file_info(
+						astronvim.is_available "bufferline.nvim" and { filetype = {}, filename = false, file_modified = false } or nil
+					),
+					astronvim.status.component.git_diff(),
+					astronvim.status.component.diagnostics(),
+					astronvim.status.component.fill(),
+					astronvim.status.component.macro_recording(),
+					astronvim.status.component.fill(),
+					astronvim.status.component.lsp(),
+					astronvim.status.component.treesitter(),
+					astronvim.status.component.nav(),
+					astronvim.status.component.mode { surround = { separator = "right" } },
+				},
+				-- Winbar:
+				{
+					hl = { fg = "fg", bg = "none" },
+					astronvim.status.component.breadcrumbs { icon = { hl = true }, padding = { left = 1 } },
+					astronvim.status.component.fill(),
+					astronvim.status.component.git_diff(),
+					-- astronvim.status.component.diagnostics(),
+				},
+			}
+		end,
 
 		["null-ls"] = function(config) config.sources = {} return config end,
 		treesitter = { -- overrides `require("treesitter").setup(...)`
@@ -199,14 +226,6 @@ local config = {
 		},
 	},
 
-	sniprun = {
-		inline_messages = 0,
-		display = { "NvimNotifyOk", "NvimNotifyErr", },
-		borders = "single",
-		display_options = { notification_timeout = 5, },
-		interpreter_options = { Python3_original = { error_truncate = "long", }, },
-		live_mode_toogle = "off",
-	},
 
 	luasnip = {
 		vscode_snippet_paths = {},
@@ -217,15 +236,7 @@ local config = {
 
 	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 }, },
 
-	["which-key"] = {
-		register = {
-			n = {
-				["<leader>"] = {
-					["b"] = { name = "Buffer" },
-				},
-			},
-		},
-	},
+	["which-key"] = { register = { n = { ["<leader>"] = { ["b"] = { name = "Buffer" }, }, }, }, },
 
 	polish = function()
 		n = require("neosolarized").setup({ comment_italics = true })
@@ -233,7 +244,6 @@ local config = {
 		-- vim.api.nvim_create_autocmd("ColorScheme", {
 		--	command = "hi CursorLineNr guibg=clear",
 		-- })
-		vim.cmd("colorscheme neosolarized")
 		vim.cmd("set tabstop=2")
 		vim.cmd("set softtabstop=0")
 		vim.cmd("set noexpandtab")

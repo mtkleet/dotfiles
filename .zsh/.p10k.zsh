@@ -93,19 +93,19 @@
         # vpn_ip                # virtual private network indicator
         # load                  # CPU load
         # disk_usage            # disk usage
-        # ram                   # free RAM
         # swap                  # used swap
         # todo                  # todo items (https://github.com/todotxt/todo.txt-cli)
         # timewarrior           # timewarrior tracking status (https://timewarrior.net/)
         # taskwarrior           # taskwarrior task count (https://taskwarrior.org/)
         # cpu_arch              # CPU architecture
-        # time                  # current time
         # ip                    # ip address and bandwidth usage for a specified network interface
         # public_ip             # public IP address
         # proxy                 # system-wide http/https/ftp proxy
         # battery               # internal battery
         # wifi                  # wifi speed
+        # ram                   # free RAM
         host                    # host
+        time                    # current time
         # example               # example user-defined segment (see prompt_example function below)
     )
 
@@ -158,10 +158,12 @@
     # typeset -g POWERLEVEL9K_EMPTY_LINE_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL='%{%}'
     # fi
 
+    # examplpes of segment serparator working with 'POWERLEVEL9K_MODE="nerdfont-complete"' configuration
+    # 
     # Separator between same-color segments on the left.
     typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%31F\u2571'
     # Separator between same-color segments on the right.
-    typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='%244F\u2572'
+    typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='%0F\u2572'
     # Separator between different-color segments on the left.
     typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''
     # Separator between different-color segments on the right.
@@ -815,9 +817,10 @@
 
         ######################################[ ram: free RAM ]#######################################
         # RAM color.
-        # typeset -g POWERLEVEL9K_RAM_FOREGROUND=14
-        # typeset -g POWERLEVEL9K_RAM_BACKGROUND=234
+        # typeset -g POWERLEVEL9K_RAM_FOREGROUND=7
+        # typeset -g POWERLEVEL9K_RAM_BACKGROUND=23
         # Custom icon.
+        typeset -g POWERLEVEL9K_RAM_VISUAL_IDENTIFIER_EXPANSION=''
         # typeset -g POWERLEVEL9K_RAM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
         #####################################[ swap: used swap ]######################################
@@ -1670,10 +1673,10 @@
 
         ####################################[ time: current time ]####################################
         # Current time color.
-        # typeset -g POWERLEVEL9K_TIME_FOREGROUND=14
-        # typeset -g POWERLEVEL9K_TIME_BACKGROUND=234
+        typeset -g POWERLEVEL9K_TIME_FOREGROUND=7
+        typeset -g POWERLEVEL9K_TIME_BACKGROUND=23
         # Format for the current time: 09:51:02. See `man 3 strftime`.
-        # typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
+        typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
         # If set to true, time will update when you hit enter. This way prompts for the past
         # commands will contain the start times of their commands as opposed to the default
         # behavior where they contain the end times of their preceding commands.
