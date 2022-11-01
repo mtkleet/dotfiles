@@ -104,15 +104,13 @@ local config = {
 		},
 		formatting = {
 			format_on_save = { enabled = true, allow_filetypes = {}, ignore_filetypes = {}, },
-			disabled = {
-				-- sumneko_lua
-			},
+			disabled = {},
 			timeout_ms = 1000,
 			-- filter = function(client) -- fully override the default formatting function
 			--		return true
 			-- end
 		},
-		mappings = { n = {}, }, -- ["<leader>lf"] = false -- disable formatting keymap
+		mappings = { n = { --[[ ["<leader>lf"] = false -- disable formatting keymap ]] }, },
 		["server-settings"] = {
 			-- example for addings schemas to yamlls
 			-- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
@@ -133,8 +131,8 @@ local config = {
 		n = {
 			["<leader>ff"] = { "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Find files" },
 			["<leader>fg"] = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "Find in files" },
-			["<leader>fb"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "View buffers" },
-			["<leader>fh"] = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", desc = "Find tags" },
+			["<leader>fb"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", desc = "Find in buffers" },
+			["<leader>fh"] = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", desc = "Find in tags" },
 			["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
 			["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
 			["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
@@ -206,7 +204,7 @@ local config = {
 					hl = { fg = "fg", bg = "none" },
 					astronvim.status.component.breadcrumbs { icon = { hl = true }, padding = { left = 1 } },
 					astronvim.status.component.fill(),
-					astronvim.status.component.git_diff(),
+					-- astronvim.status.component.git_diff(),
 					-- astronvim.status.component.diagnostics(),
 				},
 			}
@@ -228,10 +226,8 @@ local config = {
 
 
 	luasnip = {
-		vscode_snippet_paths = {},
-		filetype_extend = {
-			--	javascript = { "javascriptreact" },
-		},
+		filetype_extend = { --[[javascript = { "javascriptreact" },]] },
+		vscode = { paths = {}, },
 	},
 
 	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 }, },

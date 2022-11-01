@@ -70,6 +70,6 @@ if [[ $input == "y" || $input == "Y" ]]; then
     echo "$HOME/dotfiles has been removed"
 fi
 echo "Restart prompt to apply changes and don't forget to run :PackerSync when using neovim for the first time."
-echo "(Optional) If you have su rights, you can place 'ZDOTDIR=\$HOME/.zsh' in /etc/zshenv and delete .zshenv from \$HOME directory."
+echo "(Optional) If you have su rights, you can set 'ZDOTDIR=\$HOME/.zsh' in /etc/zshenv and delete .zshenv from \$HOME directory."
 echo "Enjoy!"
 exit
