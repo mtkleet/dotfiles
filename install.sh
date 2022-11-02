@@ -10,7 +10,7 @@ fi
 echo "Do you want to install minimal mpd/ncmpcpp config? [y/n]"
 read input
 if [[ $input == "y" || $input == "Y" ]]; then
-    if [ -n "${WSL_DISTRO_NAME}+1" ]; then
+    if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
         cp -r ~/dotfiles/wsl/mpd ~/.config/
         cp -r ~/dotfiles/wsl/ncmpcpp ~/.config/
         echo "Remember to change music directory in ~/.config/mpd/mpd.conf and ~/.config/ncmpcpp/config"

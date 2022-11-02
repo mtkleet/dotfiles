@@ -17,7 +17,7 @@ export ZLE_RPROMPT_INDENT=0
 
 # translate Windows envs: %USERPROFILE% and %LOCALAPPDATA%
 # make sure WSLInterop is enabled in /etc/wsl.conf
-if [ -n "${WSL_DISTRO_NAME}+1" ]; then
+if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     export PATH=$PATH:/mnt/c/Windows/System32
     pushd /mnt/c > /dev/null # avoid UNC path error, then restore current path
     export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | tr -d '\r'))
