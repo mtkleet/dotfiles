@@ -2,8 +2,9 @@
 echo "Do you want install dependiencies (Arch-based distros only)? [y/n]"
 read input
 if [[ $input == "y" || $input == "Y" ]]; then
-    sudo pacman -S --needed git base-devel zsh python llvm go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim wget ripgrep bottom ncdu htop exa bat bat-extras vivid ctags
+    sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay.git ~/yay && cd ~/yay && makepkg -si
+    yay -S python llvm go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim wget ripgrep bottom ncdu htop exa bat bat-extras vivid ctags
     git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
     echo "Dependiencies installed!"
 fi
@@ -11,8 +12,8 @@ echo "Do you want to install minimal mpd/ncmpcpp config? [y/n]"
 read input
 if [[ $input == "y" || $input == "Y" ]]; then
     if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
-        cp -r ~/dotfiles/wsl/mpd ~/.config/
-        cp -r ~/dotfiles/wsl/ncmpcpp ~/.config/
+        cp -r ~/dotfiles/wsl/.config/mpd ~/.config/
+        cp -r ~/dotfiles/wsl/.config/ncmpcpp ~/.config/
         echo "Remember to change music directory in ~/.config/mpd/mpd.conf and ~/.config/ncmpcpp/config"
         sleep 3
     else
@@ -29,6 +30,10 @@ echo "Downloading MesloLGS NF fonts..."
 if [ ! -d "$HOME/.local/fonts" ]; then
     mkdir -p "$HOME/.local/fonts"
 fi
+if [ ! -d "$HOME/bin" ]; then
+  mkdir -p ~/.local/bin
+fi
+cp -r ~/dotfiles/.local/bin/* ~/.local/bin
 cd $HOME/.local/fonts
 curl -O https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Regular.ttf
 curl -O https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold.ttf
@@ -46,6 +51,7 @@ git clone -q https://github.com/MenkeTechnologies/zsh-more-completions.git ~/.zs
 git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
 echo "Placing RC files in ~/.zsh..."
 cp -r ~/dotfiles/.zsh ~/
+mv ~/dotfiles/.zsh/.zshenv ~/
 echo "Setting dircolors for Solarized Dark theme..."
 mkdir -p ~/.zsh/dircolors
 cd ~/.zsh/dircolors
