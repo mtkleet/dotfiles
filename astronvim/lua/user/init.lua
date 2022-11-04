@@ -42,6 +42,7 @@ local config = {
 			diagnostics_enabled = true,
 			status_diagnostics_enabled = true,
 			icons_enabled = true,
+			ui_notifications_enabled = true,
 			suda_smart_edit = 1,
 		},
 	},
@@ -223,7 +224,6 @@ local config = {
 			-- ensure_installed = { "prettier", "stylua" },
 		},
 	},
-
 
 	luasnip = {
 		filetype_extend = { --[[javascript = { "javascriptreact" },]] },
