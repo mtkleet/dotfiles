@@ -2,7 +2,6 @@
 export TERM=xterm-256color
 export COLORTERM=truecolor
 export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export MANROFFOPT='-c'
 export PATH=$PATH:$HOME/.local/bin
@@ -16,23 +15,19 @@ export WORDCHARS=${WORDCHARS/\/}
 export ZLE_RPROMPT_INDENT=0
 
 # translate Windows envs: %USERPROFILE% and %LOCALAPPDATA%
-# make sure WSLInterop is enabled in /etc/wsl.conf
+# keep access to sysdrive without appending to anything to PATH
 if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
-    export PATH=$PATH:/mnt/c/Windows/System32
+    path+=/mnt/c/Windows/System32
     pushd /mnt/c > /dev/null # avoid UNC path error, then restore current path
     export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | tr -d '\r'))
+    export WINAPPDATA=$(wslpath $(cmd.exe /C "echo %LOCALAPPDATA%" | tr -d '\r'))
     popd > /dev/null
-    pushd /mnt/c > /dev/null
-    export WINAPPDATA=$(wslpath $(cmd.exe /C "echo %LOCALAPPDATA%" | tr -d '\r' ))
-    popd > /dev/null
+    path=(${path[@]:#*System32*})
     # s - web search from the terminal (https://github.com/zquestz/s)
     # using wslview from wslu (https://github.com/wslutilities/wslu) as binary and brave as engine
     alias s='s -b wslview -p brave'
-    # open windows terminal settings inside wsl's neovim
-    pushd $WINAPPDATA > /dev/null
     # path to settings in Windows Terminal Preview version
     export WSL_JSON=$WINAPPDATA/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
-    popd > /dev/null
     alias edal="nvim \${WSL_JSON}"
 else
     alias s="s -p brave"
@@ -300,7 +295,7 @@ alias df='df -h'
 alias du='du -h'
 alias userlist='cut -d: -f1 /etc/passwd'
 alias free='free -mlt'
-alias grep='grep --color -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+alias grep='grep --color -n -H --exclude-dir={.git,.svn,CVS}'
 alias ps='ps auxf'
 alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
 alias -g wget="wget --hsts-file=${XDG_CACHE_HOME}/wget-hsts"
@@ -333,10 +328,12 @@ if [[ $commands[exa] ]]; then
     alias l='exa --all --icons --grid --links --group-directories-first --classify --colour-scale --extended --git'
     alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default'
     alias lll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default | less -r'
+    which() {exa -la "$(which $1)"}
 else
     alias l='ls -lACFH --color --color=auto --group-directories-first'
     alias ll='ls -lAFHh --color=auto --group-directories-first'
     alias lll='ls -lAFHh --color=auto -group-directories-first | less -r'
+    which() {ls -lAFhh "$(which $1)"}
 fi
 if [[ $commands[lsd] ]]; then
     alias lsa='lsd --total-size --long --all --human-readable --classify --dereference --group-directories-first'
