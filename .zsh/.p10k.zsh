@@ -158,10 +158,10 @@
     # typeset -g POWERLEVEL9K_EMPTY_LINE_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL='%{%}'
     # fi
 
-    # Examples of unusual segment serparators compatible with 'POWERLEVEL9K_MODE="nerdfont-complete"' configuration:         
-    # https://unix.stackexchange.com/a/595816 <- Use this script to get list of all characters in a font
+    # examplpes of segment serparator working with 'POWERLEVEL9K_MODE="nerdfont-complete"' configuration
+    # 
     # Separator between same-color segments on the left.
-    typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%31F\u2571'
+    typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%0F\u2571'
     # Separator between same-color segments on the right.
     typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='%0F\u2572'
     # Separator between different-color segments on the left.
