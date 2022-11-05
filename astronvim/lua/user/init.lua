@@ -43,7 +43,6 @@ local config = {
 			status_diagnostics_enabled = true,
 			icons_enabled = true,
 			ui_notifications_enabled = true,
-			suda_smart_edit = 1,
 		},
 	},
 
@@ -143,7 +142,8 @@ local config = {
 			["<C-c>"] = { "<cmd> %y+ <cr>", desc = "Copy to clipboard" },
 			["<leader>a"] = { "ggVG", desc = "Select all" },
 			["<F4>"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial (tag viewer)" },
-			["<F3>"] = { "<cmd>Neotree<cr>", desc = "Open Neotree (file explorer)" },
+			["<F3>"] = { "<cmd>Neotree toggle<cr>", desc = "Open Neotree (file explorer)" },
+			["<F2>"] = { "<cmd>set number! norelativenumber!<cr>", desc = "Toggle numberline" },
 		},
 		t = {},
 		v = {
@@ -187,9 +187,7 @@ local config = {
 					hl = { fg = "fg", bg = "bg" },
 					astronvim.status.component.mode(),
 					astronvim.status.component.git_branch(),
-					astronvim.status.component.file_info(
-						astronvim.is_available "bufferline.nvim" and { filetype = {}, filename = false, file_modified = false } or nil
-					),
+					astronvim.status.component.file_info(),
 					astronvim.status.component.git_diff(),
 					astronvim.status.component.diagnostics(),
 					astronvim.status.component.fill(),
