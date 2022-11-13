@@ -65,7 +65,7 @@ local config = {
 			bg = "#1e222a",
 		},
 		highlights = function(hl) -- or a function that returns a new table of colors to set
-			local C = require "default_theme.colors"
+			local C = require("default_theme.colors")
 			hl.Normal = { fg = C.fg, bg = C.bg }
 			hl.DiagnosticError.italic = true
 			hl.DiagnosticHint.italic = true
@@ -95,22 +95,23 @@ local config = {
 		},
 	},
 
-	diagnostics = { virtual_text = true, underline = true, update_in_insert = true, },
+	diagnostics = { virtual_text = true, underline = true, update_in_insert = true },
 
 	lsp = {
 		-- enable servers that you already have installed without mason
-		servers = {
-			-- "pyright"
-		},
+		servers = { "clangd" },
 		formatting = {
-			format_on_save = { enabled = true, allow_filetypes = {}, ignore_filetypes = {}, },
+			format_on_save = { enabled = true, allow_filetypes = {}, ignore_filetypes = {} },
 			disabled = {},
 			timeout_ms = 1000,
 			-- filter = function(client) -- fully override the default formatting function
 			--		return true
 			-- end
 		},
-		mappings = { n = { --[[ ["<leader>lf"] = false -- disable formatting keymap ]] }, },
+		mappings = {
+			n = { --[[ ["<leader>lf"] = false -- disable formatting keymap ]]
+			},
+		},
 		["server-settings"] = {
 			-- example for addings schemas to yamlls
 			-- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
@@ -164,8 +165,8 @@ local config = {
 						inline_messages = 0,
 						display = { "NvimNotify" },
 						borders = "single",
-						display_options = { notification_timeout = 9 },
-						interpreter_options = { Python3_original = { error_truncate = "long" }, },
+						display_options = { notification_timeout = 2000 },
+						interpreter_options = { Python3_original = { error_truncate = "long" } },
 					})
 				end,
 			},
@@ -175,9 +176,7 @@ local config = {
 					vim.notify = require("notify")
 				end,
 			},
-			["vladdoster/remember.nvim"] = { config = function() require("remember") end, },
-			["declancm/cinnamon.nvim"] = { disable = true },
-			["max397574/better-escape.nvim"] = { disable = true },
+			["vladdoster/remember.nvim"] = { config = function() require("remember") end },
 			["lukas-reineke/indent-blankline.nvim"] = { disable = true },
 		},
 		["heirline"] = function()
@@ -190,18 +189,19 @@ local config = {
 					astronvim.status.component.file_info(),
 					astronvim.status.component.git_diff(),
 					astronvim.status.component.diagnostics(),
+					astronvim.status.component.cmd_info(),
 					astronvim.status.component.fill(),
 					astronvim.status.component.macro_recording(),
 					astronvim.status.component.fill(),
 					astronvim.status.component.lsp(),
 					astronvim.status.component.treesitter(),
 					astronvim.status.component.nav(),
-					astronvim.status.component.mode { surround = { separator = "right" } },
+					astronvim.status.component.mode({ surround = { separator = "right" } }),
 				},
 				-- Winbar:
 				{
 					hl = { fg = "fg", bg = "none" },
-					astronvim.status.component.breadcrumbs { icon = { hl = true }, padding = { left = 1 } },
+					astronvim.status.component.breadcrumbs({ icon = { hl = true }, padding = { left = 1 } }),
 					astronvim.status.component.fill(),
 					-- astronvim.status.component.git_diff(),
 					-- astronvim.status.component.diagnostics(),
@@ -209,28 +209,31 @@ local config = {
 			}
 		end,
 
-		["null-ls"] = function(config) config.sources = {} return config end,
+		["null-ls"] = function(config)
+			config.sources = {}
+			return config
+		end,
 		treesitter = { -- overrides `require("treesitter").setup(...)`
-			-- ensure_installed = { "lua" },
+			ensure_installed = { "lua" },
 		},
 		-- use mason-lspconfig to configure LSP installations
 		["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-			-- ensure_installed = { "sumneko_lua" },
+			ensure_installed = { "sumneko_lua" },
 		},
 		-- use mason-tool-installer to configure DAP/Formatters/Linter installation
 		["mason-null-ls"] = { -- overrides `require("mason-tool-installer").setup(...)`
-			-- ensure_installed = { "prettier", "stylua" },
+			ensure_installed = { "prettierd" },
 		},
 	},
 
 	luasnip = {
 		filetype_extend = { --[[javascript = { "javascriptreact" },]] },
-		vscode = { paths = {}, },
+		vscode = { paths = {} },
 	},
 
-	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 }, },
+	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 } },
 
-	["which-key"] = { register = { n = { ["<leader>"] = { ["b"] = { name = "Buffer" }, }, }, }, },
+	["which-key"] = { register = { n = { ["<leader>"] = { ["b"] = { name = "Buffer" } } } } },
 
 	polish = function()
 		n = require("neosolarized").setup({ comment_italics = true })
@@ -242,6 +245,7 @@ local config = {
 		vim.cmd("set softtabstop=0")
 		vim.cmd("set noexpandtab")
 		vim.cmd("set shiftwidth=2")
+		vim.cmd("let polyglot-initialized=1")
 	end,
 }
 return config

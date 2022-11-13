@@ -20,14 +20,14 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     path+=/mnt/c/Windows/System32
     pushd /mnt/c > /dev/null # avoid UNC path error, then restore current path
     export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | tr -d '\r'))
-    export WINAPPDATA=$(wslpath $(cmd.exe /C "echo %LOCALAPPDATA%" | tr -d '\r'))
+    export APPDATA=$(wslpath $(cmd.exe /C "echo %LOCALAPPDATA%" | tr -d '\r'))
     popd > /dev/null
     path=(${path[@]:#*System32*})
     # s - web search from the terminal (https://github.com/zquestz/s)
     # using wslview from wslu (https://github.com/wslutilities/wslu) as binary and brave as engine
     alias s='s -b wslview -p brave'
     # path to settings in Windows Terminal Preview version
-    export WSL_JSON=$WINAPPDATA/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
+    export WSL_JSON=$APPDATA/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
     alias edal="nvim \${WSL_JSON}"
 else
     alias s="s -p brave"
@@ -327,12 +327,12 @@ if [[ $commands[exa] ]]; then
     alias l='exa --all --icons --grid --links --group-directories-first --classify --colour-scale --extended --git'
     alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default'
     alias lll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default | less -r'
-    which() {exa -la "$(which $1)"}
+    function wch() {exa -lamgF@ $(which $1)}
 else
-    alias l='ls -lACFH --color --color=auto --group-directories-first'
-    alias ll='ls -lAFHh --color=auto --group-directories-first'
-    alias lll='ls -lAFHh --color=auto -group-directories-first | less -r'
-    which() {ls -lAFhh "$(which $1)"}
+    alias l='ls -lACFfH --color=auto '
+    alias ll='ls -lAFfHh --color=auto '
+    alias lll='ls -lAFfHh --color=auto | less -r'
+    function wch() {ls -lAFhh $(which $1)}
 fi
 if [[ $commands[lsd] ]]; then
     alias lsa='lsd --total-size --long --all --human-readable --classify --dereference --group-directories-first'
@@ -357,8 +357,8 @@ if [[ $commands[youtube-dl] ]]; then
     alias ytdmp3='youtube-dl -x --audio-format mp3 --audio-quality 320k'
     # yt-dlp - youtube-dl fork with additional features and fixes
 elif [[ $commands[yt-dlp] ]]; then
-    alias ytd='youtube-dl --format "bestvideo[height<=1080,ext=mp4]+bestaudio[ext=m4a]"'
-    alias ytdmp3='youtube-dl -x --audio-format mp3 --audio-quality 320k'
+    alias ytd='yt-dlp --format "bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]"'
+    alias ytdmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k'
 fi
 
 # unified remote - turn your smartphone into a universal remote control (https://github.com/unifiedremote)
