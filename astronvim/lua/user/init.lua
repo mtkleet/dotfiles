@@ -15,7 +15,7 @@ local config = {
 	colorscheme = "neosolarized",
 	highlights = {
 		-- init = { -- this table overrides highlights in all themes
-		--	Normal = { bg = "#073642" },
+		--	Normal = { bg = "#000000" },
 		-- },
 		-- duskfox = { -- a table of overrides/changes to the duskfox theme
 		--   Normal = { bg = "#000000" },
@@ -43,6 +43,7 @@ local config = {
 			status_diagnostics_enabled = true,
 			icons_enabled = true,
 			ui_notifications_enabled = true,
+			polyglot_initialized = 1,
 		},
 	},
 
@@ -62,10 +63,12 @@ local config = {
 	default_theme = {
 		colors = {
 			fg = "#abb2bf",
-			bg = "#1e222a",
+			bg = "#02212c",
+			-- bg = "#02212c", Solarized Dark - Patched
+			-- bg = "#073642", Solarized Dark
 		},
 		highlights = function(hl) -- or a function that returns a new table of colors to set
-			local C = require("default_theme.colors")
+			local C = require "default_theme.colors"
 			hl.Normal = { fg = C.fg, bg = C.bg }
 			hl.DiagnosticError.italic = true
 			hl.DiagnosticHint.italic = true
@@ -95,11 +98,11 @@ local config = {
 		},
 	},
 
-	diagnostics = { virtual_text = true, underline = true, update_in_insert = true },
+	diagnostics = { virtual_text = true, underline = true },
 
 	lsp = {
 		-- enable servers that you already have installed without mason
-		servers = { "clangd" },
+		servers = {},
 		formatting = {
 			format_on_save = { enabled = true, allow_filetypes = {}, ignore_filetypes = {} },
 			disabled = {},
@@ -108,10 +111,7 @@ local config = {
 			--		return true
 			-- end
 		},
-		mappings = {
-			n = { --[[ ["<leader>lf"] = false -- disable formatting keymap ]]
-			},
-		},
+		mappings = { n = { --[[ ["<leader>lf"] = false -- disable formatting keymap ]] }, },
 		["server-settings"] = {
 			-- example for addings schemas to yamlls
 			-- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
@@ -139,8 +139,7 @@ local config = {
 			["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
 			["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 			["<ESC>"] = { ":noh<cr>", desc = "Remove highlights from search results" },
-			["<C-s>"] = { ":w!<cr>", desc = "Save file" },
-			["<C-c>"] = { "<cmd> %y+ <cr>", desc = "Copy to clipboard" },
+			["<C-c>"] = { "<cmd> %y+ <cr>", desc = "Copy buffer content to clipboard" },
 			["<leader>a"] = { "ggVG", desc = "Select all" },
 			["<F4>"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial (tag viewer)" },
 			["<F3>"] = { "<cmd>Neotree toggle<cr>", desc = "Open Neotree (file explorer)" },
@@ -166,17 +165,19 @@ local config = {
 						display = { "NvimNotify" },
 						borders = "single",
 						display_options = { notification_timeout = 2000 },
-						interpreter_options = { Python3_original = { error_truncate = "long" } },
+						interpreter_options = { Python3_original = { error_truncate = "long" }, },
 					})
 				end,
 			},
+
 			["rcarriga/nvim-notify"] = {
 				config = function()
-					require("notify").setup({ background_colour = "#073642" })
+					require("notify").setup({ background_colour = "#02212c" })
 					vim.notify = require("notify")
 				end,
 			},
-			["vladdoster/remember.nvim"] = { config = function() require("remember") end },
+			["vladdoster/remember.nvim"] = { config = function() require("remember") end, },
+			["max397574/better-escape.nvim"] = { disable = true },
 			["lukas-reineke/indent-blankline.nvim"] = { disable = true },
 		},
 		["heirline"] = function()
@@ -196,12 +197,12 @@ local config = {
 					astronvim.status.component.lsp(),
 					astronvim.status.component.treesitter(),
 					astronvim.status.component.nav(),
-					astronvim.status.component.mode({ surround = { separator = "right" } }),
+					astronvim.status.component.mode { surround = { separator = "right" } },
 				},
 				-- Winbar:
 				{
 					hl = { fg = "fg", bg = "none" },
-					astronvim.status.component.breadcrumbs({ icon = { hl = true }, padding = { left = 1 } }),
+					astronvim.status.component.breadcrumbs { icon = { hl = true }, padding = { left = 1 } },
 					astronvim.status.component.fill(),
 					-- astronvim.status.component.git_diff(),
 					-- astronvim.status.component.diagnostics(),
@@ -209,16 +210,13 @@ local config = {
 			}
 		end,
 
-		["null-ls"] = function(config)
-			config.sources = {}
-			return config
-		end,
+		["null-ls"] = function(config) config.sources = {} return config end,
 		treesitter = { -- overrides `require("treesitter").setup(...)`
 			ensure_installed = { "lua" },
 		},
 		-- use mason-lspconfig to configure LSP installations
 		["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-			ensure_installed = { "sumneko_lua" },
+			ensure_installed = { "sumneko_lua", "clangd" },
 		},
 		-- use mason-tool-installer to configure DAP/Formatters/Linter installation
 		["mason-null-ls"] = { -- overrides `require("mason-tool-installer").setup(...)`
@@ -228,12 +226,12 @@ local config = {
 
 	luasnip = {
 		filetype_extend = { --[[javascript = { "javascriptreact" },]] },
-		vscode = { paths = {} },
+		vscode = { paths = {}, },
 	},
 
-	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 } },
+	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 }, },
 
-	["which-key"] = { register = { n = { ["<leader>"] = { ["b"] = { name = "Buffer" } } } } },
+	["which-key"] = { register = { n = { ["<leader>"] = { ["b"] = { name = "Buffer" }, }, }, }, },
 
 	polish = function()
 		n = require("neosolarized").setup({ comment_italics = true })
@@ -241,11 +239,10 @@ local config = {
 		-- vim.api.nvim_create_autocmd("ColorScheme", {
 		--	command = "hi CursorLineNr guibg=clear",
 		-- })
-		vim.cmd("set tabstop=2")
-		vim.cmd("set softtabstop=0")
-		vim.cmd("set noexpandtab")
-		vim.cmd("set shiftwidth=2")
-		vim.cmd("let polyglot-initialized=1")
+		-- vim.cmd("set tabstop=2")
+		-- vim.cmd("set softtabstop=0")
+		-- vim.cmd("set noexpandtab")
+		-- vim.cmd("set shiftwidth=2")
 	end,
 }
 return config

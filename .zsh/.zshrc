@@ -1,4 +1,4 @@
-### --- ENVIROMENTAL VARIABLES --- ###
+### --- ENVIRONMENTAL VARIABLES --- ###
 export TERM=xterm-256color
 export COLORTERM=truecolor
 export LANG=en_US.UTF-8
@@ -136,7 +136,7 @@ setopt    PROMPT_PERCENT          # if set, `%' is treated specially in prompt e
 setopt    PROMPT_SUBST            # if set, parameter expansion, command substitution and arithmetic expansion are performed in prompts
 # scripts & functions
 setopt    C_BASES                 # output hexadecinal number in the standard C format: 0xFF instead of 16#FF
-unsetopt  C_PRECEDENCES           # use precendence of operators found in C
+unsetopt  C_PRECEDENCES           # use prcendence of operators found in C
 unsetopt  DEBUG_BEFORE_CMD        # run the DEBUG trap after each command
 unsetopt  ERR_EXIT                # if a command has a non-zero exit status, don't execute the ZERR trap and exit
 unsetopt  ERR_RETURN              # if set and command has a non-zero exit status, return immediately from the enclosing function
