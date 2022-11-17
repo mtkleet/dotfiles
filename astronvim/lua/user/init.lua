@@ -97,7 +97,7 @@ local config = {
 		},
 	},
 
-	diagnostics = { virtual_text = true, underline = true },
+	diagnostics = { virtual_text = true, underline = true, sings = true },
 
 	lsp = {
 		-- enable servers that you already have installed without mason
