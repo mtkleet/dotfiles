@@ -43,7 +43,6 @@ local config = {
 			status_diagnostics_enabled = true,
 			icons_enabled = true,
 			ui_notifications_enabled = true,
-			polyglot_initialized = 1,
 		},
 	},
 
@@ -64,7 +63,6 @@ local config = {
 		colors = {
 			fg = "#abb2bf",
 			bg = "#02212c",
-			-- bg = "#02212c", Solarized Dark - Patched
 			-- bg = "#073642", Solarized Dark
 		},
 		highlights = function(hl) -- or a function that returns a new table of colors to set
@@ -103,16 +101,21 @@ local config = {
 	lsp = {
 		-- enable servers that you already have installed without mason
 		servers = {},
+		skip_setup = { "clangd", "rust-analyzer" },
 		formatting = {
-			format_on_save = { enabled = true, allow_filetypes = {}, ignore_filetypes = {} },
-			disabled = {},
+			format_on_save = {
+				enabled = true,
+				allow_filetypes = { "lua", "rust", "cpp", "c", "go" },
+				ignore_filetypes = { "json", "python" },
+			},
+			disabled = { "sumneko_lua" },
 			timeout_ms = 1000,
 			-- filter = function(client) -- fully override the default formatting function
 			--		return true
 			-- end
 		},
 		mappings = { n = { --[[ ["<leader>lf"] = false -- disable formatting keymap ]] }, },
-		["server-settings"] = {
+		["server-settings"] = { clangd = { capabilities = { offsetEncoding = "utf-8", }, },
 			-- example for addings schemas to yamlls
 			-- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
 			--   settings = {
@@ -127,7 +130,6 @@ local config = {
 			-- },
 		},
 	},
-
 	mappings = {
 		n = {
 			["<leader>ff"] = { "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Find files" },
@@ -153,9 +155,25 @@ local config = {
 
 	plugins = {
 		init = {
+			{ "sheerun/vim-polyglot" },
 			{ "svrana/neosolarized.nvim" },
 			{ "tjdevries/colorbuddy.nvim" },
-			{ "sheerun/vim-polyglot" },
+			{ "p00f/clangd_extensions.nvim",
+				after = "mason-lspconfig.nvim",
+				config = function()
+					require("clangd_extensions").setup {
+						server = astronvim.lsp.server_settings "clangd",
+					}
+				end,
+			},
+			{ "simrat39/rust-tools.nvim",
+				after = "mason-lspconfig.nvim",
+				config = function()
+					require("rust-tools").setup {
+						server = astronvim.lsp.server_settings "rust_analyzer",
+					}
+				end,
+			},
 			{ "lambdalisue/suda.vim" },
 			["michaelb/sniprun"] = {
 				run = "bash ./install.sh",
@@ -164,12 +182,11 @@ local config = {
 						inline_messages = 0,
 						display = { "NvimNotify" },
 						borders = "single",
-						display_options = { notification_timeout = 2000 },
+						display_options = { notification_timeout = 2500 },
 						interpreter_options = { Python3_original = { error_truncate = "long" }, },
 					})
 				end,
 			},
-
 			["rcarriga/nvim-notify"] = {
 				config = function()
 					require("notify").setup({ background_colour = "#02212c" })
@@ -210,26 +227,29 @@ local config = {
 			}
 		end,
 
-		["null-ls"] = function(config) config.sources = {} return config end,
-		treesitter = { -- overrides `require("treesitter").setup(...)`
-			ensure_installed = { "lua" },
-		},
-		-- use mason-lspconfig to configure LSP installations
-		["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-			ensure_installed = { "sumneko_lua", "clangd" },
-		},
-		-- use mason-tool-installer to configure DAP/Formatters/Linter installation
-		["mason-null-ls"] = { -- overrides `require("mason-tool-installer").setup(...)`
-			ensure_installed = { "prettierd" },
-		},
+		["null-ls"] = function(config)
+			local null_ls = require "null-ls"
+			config.sources = {
+				null_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.rustfmt,
+				null_ls.builtins.diagnostics.zsh,
+				null_ls.builtins.diagnostics.misspell,
+				null_ls.builtins.code_actions.shellcheck,
+			}
+			return config
+		end,
+
+		treesitter = { ensure_installed = { "lua" } },
+		["mason-lspconfig"] = { ensure_installed = { "jedi_language_server", "sumneko_lua", "rust_analyzer", "clangd" } },
+		["mason-null-ls"] = { ensure_installed = { "debugpy", "codelldb" } },
 	},
 
 	luasnip = {
 		filetype_extend = { --[[javascript = { "javascriptreact" },]] },
-		vscode = { paths = {}, },
+		vscode = { paths = {} },
 	},
 
-	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 }, },
+	cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 } },
 
 	["which-key"] = { register = { n = { ["<leader>"] = { ["b"] = { name = "Buffer" }, }, }, }, },
 
@@ -243,6 +263,6 @@ local config = {
 		-- vim.cmd("set softtabstop=0")
 		-- vim.cmd("set noexpandtab")
 		-- vim.cmd("set shiftwidth=2")
-	end,
+	end
 }
 return config

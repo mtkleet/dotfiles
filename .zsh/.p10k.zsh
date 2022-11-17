@@ -181,7 +181,7 @@
 
     #################################[ os_icon: os identifier ]##################################
     # OS identifier color.
-    typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=230
+    typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=15
     typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=0
     # Custom icon.
     typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION=''
@@ -214,19 +214,19 @@
     # Current directory background color.
     typeset -g POWERLEVEL9K_DIR_BACKGROUND=25
     # Default current directory foreground color.
-    typeset -g POWERLEVEL9K_DIR_FOREGROUND=230
+    typeset -g POWERLEVEL9K_DIR_FOREGROUND=15
     # If directory is too long, shorten some of its segments to the shortest possible unique
     # prefix. The shortened directory can be tab-completed to the original.
     typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
     # Replace removed segment suffixes with this symbol.
     typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
     # Color of the shortened directory segments.
-    typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=230
+    typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=15
     # Color of the anchor directory segments. Anchor segments are never shortened. The first
     # segment is always an anchor.
-    typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=230
+    typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=15
     # Display anchor directory segments in bold.
-    typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=false
+    typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
     # Don't shorten directories that contain any of these files. They are anchors.
     local anchor_files=(
         .bzr
@@ -359,7 +359,7 @@
     typeset -g POWERLEVEL9K_VCS_LOADING_BACKGROUND=8
 
     # Branch icon. Set this parameter to '\UE0A0 ' for the popular Powerline branch icon.
-    typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='%7F\uF126 '
+    typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='%15F\uF126 '
 
     # Untracked files icon. It's really a question mark, your font isn't broken.
     # Change the value of this parameter to show a different icon.
@@ -385,7 +385,7 @@
         fi
 
         # Styling for different parts of Git status.
-        local       meta='%7F' # white foreground
+        local       meta='%15F' # white foreground
         local      clean='%51F' # black foreground
         local   modified='%51F' # black foreground
         local  untracked='%51F' # black foreground
@@ -520,7 +520,7 @@
         # it will signify error by turning red.
         typeset -g POWERLEVEL9K_STATUS_ERROR=true
         typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION='%196F✘'
-        typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=7
+        typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=15
         typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=23
 
         # Status when the last command was terminated by a signal.
@@ -528,19 +528,19 @@
         # Use terse signal names: "INT" instead of "SIGINT(2)".
         typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=true
         typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION='%196F✘'
-        typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=7
+        typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=15
         typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_BACKGROUND=23
 
         # Status when some part of a pipe command fails and the overall exit status is also non-zero.
         # It may look like this: 1|0.
         typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
         typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='%196F✘'
-        typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=7
+        typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=15
         typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_BACKGROUND=23
 
         ###################[ command_execution_time: duration of the last command ]###################
         # Execution time color.
-        typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=7
+        typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=15
         typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=23
         # Show duration of the last command if takes at least this many seconds.
         typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
@@ -555,7 +555,7 @@
 
         #######################[ background_jobs: presence of background jobs ]#######################
         # Background jobs color.
-        typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=7
+        typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=15
         typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=23
         # Don't show the number of background jobs.
         typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
@@ -817,7 +817,7 @@
 
         ######################################[ ram: free RAM ]#######################################
         # RAM color.
-        # typeset -g POWERLEVEL9K_RAM_FOREGROUND=7
+        # typeset -g POWERLEVEL9K_RAM_FOREGROUND=15
         # typeset -g POWERLEVEL9K_RAM_BACKGROUND=23
         # Custom icon.
         typeset -g POWERLEVEL9K_RAM_VISUAL_IDENTIFIER_EXPANSION=''
@@ -832,26 +832,26 @@
 
         ######################################[ load: CPU load ]######################################
         # Show average CPU load over this many last minutes. Valid values are 1, 5 and 15.
-        # typeset -g POWERLEVEL9K_LOAD_WHICH=5
+        typeset -g POWERLEVEL9K_LOAD_WHICH=5
         # Load color when load is under 50%.
-        # typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=7
-        # typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=23
+        typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=15
+        typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=23
         # Load color when load is between 50% and 70%.
-        # typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=7
-        # typeset -g POWERLEVEL9K_LOAD_WARNING_BACKGROUND=23
+        typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=15
+        typeset -g POWERLEVEL9K_LOAD_WARNING_BACKGROUND=23
         # Load color when load is over 70%.
-        # typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND=7
-        # typeset -g POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND=23
+        typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND=15
+        typeset -g POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND=23
         # Custom icon.
-        # typeset -g POWERLEVEL9K_LOAD_VISUAL_IDENTIFIER_EXPANSION='%124F '
-        # typeset -g POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_EXPANSION='%9F '
-        # typeset -g POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_EXPANSION='%124F '
-        # typeset -g POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_EXPANSION='%7F '
+        typeset -g POWERLEVEL9K_LOAD_VISUAL_IDENTIFIER_EXPANSION='%124F '
+        typeset -g POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_EXPANSION='%9F '
+        typeset -g POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_EXPANSION='%124F '
+        typeset -g POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_EXPANSION='%15F '
 
 
         ################[ todo: todo items (https://github.com/todotxt/todo.txt-cli) ]################
         # Todo color.
-        # typeset -g POWERLEVEL9K_TODO_FOREGROUND=14
+        # typeset -g POWERLEVEL9K_TODO_FOREGROUND=15
         # typeset -g POWERLEVEL9K_TODO_BACKGROUND=234
         # Hide todo when the total number of tasks is zero.
         # typeset -g POWERLEVEL9K_TODO_HIDE_ZERO_TOTAL=true
@@ -1673,7 +1673,7 @@
 
         ####################################[ time: current time ]####################################
         # Current time color.
-        typeset -g POWERLEVEL9K_TIME_FOREGROUND=7
+        typeset -g POWERLEVEL9K_TIME_FOREGROUND=15
         typeset -g POWERLEVEL9K_TIME_BACKGROUND=23
         # Format for the current time: 09:51:02. See `man 3 strftime`.
         typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
@@ -1682,15 +1682,15 @@
         # behavior where they contain the end times of their preceding commands.
         # typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
         # Custom icon.
-        # typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION=
+        typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION=' '
         # Custom prefix.
         # typeset -g POWERLEVEL9K_TIME_PREFIX='at '
 
         ####################################[ user: current user ]###################################
         typeset -g POWERLEVEL9K_USER_DEFAULT_BACKGROUND=25
-        typeset -g POWERLEVEL9K_USER_DEFAULT_FOREGROUND=230
+        typeset -g POWERLEVEL9K_USER_DEFAULT_FOREGROUND=15
         typeset -g POWERLEVEL9K_USER_ICON='\uF415' # 
-        typeset -g POWERLEVEL9K_ROOT_ICON='#'
+        typeset -g POWERLEVEL9K_ROOT_ICON='#'      # #
         typeset -g POWERLEVEL9K_SUDO_ICON='\uF09C' # 
         typeset -g POWERLEVEL9K_HOME_ICON=''
         typeset -g POWERLEVEL9K_HOME_SUB_ICON=''
@@ -1700,7 +1700,7 @@
         ####################################[ host: current host ]#####################################
         # typeset -g POWERLEVEL9K_HOST_TEMPLATE="%16F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1` %33F${POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION}"
         # typeset -g POWERLEVEL9K_HOST_TEMPLATE="%0B%0F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
-        typeset -g POWERLEVEL9K_HOST_TEMPLATE="%7F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
+        typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
         typeset -g POWERLEVEL9K_HOST_BACKGROUND=23
         # Example of a user-defined prompt segment. Function prompt_example will be called on every
         # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or
