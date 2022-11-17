@@ -5,8 +5,8 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export MANROFFOPT='-c'
 export PATH=$PATH:$HOME/.local/bin
-export EDITOR=nvim
 export VISUAL=nvim
+export EDITOR=$VISUAL
 
 # set WORDCHARDS for 'backward-kill-word' to stop at forward slash
 export WORDCHARS=${WORDCHARS/\/}
@@ -282,11 +282,11 @@ alias unlock='sudo rm /var/lib/pacman/db.lck'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias su='sudo su'
 
-alias vim='$EDITOR'
-alias vi='$EDITOR'
-alias v='$EDITOR'
-alias vrc='$EDITOR $HOME/.config/astronvim/lua/user/init.lua'
-alias zrc='$EDITOR $ZDOTDIR/.zshrc'
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
+alias vrc='nvim $HOME/.config/astronvim/lua/user/init.lua'
+alias zrc='nvim $ZDOTDIR/.zshrc'
 
 alias lo='exit'
 alias :q='exit'
@@ -309,6 +309,7 @@ alias ssn='sudo shutdown now'
 if [[ $commands[bat] ]]; then
     alias c='bat --style="full" --theme="Solarized (dark)"'
     alias cat='bat --paging=never --style="plain" --theme="Solarized (dark)"'
+    alias les='bat --style="plain" --theme="Solarized (dark)"'
     alias bfzf='fzf --preview="bat {} --color=always"'
 fi
 

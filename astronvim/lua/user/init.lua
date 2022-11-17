@@ -62,8 +62,9 @@ local config = {
 	default_theme = {
 		colors = {
 			fg = "#abb2bf",
-			bg = "#02212c",
-			-- bg = "#073642", Solarized Dark
+			bg = "#1e222a",
+			-- bg = "#02212c", Solarized Dark - Patched default background color
+			-- bg = "#073642", Solarized Dark default background color
 		},
 		highlights = function(hl) -- or a function that returns a new table of colors to set
 			local C = require "default_theme.colors"
@@ -108,7 +109,7 @@ local config = {
 				allow_filetypes = { "lua", "rust", "cpp", "c", "go" },
 				ignore_filetypes = { "json", "python" },
 			},
-			disabled = { "sumneko_lua" },
+			disabled = {},
 			timeout_ms = 1000,
 			-- filter = function(client) -- fully override the default formatting function
 			--		return true
@@ -140,24 +141,24 @@ local config = {
 			["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
 			["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
 			["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-			["<ESC>"] = { ":noh<cr>", desc = "Remove highlights from search results" },
+			["<ESC>"] = { "<cmd>:noh<cr>", desc = "Remove highlights from search results" },
 			["<C-c>"] = { "<cmd> %y+ <cr>", desc = "Copy buffer content to clipboard" },
-			["<leader>a"] = { "ggVG", desc = "Select all" },
 			["<F4>"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial (tag viewer)" },
 			["<F3>"] = { "<cmd>Neotree toggle<cr>", desc = "Open Neotree (file explorer)" },
 			["<F2>"] = { "<cmd>set number! norelativenumber!<cr>", desc = "Toggle numberline" },
 		},
 		t = {},
 		v = {
+			["<leader>a"] = { "ggVG", desc = "Select all" },
 			["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual-selection mode" },
 		},
 	},
 
 	plugins = {
 		init = {
-			{ "sheerun/vim-polyglot" },
 			{ "svrana/neosolarized.nvim" },
 			{ "tjdevries/colorbuddy.nvim" },
+			{ "lambdalisue/suda.vim" },
 			{ "p00f/clangd_extensions.nvim",
 				after = "mason-lspconfig.nvim",
 				config = function()
@@ -174,7 +175,6 @@ local config = {
 					}
 				end,
 			},
-			{ "lambdalisue/suda.vim" },
 			["michaelb/sniprun"] = {
 				run = "bash ./install.sh",
 				config = function()
@@ -239,7 +239,7 @@ local config = {
 			return config
 		end,
 
-		treesitter = { ensure_installed = { "lua" } },
+		treesitter = {},
 		["mason-lspconfig"] = { ensure_installed = { "jedi_language_server", "sumneko_lua", "rust_analyzer", "clangd" } },
 		["mason-null-ls"] = { ensure_installed = { "debugpy", "codelldb" } },
 	},

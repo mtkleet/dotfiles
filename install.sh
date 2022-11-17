@@ -2,15 +2,6 @@
 echo "Installing AstroNvim..."
 git clone -q https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 cp -r ~/dotfiles/astronvim ~/.config/
-echo "Downloading MesloLGS NF fonts..."
-cp -r ~/dotfiles/.local/bin/* ~/.local/bin
-wget -P ~/.local/fonts "https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS^%20NF%20Regular.ttf"
-wget -P ~/.local/fonts "https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold.ttf"
-wget -P ~/.local/fonts "https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Italic.ttf"
-wget -P ~/.local/fonts "https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold%20Italic.ttf"
-if [ -x "$(command -v fc-cache)" ]; then
-    fc-cache -fv .
-fi
 echo "Installing zsh plugins..."
 git clone -q https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
 git clone -q https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
@@ -24,9 +15,20 @@ wget -P ~/.zsh/dircolors "https://raw.githubusercontent.com/seebi/dircolors-sola
 cp -r ~/dotfiles/.zsh ~/
 mv ~/.zsh/.zshenv ~/
 echo "Installing fzf..."
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/fzf && ~/.local/fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.zsh/fzf && ~/.zsh/fzf/install
 mv ~/.fzf.zsh ~/.zsh
 rm -r ~/.fzf*
+[[ ! -d "$HOME/.local/bin" ]] && mkdir -p ~/.local/bin
+ln -s ~/.zsh/fzf/bin/fzf ~/.local/bin/fzf
+cp -r ~/dotfiles/.local/bin/* ~/.local/bin
+echo "Downloading MesloLGS NF fonts..."
+wget -P ~/.local/fonts "https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS^%20NF%20Regular.ttf"
+wget -P ~/.local/fonts "https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold.ttf"
+wget -P ~/.local/fonts "https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Italic.ttf"
+wget -P ~/.local/fonts "https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.local/share/fonts/NerdFonts/MesloLGS%20NF%20Bold%20Italic.ttf"
+if [ -x "$(command -v fc-cache)" ]; then
+    fc-cache -fv .
+fi
 echo "Do you want automatically install dependiencies (only for Arch-based distros with activated 'community' and 'testing' repositories)? [y/n]"
 read -r input
 if [[ $input == "y" || $input == "Y" ]]; then
