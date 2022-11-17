@@ -6,7 +6,7 @@ Personal development-environment preferences. Using this configuration in ArcoLi
 
 ## How to install on Linux: 
 1. Create backup of your current (neo)vim and zsh rc-files.
-2. Make sure you've got working ```curl``` binary in your ```$PATH```.
+2. Make sure you've got working ```wget``` binary in your ```$PATH```.
 3. Run in terminal
 
 ```
