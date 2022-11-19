@@ -369,7 +369,9 @@ fi
 
 ### --- FUNCTIONS --- ###
 # 256-colors test pattern
-alias colortest='for i in {0..255}; do print -Pn "%${i}F${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'}; done'
+colortest() {
+    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+}
 
 # ex - extractor for all kinds of archives
 ex ()    {
