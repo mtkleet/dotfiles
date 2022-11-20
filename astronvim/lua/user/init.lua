@@ -146,10 +146,10 @@ local config = {
 			["<F4>"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial (tag viewer)" },
 			["<F3>"] = { "<cmd>Neotree toggle<cr>", desc = "Open Neotree (file explorer)" },
 			["<F2>"] = { "<cmd>set number! norelativenumber!<cr>", desc = "Toggle numberline" },
+			["<leader>a"] = { "ggVG", desc = "Select all" },
 		},
 		t = {},
 		v = {
-			["<leader>a"] = { "ggVG", desc = "Select all" },
 			["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual-selection mode" },
 		},
 	},
