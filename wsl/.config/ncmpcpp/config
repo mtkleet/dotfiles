@@ -1,6 +1,6 @@
 #mpd_host = "localhost"
 mpd_port = "6600"
-mpd_music_dir = "/mnt/f/Muzyka"
+mpd_music_dir = "~/.local/music"
 mpd_connection_timeout = "100000000"
 mpd_crossfade_time = "5"
 playlist_disable_highlight_delay = "1"
