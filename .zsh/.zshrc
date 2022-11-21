@@ -19,7 +19,7 @@ export ZLE_RPROMPT_INDENT=0
 if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     path+=/mnt/c/Windows/System32
     pushd /mnt/c > /dev/null # avoid UNC path error, then restore current path
-    export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | tr -d '\r'))
+    export WINUSER=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" | tr -d '\r'))
     export APPDATA=$(wslpath $(cmd.exe /C "echo %LOCALAPPDATA%" | tr -d '\r'))
     popd > /dev/null
     path=(${path[@]:#*System32*})
@@ -27,8 +27,8 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     # using wslview from wslu (https://github.com/wslutilities/wslu) as binary and brave as engine
     alias s='s -b wslview -p brave'
     # path to settings in Windows Terminal Preview version
-    export WSL_JSON=$APPDATA/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
-    alias edal="nvim \${WSL_JSON}"
+    alias edal="nvim ${APPDATA}/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json"
+    # edit Terminal settings inside wsl editor
 else
     alias s="s -p brave"
 fi
@@ -223,6 +223,8 @@ zstyle ':completion:*:*:*:*:processes' force-list always
 zstyle ':completion:*:*:*:*:processes' menu yes select
 zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
+# append bash completions
+autoload -U +X bashcompinit && bashcompinit
 
 # setup few completions using fzf (https://github.com/junegunn/fzf/blob/master/shell/completion.zsh)
 _fzf_complete_ssh() {
@@ -302,6 +304,7 @@ alias userlist='cut -d: -f1 /etc/passwd'
 alias jctl='journalctl -p 3 -xb'
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
 alias gcl='git clone'
+alias gfp='git fetch && git pull'
 alias rb='sudo reboot'
 alias ssn='sudo shutdown now'
 
