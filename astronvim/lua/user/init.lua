@@ -9,7 +9,7 @@ local config = {
     skip_prompts = false,
     show_changelog = true,
     auto_reload = false,
-    auto_quit = false
+    auto_quit = false,
   },
 
   colorscheme = "neosolarized",
@@ -32,7 +32,7 @@ local config = {
       number = true,
       spell = false,
       signcolumn = "auto",
-      wrap = false
+      wrap = false,
     },
     g = {
       mapleader = " ",
@@ -42,8 +42,8 @@ local config = {
       diagnostics_enabled = true,
       status_diagnostics_enabled = true,
       icons_enabled = true,
-      ui_notifications_enabled = true
-    }
+      ui_notifications_enabled = true,
+    },
   },
 
   header = {
@@ -83,7 +83,6 @@ local config = {
       dashboard = true,
       highlighturl = true,
       hop = false,
-      lightspeed = false,
       ["neo-tree"] = true,
       notify = true,
       ["nvim-tree"] = false,
@@ -93,11 +92,11 @@ local config = {
       telescope = true,
       treesitter = true,
       vimwiki = false,
-      ["which-key"] = true
-    }
+      ["which-key"] = true,
+    },
   },
 
-  diagnostics = { virtual_text = true, underline = true },
+  diagnostics = { virtual_text = true, underline = true, sings = true },
 
   lsp = {
     -- enable servers that you already have installed without mason
@@ -106,17 +105,16 @@ local config = {
     formatting = {
       format_on_save = {
         enabled = true,
-        allow_filetypes = { "python", "lua", "rust", "cpp", "c", "go" },
-        ignore_filetypes = { "json" }
+        allow_filetypes = { "lua", "rust", "cpp", "c", "go" },
+        ignore_filetypes = { "json", "python" },
       },
-      disabled = {},
-      timeout_ms = 1000,
+      disabled = {}, timeout_ms = 1000,
       -- filter = function(client) -- fully override the default formatting function
       --		return true
       -- end
     },
     mappings = { n = { --[[ ["<leader>lf"] = false -- disable formatting keymap ]] }, },
-    ["server-settings"] = { clangd = { capabilities = { offsetEncoding = "utf-8" }, },
+    ["server-settings"] = { clangd = { capabilities = { offsetEncoding = "utf-8", }, },
       -- example for addings schemas to yamlls
       -- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
       --   settings = {
@@ -129,7 +127,7 @@ local config = {
       --     },
       --   },
       -- },
-    }
+    },
   },
   mappings = {
     n = {
@@ -150,12 +148,18 @@ local config = {
     },
     t = {},
     v = {
-      ["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual-selection mode" },
+      ["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual-selection mode" }
     },
   },
 
   plugins = {
     init = {
+      ["rcarriga/nvim-notify"] = {
+        config = function()
+          require("notify").setup({ background_colour = "#02212c" })
+          vim.notify = require("notify")
+        end,
+      },
       { "svrana/neosolarized.nvim" },
       { "tjdevries/colorbuddy.nvim" },
       { "lambdalisue/suda.vim" },
@@ -185,12 +189,6 @@ local config = {
             display_options = { notification_timeout = 2500 },
             interpreter_options = { Python3_original = { error_truncate = "long" }, },
           })
-        end,
-      },
-      ["rcarriga/nvim-notify"] = {
-        config = function()
-          require("notify").setup({ background_colour = "#02212c" })
-          vim.notify = require("notify")
         end,
       },
       ["vladdoster/remember.nvim"] = { config = function() require("remember") end, },
@@ -234,20 +232,17 @@ local config = {
         null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.diagnostics.zsh,
         null_ls.builtins.diagnostics.misspell,
-        null_ls.builtins.code_actions.shellcheck
+        null_ls.builtins.code_actions.shellcheck,
       }
       return config
     end,
 
     treesitter = {},
     ["mason-lspconfig"] = { ensure_installed = { "jedi_language_server", "sumneko_lua", "rust_analyzer", "clangd" } },
-    ["mason-null-ls"] = { ensure_installed = { "debugpy", "codelldb" } },
+    ["mason-null-ls"] = { ensure_installed = { "debugpy", "codelldb", "misspell", "prettier", "shellcheck" } },
   },
 
-  luasnip = {
-    filetype_extend = { --[[javascript = { "javascriptreact" },]] },
-    vscode = { paths = {} },
-  },
+  luasnip = { filetype_extend = { --[[javascript = { "javascriptreact" },]] }, vscode = { paths = {} } },
 
   cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 } },
 
