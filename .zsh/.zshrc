@@ -34,8 +34,8 @@ else
 fi
 
 # dircolors-solarized (https://github.com/seebi/dircolors-solarized)
-if [[ -r $ZDOTDIR/dircolors/dircolors.ansi-dark ]]; then
-    eval `dircolors $ZDOTDIR/dircolors/dircolors.ansi-dark`;
+if [[ -r $ZDOTDIR/dircolors/dircolors.256dark ]]; then
+    eval `dircolors $ZDOTDIR/dircolors/dircolors.256dark`;
     # vivid - A themeable LS_COLORS generator with a rich filetype datebase (https://github.com/sharkdp/vivid)
     if [[ $commands[vivid] ]]; then
         export LS_COLORS="$(vivid generate solarized-dark)"
@@ -311,7 +311,6 @@ alias ssn='sudo shutdown now'
 # bat - a cat clone with wings (https://github.com/sharkdp/bat)
 if [[ $commands[bat] ]]; then
     alias c='bat --style="full" --theme="Solarized (dark)"'
-    alias cat='bat --paging=never --style="plain" --theme="Solarized (dark)"'
     alias les='bat --style="plain" --theme="Solarized (dark)"'
     alias bfzf='fzf --preview="bat {} --color=always"'
 fi
