@@ -62,8 +62,6 @@ local config = {
     colors = {
       fg = "#abb2bf",
       bg = "#1e222a",
-      -- bg = "#02212c", Solarized Dark - Patched default background color
-      -- bg = "#073642", Solarized Dark default background color
     },
     highlights = function(hl) -- or a function that returns a new table of colors to set
       local C = require "default_theme.colors"
@@ -184,7 +182,7 @@ local config = {
       ["rcarriga/nvim-notify"] = {
         event = "UIEnter",
         config = function()
-          require("notify").setup({ background_colour = "#073642" })
+          require("notify").setup({ background_colour = "#001E27" })
           vim.notify = require("notify")
         end,
       },
@@ -221,20 +219,20 @@ local config = {
     end,
 
     ["null-ls"] = function(config)
-      -- local null_ls = require "null-ls"
+      local null_ls = require "null-ls"
       config.sources = {
         --	null_ls.builtins.formatting.prettier,
         --	null_ls.builtins.formatting.rustfmt,
-        --	null_ls.builtins.diagnostics.zsh,
-        --	null_ls.builtins.diagnostics.misspell,
-        --	null_ls.builtins.code_actions.shellcheck,
+        null_ls.builtins.diagnostics.zsh,
+        null_ls.builtins.diagnostics.misspell,
+        null_ls.builtins.code_actions.shellcheck,
       }
       return config
     end,
 
     treesitter = {},
     ["mason-lspconfig"] = { ensure_installed = { "jedi_language_server", "rust_analyzer", "clangd" } },
-    ["mason-null-ls"] = { ensure_installed = {} },
+    ["mason-null-ls"] = { ensure_installed = { "zsh", "shellcheck" } },
   },
 
   luasnip = { filetype_extend = { --[[javascript = { "javascriptreact" },]] }, vscode = { paths = {} }, },
