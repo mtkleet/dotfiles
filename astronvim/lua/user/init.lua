@@ -25,7 +25,6 @@ local config = {
   options = {
     opt = {
       termguicolors = true,
-      background = "dark",
       ignorecase = true,
       wildignorecase = true,
       relativenumber = true,
@@ -96,7 +95,7 @@ local config = {
     },
   },
 
-  diagnostics = { virtual_text = true, underline = true, sings = true },
+  diagnostics = { virtual_text = true, underline = true },
 
   lsp = {
     -- enable servers that you already have installed without mason
@@ -105,10 +104,11 @@ local config = {
     formatting = {
       format_on_save = {
         enabled = true,
-        allow_filetypes = { "lua", "rust", "cpp", "c", "go" },
-        ignore_filetypes = { "json", "python" },
+        allow_filetypes = {},
+        ignore_filetypes = {},
       },
-      disabled = {}, timeout_ms = 1000,
+      disabled = {},
+      timeout_ms = 1000,
       -- filter = function(client) -- fully override the default formatting function
       --		return true
       -- end
@@ -144,39 +144,29 @@ local config = {
       ["<F4>"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial (tag viewer)" },
       ["<F3>"] = { "<cmd>Neotree toggle<cr>", desc = "Open Neotree (file explorer)" },
       ["<F2>"] = { "<cmd>set number! norelativenumber!<cr>", desc = "Toggle numberline" },
-      ["<leader>a"] = { "ggVG", desc = "Select all" }
+      ["<leader>a"] = { "ggVG", desc = "Select all" },
     },
     t = {},
     v = {
-      ["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual-selection mode" }
+      ["<F5>"] = { "<Plug>SnipRun<cr>", desc = "Execute :SnipRun in visual-selection mode" },
     },
   },
 
   plugins = {
     init = {
-      ["rcarriga/nvim-notify"] = {
-        config = function()
-          require("notify").setup({ background_colour = "#02212c" })
-          vim.notify = require("notify")
-        end,
-      },
       { "svrana/neosolarized.nvim" },
       { "tjdevries/colorbuddy.nvim" },
       { "lambdalisue/suda.vim" },
       { "p00f/clangd_extensions.nvim",
         after = "mason-lspconfig.nvim",
         config = function()
-          require("clangd_extensions").setup {
-            server = astronvim.lsp.server_settings "clangd",
-          }
+          require("clangd_extensions").setup { server = astronvim.lsp.server_settings "clangd" }
         end,
       },
       { "simrat39/rust-tools.nvim",
         after = "mason-lspconfig.nvim",
         config = function()
-          require("rust-tools").setup {
-            server = astronvim.lsp.server_settings "rust_analyzer",
-          }
+          require("rust-tools").setup { server = astronvim.lsp.server_settings "rust_analyzer" }
         end,
       },
       ["michaelb/sniprun"] = {
@@ -191,7 +181,14 @@ local config = {
           })
         end,
       },
-      ["vladdoster/remember.nvim"] = { config = function() require("remember") end, },
+      ["rcarriga/nvim-notify"] = {
+        event = "UIEnter",
+        config = function()
+          require("notify").setup({ background_colour = "#073642" })
+          vim.notify = require("notify")
+        end,
+      },
+      ["vladdoster/remember.nvim"] = { config = function() require("remember") end },
       ["max397574/better-escape.nvim"] = { disable = true },
       ["lukas-reineke/indent-blankline.nvim"] = { disable = true },
     },
@@ -219,30 +216,28 @@ local config = {
           hl = { fg = "fg", bg = "none" },
           astronvim.status.component.breadcrumbs { icon = { hl = true }, padding = { left = 1 } },
           astronvim.status.component.fill(),
-          -- astronvim.status.component.git_diff(),
-          -- astronvim.status.component.diagnostics(),
         },
       }
     end,
 
     ["null-ls"] = function(config)
-      local null_ls = require "null-ls"
+      -- local null_ls = require "null-ls"
       config.sources = {
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.rustfmt,
-        null_ls.builtins.diagnostics.zsh,
-        null_ls.builtins.diagnostics.misspell,
-        null_ls.builtins.code_actions.shellcheck,
+        --	null_ls.builtins.formatting.prettier,
+        --	null_ls.builtins.formatting.rustfmt,
+        --	null_ls.builtins.diagnostics.zsh,
+        --	null_ls.builtins.diagnostics.misspell,
+        --	null_ls.builtins.code_actions.shellcheck,
       }
       return config
     end,
 
     treesitter = {},
-    ["mason-lspconfig"] = { ensure_installed = { "jedi_language_server", "sumneko_lua", "rust_analyzer", "clangd" } },
-    ["mason-null-ls"] = { ensure_installed = { "debugpy", "codelldb", "misspell", "prettier", "shellcheck" } },
+    ["mason-lspconfig"] = { ensure_installed = { "jedi_language_server", "rust_analyzer", "clangd" } },
+    ["mason-null-ls"] = { ensure_installed = {} },
   },
 
-  luasnip = { filetype_extend = { --[[javascript = { "javascriptreact" },]] }, vscode = { paths = {} } },
+  luasnip = { filetype_extend = { --[[javascript = { "javascriptreact" },]] }, vscode = { paths = {} }, },
 
   cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 } },
 
@@ -258,6 +253,6 @@ local config = {
     -- vim.cmd("set softtabstop=0")
     -- vim.cmd("set noexpandtab")
     -- vim.cmd("set shiftwidth=2")
-  end
+  end,
 }
 return config
