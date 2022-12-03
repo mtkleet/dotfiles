@@ -9,7 +9,7 @@ local config = {
     skip_prompts = false,
     show_changelog = true,
     auto_reload = false,
-    auto_quit = false,
+    auto_quit = false
   },
 
   colorscheme = "neosolarized",
@@ -42,7 +42,7 @@ local config = {
       status_diagnostics_enabled = true,
       icons_enabled = true,
       ui_notifications_enabled = true,
-    },
+    }
   },
 
   header = {
@@ -61,7 +61,7 @@ local config = {
   default_theme = {
     colors = {
       fg = "#abb2bf",
-      bg = "#1e222a",
+      bg = "#001E27",
     },
     highlights = function(hl) -- or a function that returns a new table of colors to set
       local C = require "default_theme.colors"
@@ -80,6 +80,7 @@ local config = {
       dashboard = true,
       highlighturl = true,
       hop = false,
+      lightspeed = false,
       ["neo-tree"] = true,
       notify = true,
       ["nvim-tree"] = false,
@@ -90,7 +91,7 @@ local config = {
       treesitter = true,
       vimwiki = false,
       ["which-key"] = true,
-    },
+    }
   },
 
   diagnostics = { virtual_text = true, underline = true },
@@ -102,8 +103,8 @@ local config = {
     formatting = {
       format_on_save = {
         enabled = true,
-        allow_filetypes = {},
-        ignore_filetypes = {},
+        allow_filetypes = { "python", "lua", "rust", "cpp", "c", "go" },
+        ignore_filetypes = { "json" }
       },
       disabled = {},
       timeout_ms = 1000,
@@ -111,8 +112,8 @@ local config = {
       --		return true
       -- end
     },
-    mappings = { n = { --[[ ["<leader>lf"] = false -- disable formatting keymap ]] }, },
-    ["server-settings"] = { clangd = { capabilities = { offsetEncoding = "utf-8", }, },
+    mappings = { n = { ["<leader>lf"] = false --[[ disable formatting keymap ]] } },
+    ["server-settings"] = { clangd = { capabilities = { offsetEncoding = "utf-8" } },
       -- example for addings schemas to yamlls
       -- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
       --   settings = {
@@ -125,7 +126,7 @@ local config = {
       --     },
       --   },
       -- },
-    },
+    }
   },
   mappings = {
     n = {
@@ -186,7 +187,7 @@ local config = {
           vim.notify = require("notify")
         end,
       },
-      ["vladdoster/remember.nvim"] = { config = function() require("remember") end },
+      ["vladdoster/remember.nvim"] = { config = function() require("remember") end, },
       ["max397574/better-escape.nvim"] = { disable = true },
       ["lukas-reineke/indent-blankline.nvim"] = { disable = true },
     },
@@ -214,6 +215,8 @@ local config = {
           hl = { fg = "fg", bg = "none" },
           astronvim.status.component.breadcrumbs { icon = { hl = true }, padding = { left = 1 } },
           astronvim.status.component.fill(),
+          -- astronvim.status.component.git_diff(),
+          -- astronvim.status.component.diagnostics(),
         },
       }
     end,
@@ -221,8 +224,6 @@ local config = {
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
       config.sources = {
-        --	null_ls.builtins.formatting.prettier,
-        --	null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.diagnostics.zsh,
         null_ls.builtins.diagnostics.misspell,
         null_ls.builtins.code_actions.shellcheck,
@@ -231,11 +232,13 @@ local config = {
     end,
 
     treesitter = {},
-    ["mason-lspconfig"] = { ensure_installed = { "jedi_language_server", "rust_analyzer", "clangd" } },
-    ["mason-null-ls"] = { ensure_installed = { "zsh", "shellcheck" } },
+    ["mason-lspconfig"] = { ensure_installed = { "sumneko_lua", "rust_analyzer", "clangd" } },
+    ["mason-null-ls"] = { ensure_installed = { "zsh", "shellcheck", "misspell" } },
   },
 
-  luasnip = { filetype_extend = { --[[javascript = { "javascriptreact" },]] }, vscode = { paths = {} }, },
+  luasnip = {
+    filetype_extend = { javascript = { "javascriptreact" } }, vscode = { paths = {} },
+  },
 
   cmp = { source_priority = { nvim_lsp = 1000, luasnip = 750, buffer = 500, path = 250 } },
 

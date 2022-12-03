@@ -1689,6 +1689,8 @@
         ####################################[ user: current user ]###################################
         typeset -g POWERLEVEL9K_USER_DEFAULT_BACKGROUND=25
         typeset -g POWERLEVEL9K_USER_DEFAULT_FOREGROUND=15
+        typeset -g POWERLEVEL9K_USER_ROOT_BACKGROUND=25
+        typeset -g POWERLEVEL9K_USER_ROOT_FOREGROUND=15
         typeset -g POWERLEVEL9K_USER_ICON='\uF415' # 
         typeset -g POWERLEVEL9K_ROOT_ICON='#'      # #
         typeset -g POWERLEVEL9K_SUDO_ICON='\uF09C' # 

@@ -365,7 +365,7 @@ elif [[ $commands[yt-dlp] ]]; then
 fi
 
 # unified remote - turn your smartphone into a universal remote control (https://github.com/unifiedremote)
-if [[ $commands[urserver] ]]; then
+if [[ -r /opt/urserver/urserver ]]; then
     alias urd='/opt/urserver/urserver --daemon'
 fi
 
