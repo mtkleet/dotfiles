@@ -5,7 +5,7 @@
   // Launch settings
   "initialCols": 165,
   "initialRows": 35,
-  "launchMode": "default",
+  "launchMode": "focus",
   "alwaysOnTop": false,
   "language": "en-US",
   "theme": "dark",
