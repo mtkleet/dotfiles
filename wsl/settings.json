@@ -31,6 +31,7 @@
 
   // Profile management
   "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+  "hidden": false,
   "disabledProfileSources": ["Windows.Terminal.Azure"],
   "profiles": { 
     "defaults": {
@@ -47,7 +48,6 @@
       "scrollbarState": "hidden",
       "snapOnInput": false,
       "startingDirectory": "%USERPROFILE%",
-      "hidden": false,
       "useAcrylic": true,
       "antialiasingMode": "cleartype",
 			"altGrAliasing": true
@@ -739,9 +739,9 @@
     { "command": { "action": "resizePane", "direction": "left" }, "keys": "alt+shift+left" },
     { "command": { "action": "resizePane", "direction": "right" }, "keys": "alt+shift+right" },
     { "command": { "action": "resizePane", "direction": "up" }, "keys": "alt+shift+up" },
-    { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+down" },
-    { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+left" },
-    { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+right" },
+    { "command": { "action": "moveFocus", "direction": "down" }, "keys": "ctrl+down" },
+    { "command": { "action": "moveFocus", "direction": "left" }, "keys": "ctrl+left" },
+    { "command": { "action": "moveFocus", "direction": "right" }, "keys": "crtl+right" },
     { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+up" },
     { "command": "togglePaneZoom" },
     { "command": { "action": "splitPane", "split": "vertical", "index": 0 }, "keys": "shift+alt+1" },
