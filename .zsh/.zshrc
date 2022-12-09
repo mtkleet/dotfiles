@@ -4,7 +4,7 @@ export COLORTERM=truecolor
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export MANROFFOPT='-c'
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$HOME/.local/bin:$PATH
 export VISUAL=nvim
 export EDITOR=$VISUAL
 
@@ -15,7 +15,7 @@ export WORDCHARS=${WORDCHARS/\/}
 export ZLE_RPROMPT_INDENT=0
 
 # translate Windows envs: %USERPROFILE% and %LOCALAPPDATA%
-# keep access to sysdrive without appending to anything to PATH
+# keep access to sysdrive without appending to anything to PATH (set "appendWindowsPath = false" in /etc/wsl.conf)
 if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     path+=/mnt/c/Windows/System32
     pushd /mnt/c > /dev/null # avoid UNC path error, then restore current path
@@ -26,9 +26,8 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     # s - web search from the terminal (https://github.com/zquestz/s)
     # using wslview from wslu (https://github.com/wslutilities/wslu) as binary and brave as engine
     alias s='s -b wslview -p brave'
-    # path to settings in Windows Terminal Preview version
+    # edit Windows Terminal settings inside wsl (this path to leads to settings.json in Preview version)
     alias edal="nvim ${APPDATA}/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json"
-    # edit Terminal settings inside wsl editor
 else
     alias s="s -p brave"
 fi
@@ -37,9 +36,7 @@ fi
 if [[ -r $ZDOTDIR/dircolors/dircolors.256dark ]]; then
     eval `dircolors $ZDOTDIR/dircolors/dircolors.256dark`;
     # vivid - A themeable LS_COLORS generator with a rich filetype datebase (https://github.com/sharkdp/vivid)
-    if [[ $commands[vivid] ]]; then
-        export LS_COLORS="$(vivid generate solarized-dark)"
-    fi
+    test -r vivid && export LS_COLORS="$(vivid generate solarized-dark)"
 fi
 
 # fzf - A command-line fuzzy finder (https://github.com/junegunn/fzf)
@@ -310,8 +307,8 @@ alias ssn='sudo shutdown now'
 
 # bat - a cat clone with wings (https://github.com/sharkdp/bat)
 if [[ $commands[bat] ]]; then
-    alias c='bat --style="full" --theme="Solarized (dark)"'
-    alias les='bat --style="plain" --theme="Solarized (dark)"'
+    alias c='bat --style="full"'
+    alias cat='bat --style="plain"'
     alias bfzf='fzf --preview="bat {} --color=always"'
 fi
 
@@ -323,18 +320,23 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias -- -='cd -'
+
+if [[ $commands[advcp] ]]; then
+    alias cp='advcp -g'
+    alias mv='advmv -g'
+fi
 #alias cp='rsync -ah --partial --inplace --info=progress2'
 
 # exa - a modern version of ls (https://github.com/ogham/exa)
 if [[ $commands[exa] ]]; then
     alias l='exa --all --icons --grid --links --group-directories-first --classify --colour-scale --extended --git'
     alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default'
-    alias lll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default | less -r'
+    function lll() {exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default $1 | less -r}
     function wch() {exa -lamgF@ $(which $1)}
 else
     alias l='ls -lACFfH --color=auto '
     alias ll='ls -lAFfHh --color=auto '
-    alias lll='ls -lAFfHh --color=auto | less -r'
+    function lll() {ls -lAFfHh --color=auto $1 | less -r}
     function wch() {ls -lAFhh $(which $1)}
 fi
 if [[ $commands[lsd] ]]; then
@@ -365,9 +367,7 @@ elif [[ $commands[yt-dlp] ]]; then
 fi
 
 # unified remote - turn your smartphone into a universal remote control (https://github.com/unifiedremote)
-if [[ -r /opt/urserver/urserver ]]; then
-    alias urd='/opt/urserver/urserver --daemon'
-fi
+test -r /opt/urserver/urserver && alias urd="/opt/urserver/urserver --daemon"
 
 ### --- FUNCTIONS --- ###
 # 256-colors test pattern
