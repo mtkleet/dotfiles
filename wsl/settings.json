@@ -722,7 +722,7 @@
   { "command": { "action": "newTab", "index": 7 }, "keys": "ctrl+shift+8" },
   { "command": { "action": "newTab", "index": 8 }, "keys": "ctrl+shift+9" },
   { "command": "duplicateTab", "keys": "ctrl+shift+d" },
-  { "command": "nextTab", "keys": "shift+tab" },
+  { "command": "nextTab", "keys": "shift+~" },
   { "command": "prevTab", "keys": "ctrl+shift+tab" },
   { "command": { "action": "switchToTab", "index": 0 }, "keys": "alt+1" },
   { "command": { "action": "switchToTab", "index": 1 }, "keys": "alt+2" },
