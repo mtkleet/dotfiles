@@ -28,7 +28,7 @@
   // Miscellaneous
   "autoHideWindow": true,
   "alwaysShowNotificationIcon": true,
-  "minimizeToNotificationArea": true,
+  "minimizeToNotificationArea": false,
   "windowingBehavior": "useExisting",
   "confirmCloseAllTabs": true,
   "disableAnimations": true,
@@ -55,43 +55,41 @@
       "snapOnInput": false,
       "startingDirectory": "%USERPROFILE%",
       "useAcrylic": true,
-      "antialiasingMode": "cleartype",
 			"altGrAliasing": true,
       "icon": "%USERPROFILE%\\.config\\ProfileIcons\\terminal.ico"
   },
   "list": 
-    [
-      {
-        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "icon": "%USERPROFILE%\\.config\\ProfileIcons\\pwsh_core.png",
-        "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore"
-      },
-      {
-        "commandline": "%SystemRoot%\\System32\\cmd.exe /K %USERPROFILE%\\.config\\init.cmd",
-        "elevate": true,
-        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-        "icon": "%USERPROFILE%\\.config\\ProfileIcons\\cmd.png",
-        "name": "Command Prompt"
-      },
-      {
-        "adjustIndistinguishableColors": "always",
-        "colorScheme": "Solarized Dark - Patched",
-        "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
-        "icon": "%USERPROFILE%\\.config\\ProfileIcons\\arch.png",
-        "intenseTextStyle": "bold",
-        "name": "Arch",
-        "opacity": 85,
-        "source": "Windows.Terminal.Wsl",
-        "startingDirectory": "~"
-      },
-      {
-        "elevate": true,
-        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-        "icon": "%USERPROFILE%\\.config\\ProfileIcons\\pwsh.png",
-        "name": "Windows PowerShell"
-      } 
-    ] 
+  [
+    {
+      "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+      "icon": "%USERPROFILE%\\.config\\ProfileIcons\\pwsh_core.png",
+      "name": "PowerShell",
+      "source": "Windows.Terminal.PowershellCore"
+    },
+    {
+      "commandline": "%SystemRoot%\\System32\\cmd.exe /K %USERPROFILE%\\.config\\init.cmd",
+      "elevate": true,
+      "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+      "icon": "%USERPROFILE%\\.config\\ProfileIcons\\cmd.png",
+      "name": "Command Prompt"
+    },
+    {
+      "adjustIndistinguishableColors": "always",
+      "colorScheme": "Solarized Dark - Patched",
+      "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+      "icon": "%USERPROFILE%\\.config\\ProfileIcons\\arch.png",
+      "intenseTextStyle": "bold",
+      "name": "Arch",
+      "opacity": 85,
+      "source": "Windows.Terminal.Wsl",
+      "startingDirectory": "~"
+    },
+    {
+      "elevate": true,
+      "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+      "icon": "%USERPROFILE%\\.config\\ProfileIcons\\pwsh.png",
+      "name": "Windows PowerShell"
+    } ] 
   },
 
   // Colorschemes
@@ -738,16 +736,16 @@
 
   // Pane management
   { "command": "closePane", "keys": "ctrl+shift+w" },
-  { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+v" },
-  { "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+h" },
+  { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift++" },
+  { "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+shift+-" },
   { "command": { "action": "resizePane", "direction": "down" }, "keys": "shift+ctrl+down" },
   { "command": { "action": "resizePane", "direction": "left" }, "keys": "shift+ctrl+left" },
   { "command": { "action": "resizePane", "direction": "right" }, "keys": "shift+ctrl+right" },
   { "command": { "action": "resizePane", "direction": "up" }, "keys": "shift+ctrl+up" },
-  { "command": { "action": "moveFocus", "direction": "down" }, "keys": "ctrl+down" },
-  { "command": { "action": "moveFocus", "direction": "left" }, "keys": "ctrl+left" },
-  { "command": { "action": "moveFocus", "direction": "right" }, "keys": "crtl+right" },
-  { "command": { "action": "moveFocus", "direction": "up" }, "keys": "ctrl+up" },
+  { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+down" },
+  { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+left" },
+  { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+right" },
+  { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+up" },
   { "command": "togglePaneZoom" },
   { "command": { "action": "splitPane", "split": "vertical", "index": 0 }, "keys": "alt+shift+1" },
   { "command": { "action": "splitPane", "split": "vertical", "index": 1 }, "keys": "alt+shift+2" },
