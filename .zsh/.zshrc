@@ -36,17 +36,16 @@ fi
 if [[ -r $ZDOTDIR/dircolors/dircolors.256dark ]]; then
     eval `dircolors $ZDOTDIR/dircolors/dircolors.256dark`;
     # vivid - A themeable LS_COLORS generator with a rich filetype datebase (https://github.com/sharkdp/vivid)
-    test -r vivid && export LS_COLORS="$(vivid generate solarized-dark)"
+    test -r vivid && LS_COLORS="$(vivid generate solarized-dark)"
 fi
 
 # fzf - A command-line fuzzy finder (https://github.com/junegunn/fzf)
 [ -f $ZDOTDIR/.fzf.zsh ] && source $ZDOTDIR/.fzf.zsh
 
 # source completions to fpath (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
-[ -f $ZDOTDIR/zsh-completions/src ]
-[ -f $ZDOTDIR/zsh-more-completions/src ]
-[ -f $ZDOTDIR/zsh-more-completions/override_src ]
-[ -f $ZDOTDIR/zsh-more-completions/man_src ]
+[ -r $ZDOTDIR/zsh-completions ] && source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
+[ -r $ZDOTDIR/zsh-more-completions ] && source $ZDOTDIR/zsh-more-completions/zsh-more-completions.plugin.zsh
+[ -f $ZDOTDIR/zsh-very-colorful-manuals ] && source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
 
 # instant prompt - should be set before console produce any output
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -381,9 +380,9 @@ ex ()    {
         case $1 in
             *.tar.bz2)   tar xjf $1   ;;
             *.tar.gz)    tar xzf $1   ;;
-            *.bz2)       bunzip2 $1   ;;
+            *.bz2)       bzip2 $1   ;;
             *.rar)       unrar x $1   ;;
-            *.gz)        gunzip $1    ;;
+            *.gz)        gzip $1    ;;
             *.tar)       tar xf $1    ;;
             *.tbz2)      tar xjf $1   ;;
             *.tgz)       tar xzf $1   ;;
