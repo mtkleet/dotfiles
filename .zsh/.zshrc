@@ -274,7 +274,7 @@ else
     alias spkg='sudo pacman -Ss'
 fi
 alias cpkg='sudo pacman -Rns $(pacman -Qtdq)'
-alias mirror='sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist'
+alias mirror='sudo reflector -f 30 -l 30 --number 15 --verbose --save /etc/pacman.d/mirrorlist'
 alias unlock='sudo rm /var/lib/pacman/db.lck'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias su='sudo su'
@@ -312,8 +312,11 @@ fi
 
 alias dc='cd'
 alias bd='cd ..'
+alias cd ...='cd ../..'
+alias cd ....='cd ../../..'
 alias cd..='cd ..'
 alias cd...='cd ../..'
+alias cd....='cd ../../..'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -374,21 +377,21 @@ colortest() {
 }
 
 # ex - extractor for all kinds of archives
-ex ()    {
-    if [ -f $1 ] ; then
+ex () {
+    if [ -f $1 ]; then
         case $1 in
-            *.tar.bz2)   tar xjf $1   ;;
-            *.tar.gz)    tar xzf $1   ;;
-            *.bz2)       bzip2 $1   ;;
-            *.rar)       unrar x $1   ;;
-            *.gz)        gzip $1    ;;
-            *.tar)       tar xf $1    ;;
-            *.tbz2)      tar xjf $1   ;;
-            *.tgz)       tar xzf $1   ;;
-            *.zip)       unzip $1     ;;
-            *.Z)         uncompress $1 ;;
-            *.7z)        7z x $1      ;;
-            *.deb)       ar x $1      ;;
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bzip2 $1       ;;
+            *.rar)       unrar x $1     ;;
+            *.gz)        gzip $1        ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *.deb)       ar x $1        ;;
             *)           echo "'$1' cannot be extracted via ex()" ;;
         esac
     else
