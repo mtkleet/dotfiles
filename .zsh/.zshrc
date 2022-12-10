@@ -36,16 +36,8 @@ fi
 if [[ -r $ZDOTDIR/dircolors/dircolors.256dark ]]; then
     eval `dircolors $ZDOTDIR/dircolors/dircolors.256dark`;
     # vivid - A themeable LS_COLORS generator with a rich filetype datebase (https://github.com/sharkdp/vivid)
-    test -r vivid && LS_COLORS="$(vivid generate solarized-dark)"
+    test -r vivid && export LS_COLORS="$(vivid generate solarized-dark)"
 fi
-
-# fzf - A command-line fuzzy finder (https://github.com/junegunn/fzf)
-[ -f $ZDOTDIR/.fzf.zsh ] && source $ZDOTDIR/.fzf.zsh
-
-# source completions to fpath (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
-[ -r $ZDOTDIR/zsh-completions ] && source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
-[ -r $ZDOTDIR/zsh-more-completions ] && source $ZDOTDIR/zsh-more-completions/zsh-more-completions.plugin.zsh
-[ -f $ZDOTDIR/zsh-very-colorful-manuals ] && source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
 
 # instant prompt - should be set before console produce any output
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -171,6 +163,12 @@ setopt EXTENDED_HISTORY           # save timestamp of  each command's beginning 
 setopt SHARE_HISTORY              # share command history data
 
 ### --- COMPLETIONS  --- ###
+# source plugins (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
+[ -r $ZDOTDIR/zsh-completions ] && source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
+[ -r $ZDOTDIR/zsh-more-completions ] && source $ZDOTDIR/zsh-more-completions/zsh-more-completions.plugin.zsh
+# zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
+[ -r $ZDOTDIR/zsh-very-colorful-manuals ] && source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
+# completion settings
 autoload -Uz compinit
 compinit -d "$ZDOTDIR/.zcompdump"
 _comp_options+=(globdots)
@@ -222,7 +220,10 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w 
 # append bash completions
 autoload -U +X bashcompinit && bashcompinit
 
-# setup few completions using fzf (https://github.com/junegunn/fzf/blob/master/shell/completion.zsh)
+# fzf - A command-line fuzzy finder (https://github.com/junegunn/fzf)
+[ -f $ZDOTDIR/.fzf.zsh ] && source $ZDOTDIR/.fzf.zsh
+
+# setup few completions with fzf
 _fzf_complete_ssh() {
     _fzf_complete +m -- "$@" < <(
         setopt localoptions nonomatch
@@ -250,8 +251,6 @@ _fzf_complete_kill_post() {
 # powerlevel10k - A Zsh theme (https://github.com/romkatv/powerlevel10k)
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
-# zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
-source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh
 # zsh-autosuggestions - Fish-like autosuggestions for zsh (https://github.com/zsh-users/zsh-autosuggestions)
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
