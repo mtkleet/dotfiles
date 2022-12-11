@@ -46,7 +46,7 @@
       "bellStyle": "taskbar",
       "colorScheme": "Gruvbox",
       "cursorShape": "emptyBox",
-      "font": { "face": "MesloLGS NFM", "size": 9 },
+      "font": { "face": "MesloLGS NFM", "size": 9  },
       "historySize": 50000,
       "intenseTextStyle": "bright",
       "opacity": 85,
