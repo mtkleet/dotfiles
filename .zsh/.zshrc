@@ -166,8 +166,7 @@ setopt SHARE_HISTORY              # share command history data
 # source plugins (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
 [ -r $ZDOTDIR/zsh-completions ] && source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
 [ -r $ZDOTDIR/zsh-more-completions ] && source $ZDOTDIR/zsh-more-completions/zsh-more-completions.plugin.zsh
-# zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
-[ -r $ZDOTDIR/zsh-very-colorful-manuals ] && source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
+
 # completion settings
 autoload -Uz compinit
 compinit -d "$ZDOTDIR/.zcompdump"
@@ -248,6 +247,8 @@ _fzf_complete_kill_post() {
 }
 
 ### --- PLUGINS LOADING --- ###
+# zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
+[ -r $ZDOTDIR/zsh-very-colorful-manuals ] && source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
 # powerlevel10k - A Zsh theme (https://github.com/romkatv/powerlevel10k)
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 [[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
