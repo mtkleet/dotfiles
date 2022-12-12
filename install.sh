@@ -34,7 +34,7 @@ read -r input
 if [[ $input == "y" || $input == "Y" ]]; then
     sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay.git ~/yay && cd ~/yay && makepkg -si
-    yay -S python perl llvm clang go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim curl ripgrep bottom ncdu exa bat bat-extras vivid ctags mpd ncmpcpp
+    yay -S python python-pip perl llvm clang go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim curl ripgrep bottom ncdu exa bat bat-extras vivid ctags mpd ncmpcpp lazygit
     echo "Dependiencies installed!"
 fi
 echo "Do you want to install minimal mpd/ncmpcpp config? [y/n]"
