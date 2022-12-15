@@ -73,7 +73,6 @@
                 "name": "Command Prompt"
             },
             {
-                "adjustIndistinguishableColors": "always",
                 "colorScheme": "Solarized Dark - Patched",
                 "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
                 "icon": "%USERPROFILE%\\.config\\ProfileIcons\\arch.png",
