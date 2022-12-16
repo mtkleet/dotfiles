@@ -11,6 +11,7 @@ export XDG_CACHE_HOME=${HOME}/.cache
 #export GTK2_RC_FILES=${XDG_CONFIG_HOME}/gtk-2.0
 #export SCREENRC=${XDG_CONFIG_HOME}/screenrc
 #export _GL_SHADER_DISK_CACHE_PATH=${XDG_CACHE_HOME}/nv 
+#export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 #export QT_QPA_PLATFORMTHEME=qt5ct
 #export QT_QPA_PLATFORMTHEME=qt6ct
 #export QT_STYLE_OVERRIDE=kvantum
