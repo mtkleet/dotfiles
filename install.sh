@@ -33,11 +33,13 @@ fi
 echo "Do you want automatically install dependiencies (only for Arch-based distros with activated 'community' and 'testing' repositories)? [y/n]"
 read -r input
 if [[ $input == "y" || $input == "Y" ]]; then
-    sudo pacman -S git base-devel
-    git clone https://aur.archlinux.org/yay.git $HOME/yay && cd $HOME/yay && makepkg -si
+    if [ -x "$(command -v yay)" ]; then
+        sudo pacman -S git base-devel
+        git clone https://aur.archlinux.org/yay.git $HOME/yay && cd $HOME/yay && makepkg -si
+        rm -rf $HOME/yay
+    fi
     yay -S zsh python python-pip perl llvm clang go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim curl ripgrep bottom ncdu exa bat bat-extras vivid ctags mpd ncmpcpp-git lazygit fd
     echo "Dependiencies installed!"
-    rm -r $HOME/yay
 fi
 echo "Do you want to install minimal mpd/ncmpcpp config? [y/n]"
 read -r input
@@ -61,7 +63,7 @@ echo "[Recommended] If you have su rights, move ~/.zshenv to /etc/zsh (without d
 echo "Do you wish to do it now? [y/n]"
 read -r input
 if [[ $input == "y" || $input == "Y" ]]; then
-    sudo mv $HOME/.zshenv /etc/zsh/zshenv && sudo mv $HOME/.zsh/zprofile /etc/zsh/zprofile
+    sudo mv $HOME/.zshenv /etc/zsh/zshenv
     echo "Done!"
 fi
 exit
