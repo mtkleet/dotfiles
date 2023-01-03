@@ -140,7 +140,11 @@ local config = {
 
   plugins = {
     init = {
-      { "svrana/neosolarized.nvim" },
+      { "svrana/neosolarized.nvim",
+        config = function()
+          require('neosolarized').setup { comment_italics = true, background_set = false }
+        end,
+      },
       { "tjdevries/colorbuddy.nvim" },
       { "lambdalisue/suda.vim" },
       { "p00f/clangd_extensions.nvim",
@@ -158,18 +162,20 @@ local config = {
       ["michaelb/sniprun"] = {
         run = "bash ./install.sh",
         config = function()
-          require("sniprun").setup({
+          require("sniprun").setup {
             inline_messages = 0,
             display = { "NvimNotify" },
             borders = "single",
             display_options = { notification_timeout = 2500 },
             interpreter_options = { Python3_original = { error_truncate = "long" } },
-          })
+          }
         end,
       },
       ["rcarriga/nvim-notify"] = {
         event = "UIEnter",
-        config = function() require("notify").setup({ background_colour = "#001E27" }) vim.notify = require("notify") end
+        config = function() require("notify").setup { background_colour = "#001E27" }
+          vim.notify = require("notify")
+        end,
       },
       ["vladdoster/remember.nvim"] = { config = function() require("remember") end },
       ["max397574/better-escape.nvim"] = { disable = true },
@@ -227,8 +233,8 @@ local config = {
   ["which-key"] = { register = { n = { ["<leader>"] = { ["b"] = { name = "Buffer" }, }, }, }, },
 
   polish = function()
-    n = require("neosolarized").setup({ comment_italics = true })
-    n.Group.new("TODO", n.colors.blue)
+    -- n = require("neosolarized").setup({ comment_italics = true })
+    -- n.Group.new("TODO", n.colors.blue)
     -- vim.api.nvim_create_autocmd("ColorScheme", {
     --	command = "hi CursorLineNr guibg=clear",
     -- })
