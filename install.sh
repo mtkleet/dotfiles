@@ -20,7 +20,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.zsh/fzf && $HOME/
 mv $HOME/.fzf.zsh $HOME/.zsh
 rm $HOME/.fzf.bash
 [ ! -d "$HOME/.local/bin" ] && mkdir -p $HOME/.local/bin
-ln -s ~$HOME/.zsh/fzf/bin/fzf $HOME/.local/bin/fzf
+ln -s $HOME/.zsh/fzf/bin/fzf $HOME/.local/bin/fzf
 cp -r $HOME/dotfiles/.local/bin/* $HOME/.local/bin
 echo "Downloading MesloLGS NF fonts..."
 wget -P $HOME/.local/share/fonts "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
