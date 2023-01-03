@@ -353,7 +353,7 @@ alias gethostname='cat /proc/sys/kernel/hostname'
 # display all active ips
 alias actip="echo '$(ip -o addr show up primary scope global | while read -r num dev fam addr rest; do echo ${addr%/*}; done)'"
 # get lan ip
-alias lanip='unalias grep | ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1'
+alias lanip='ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1'
 # print public ip
 alias pubip='curl icanhazip.com'
 
