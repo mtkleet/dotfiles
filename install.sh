@@ -38,7 +38,8 @@ if [[ $input == "y" || $input == "Y" ]]; then
         git clone https://aur.archlinux.org/yay.git $HOME/yay && cd $HOME/yay && makepkg -si
         rm -rf $HOME/yay
     fi
-    yay -S zsh python python-pip perl llvm clang go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim curl ripgrep bottom ncdu exa bat bat-extras vivid ctags mpd ncmpcpp-git lazygit fd
+    yay -S zsh python python-pip python-setuptools perl go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim \
+        curl ripgrep bottom ncdu exa bat bat-extras vivid ctags mpd ncmpcpp-git lazygit fd cllvm clang boost make 
     echo "Dependiencies installed!"
 fi
 echo "Do you want to install minimal mpd/ncmpcpp config? [y/n]"
