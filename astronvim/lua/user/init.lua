@@ -42,6 +42,7 @@ local config = {
       status_diagnostics_enabled = true,
       icons_enabled = true,
       ui_notifications_enabled = true,
+      heirline_bufferline = false,
     }
   },
 
@@ -140,6 +141,7 @@ local config = {
 
   plugins = {
     init = {
+      { "sheerun/vim-polyglot" },
       { "svrana/neosolarized.nvim",
         config = function()
           require('neosolarized').setup { comment_italics = true, background_set = false }
@@ -188,7 +190,7 @@ local config = {
           hl = { fg = "fg", bg = "bg" },
           astronvim.status.component.mode(),
           astronvim.status.component.git_branch(),
-          astronvim.status.component.file_info(),
+          astronvim.status.component.file_info{ filename = { modify = ":p:." }, padding = { left = 1, right = 1 } },
           astronvim.status.component.git_diff(),
           astronvim.status.component.diagnostics(),
           astronvim.status.component.fill(),
@@ -196,7 +198,7 @@ local config = {
           astronvim.status.component.fill(),
           astronvim.status.component.lsp(),
           astronvim.status.component.treesitter(),
-          astronvim.status.component.nav(),
+          astronvim.status.component.nav{ scrollbar = false, percentage = false, padding = { left = 1 } },
           astronvim.status.component.mode { surround = { separator = "right" } },
         },
         -- Winbar:
