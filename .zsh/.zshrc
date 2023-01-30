@@ -27,20 +27,20 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     # using wslview from wslu (https://github.com/wslutilities/wslu) as binary and brave as engine
     alias s='s -b wslview -p brave'
     # edit Windows Terminal settings inside wsl (this path to leads to settings.json in Preview version)
-    alias edal="nvim ${APPDATA}/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json"
+    alias edal="nvim $APPDATA/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json"
 else
     alias s="s -p brave"
 fi
 
 # dircolors-solarized (https://github.com/seebi/dircolors-solarized)
-if [[ -r $ZDOTDIR/dircolors/dircolors.256dark ]]; then
+if [ -r $ZDOTDIR/dircolors/dircolors.256dark ]; then
     eval `dircolors $ZDOTDIR/dircolors/dircolors.256dark`;
     # vivid - A themeable LS_COLORS generator with a rich filetype datebase (https://github.com/sharkdp/vivid)
     test -r vivid && export LS_COLORS="$(vivid generate solarized-dark)"
 fi
 
 # instant prompt - should be set before console produce any output
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -170,7 +170,6 @@ setopt SHARE_HISTORY              # share command history data
 # completion settings
 autoload -Uz compinit
 compinit -d "$ZDOTDIR/.zcompdump"
-_comp_options+=(globdots)
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path $ZDOTDIR
 # use ls-colors for path completions
@@ -251,7 +250,7 @@ _fzf_complete_kill_post() {
 [ -r $ZDOTDIR/zsh-very-colorful-manuals ] && source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
 # powerlevel10k - A Zsh theme (https://github.com/romkatv/powerlevel10k)
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
-[[ -f $ZDOTDIR/.p10k.zsh ]] && source $ZDOTDIR/.p10k.zsh
+[ -f $ZDOTDIR/.p10k.zsh ] && source $ZDOTDIR/.p10k.zsh
 # zsh-autosuggestions - Fish-like autosuggestions for zsh (https://github.com/zsh-users/zsh-autosuggestions)
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -267,11 +266,14 @@ if [[ $commands[yay] ]]; then
     alias upkg='yay -Y --gendb && yay -Syu --devel --timeupdate'
     alias rpkg='yay -Rsc'
     alias rpkgf='yay -R --nodeps'
+    alias lpkg='yay --query'
+    alias spkg='yay'
 else
     alias ipkg='sudo pacman -S'
     alias upkg='sudo pacman -Syyu'
     alias rpkg='sudo pacman -Rsc'
     alias rpkgf='sudo pacman -R --nodeps'
+    alias lpkg='sudo pacman --query'
     alias spkg='sudo pacman -Ss'
 fi
 alias cpkg='sudo pacman -Rns $(pacman -Qtdq)'
@@ -283,6 +285,7 @@ alias su='sudo su'
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
+alias sim='sudoedit'
 alias vrc='nvim $HOME/.config/astronvim/lua/user/init.lua'
 alias zrc='nvim $ZDOTDIR/.zshrc'
 
@@ -314,8 +317,6 @@ fi
 
 alias dc='cd'
 alias bd='cd ..'
-alias cd ...='cd ../..'
-alias cd ....='cd ../../..'
 alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
@@ -357,14 +358,7 @@ alias lanip='ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6
 # print public ip
 alias pubip='curl icanhazip.com'
 
-# youtube-dl - command-line program to download videos from YouTube.com and other video sites (https://github.com/ytdl-org/youtube-dl)
-if [[ $commands[youtube-dl] ]]; then
-    # download youtube video in fhd resolution and mp4 format
-    alias ytd='youtube-dl --format "bestvideo[height<=1080,ext=mp4]+bestaudio[ext=m4a]"'
-    # download video from youtube and convert it to mp3@320kbps file
-    alias ytdmp3='youtube-dl -x --audio-format mp3 --audio-quality 320k'
-    # yt-dlp - youtube-dl fork with additional features and fixes
-elif [[ $commands[yt-dlp] ]]; then
+if [[ $commands[yt-dlp] ]]; then
     alias ytd='yt-dlp --format "bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]"'
     alias ytdmp3='yt-dlp -x --audio-format mp3 --audio-quality 320k'
 fi
