@@ -161,6 +161,7 @@ setopt HIST_REDUCE_BLANKS         # remove superfluous blanks from each command 
 setopt HIST_VERIFY                # show command with history expansion to user before running it
 setopt EXTENDED_HISTORY           # save timestamp of  each command's beginning and the its duration
 setopt SHARE_HISTORY              # share command history data
+setopt GLOBDOTS                   # include hidden files in tab completion
 
 ### --- COMPLETIONS  --- ###
 # source plugins (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
@@ -169,7 +170,10 @@ setopt SHARE_HISTORY              # share command history data
 
 # completion settings
 autoload -Uz compinit
-compinit -d "$ZDOTDIR/.zcompdump"
+for dump in $ZDOTDIR/.zcompdump(N.mh+24); do
+    compinit
+done
+compinit -C
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion::complete:*' cache-path $ZDOTDIR
 # use ls-colors for path completions
@@ -265,14 +269,14 @@ if [[ $commands[yay] ]]; then
     alias ipkg='yay -S'
     alias upkg='yay -Y --gendb && yay -Syu --devel --timeupdate'
     alias rpkg='yay -Rsc'
-    alias rpkgf='yay -R --nodeps'
+    alias rpkgf='yay -R --nodeps --nodeps'
     alias lpkg='yay --query'
     alias spkg='yay'
 else
     alias ipkg='sudo pacman -S'
     alias upkg='sudo pacman -Syyu'
     alias rpkg='sudo pacman -Rsc'
-    alias rpkgf='sudo pacman -R --nodeps'
+    alias rpkgf='sudo pacman -R --nodeps --nodeps'
     alias lpkg='sudo pacman --query'
     alias spkg='sudo pacman -Ss'
 fi
