@@ -161,12 +161,7 @@ setopt HIST_REDUCE_BLANKS         # remove superfluous blanks from each command 
 setopt HIST_VERIFY                # show command with history expansion to user before running it
 setopt EXTENDED_HISTORY           # save timestamp of  each command's beginning and the its duration
 setopt SHARE_HISTORY              # share command history data
-setopt GLOBDOTS                   # include hidden files in tab completion
-
-### --- COMPLETIONS  --- ###
-# source plugins (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
-[ -r $ZDOTDIR/zsh-completions ] && source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
-[ -r $ZDOTDIR/zsh-more-completions ] && source $ZDOTDIR/zsh-more-completions/zsh-more-completions.plugin.zsh
+setopt GLOB_DOTS                   # include hidden files in tab completion
 
 # completion settings
 autoload -Uz compinit
@@ -221,6 +216,11 @@ zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,args -w -w"
 # append bash completions
 autoload -U +X bashcompinit && bashcompinit
+
+### --- COMPLETIONS  --- ###
+# source plugins (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
+[ -r $ZDOTDIR/zsh-completions ] && source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
+[ -r $ZDOTDIR/zsh-more-completions ] && source $ZDOTDIR/zsh-more-completions/zsh-more-completions.plugin.zsh
 
 # fzf - A command-line fuzzy finder (https://github.com/junegunn/fzf)
 [ -f $ZDOTDIR/.fzf.zsh ] && source $ZDOTDIR/.fzf.zsh
