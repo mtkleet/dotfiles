@@ -10,6 +10,7 @@ export XDG_CACHE_HOME=${HOME}/.cache
 #export CARGO_HOME=${XDG_DATA_HOME}/cargo   # ln -s $HOME/.local/bin $XDG_DATA_HOME/cargo/bin
 #export GTK2_RC_FILES=${XDG_CONFIG_HOME}/gtk-2.0/gtkrc
 #export SCREENRC=${XDG_CONFIG_HOME}/screenrc
+#export CUDA_CACHE_PATH=${XDG_CACHE_HOME}/nv
 #export _GL_SHADER_DISK_CACHE_PATH=${XDG_CACHE_HOME}/nv 
 #export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java -Dawt.useSystemAAFontSettings=on"
 #export QT_QPA_PLATFORMTHEME=qt5ct
