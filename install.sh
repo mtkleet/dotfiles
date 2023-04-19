@@ -2,7 +2,7 @@
 echo "Installing AstroNvim..."
 [[ -d "${HOME}/.config/nvim" ]] && mv "${HOME}/.config/nvim" "${HOME}/.config/nvim.old"
 git clone -q "https://github.com/AstroNvim/AstroNvim.git" "${HOME}/.config/nvim"
-cp -r "${HOME}/dotfiles/astronvim" "${HOME}/.config"
+git clone -q "https://github.com/mtkleet/astronvim_config" "${HOME}/.config/nvim/lua/user"
 echo "Installing zsh plugins..."
 git clone -q "https://github.com/zsh-users/zsh-completions.git" "${HOME}/.zsh/zsh-completions"
 git clone -q "https://github.com/zsh-users/zsh-autosuggestions.git" "${HOME}/.zsh/zsh-autosuggestions"
