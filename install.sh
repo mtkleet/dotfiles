@@ -24,7 +24,7 @@ ln -s "${HOME}/.zsh/fzf/bin/fzf" "${HOME}/.local/bin/fzf"
 cp -r "${HOME}/dotfiles/.local/bin/*" "${HOME}/.local/bin"
 echo "Downloading MesloLGS NF fonts..."
 wget -P "${HOME}/.local/share/fonts" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
-wget -P "${HOME}/.local/share/fonts"  "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
+wget -P "${HOME}/.local/share/fonts" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
 wget -P "${HOME}/.local/share/fonts" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
 wget -P "${HOME}/.local/share/fonts" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
 if [[ -x "$(command -v fc-cache)" ]]; then
