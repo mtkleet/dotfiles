@@ -28,7 +28,7 @@
     # Zsh >= 5.1 is required.
     [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || return
 
-    typeset -g POWERLEVEL9K_SSH_ICON='%15F\uF489' # 
+    typeset -g POWERLEVEL9K_SSH_ICON='%15F\uF489 ' # 
 
     # The list of segments shown on the left. Fill it with the most important segments.
     typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
@@ -112,7 +112,7 @@
     )
 
     # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
-    typeset -g POWERLEVEL9K_MODE=nerdfont-complete
+    typeset -g POWERLEVEL9K_MODE=nerdfont-v3
     # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
     # icon overlap when using non-monospace fonts. When set to `none`, spaces are not added.
     typeset -g POWERLEVEL9K_ICON_PADDING=none
@@ -952,17 +952,17 @@
 
         ###[ virtualenv: python virtual environment (https://docs.python.org/3/library/venv.html) ]###
         # Python virtual environment color.
-        # typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=14
-        # typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=234
+        typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=15
+        typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=23
         # Don't show Python version next to the virtual environment name.
-        # typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
+        typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=if-different
         # If set to "false", won't show virtualenv if pyenv is already shown.
         # If set to "if-different", won't show virtualenv if it's the same as pyenv.
         # typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=false
         # Separate environment name from Python version only with a space.
         # typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
         # Custom icon.
-        # typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
+        typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
         #####################[ anaconda: conda environment (https://conda.io/) ]######################
         # Anaconda environment color.
@@ -1759,7 +1759,7 @@
         #   - verbose: Enable instant prompt and print a warning when detecting console output during
         #              zsh initialization. Choose this if you've never tried instant prompt, haven't
         #              seen the warning, or if you are unsure what this all means.
-        typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose
+        typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
         # Hot reload allows you to change POWERLEVEL9K options after Powerlevel10k has been initialized.
         # For example, you can type POWERLEVEL9K_BACKGROUND=red and see your prompt turn red. Hot reload
