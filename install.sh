@@ -1,8 +1,7 @@
 #!/usr/bin/bash
 echo "Installing AstroNvim..."
 [[ -d "${HOME}/.config/nvim" ]] && mv "${HOME}/.config/nvim" "${HOME}/.config/nvim.old"
-git clone -q "https://github.com/AstroNvim/AstroNvim.git" "${HOME}/.config/nvim"
-git clone -q "https://github.com/mtkleet/astronvim_config" "${HOME}/.config/nvim/lua/user"
+git clone -q "https://github.com/mtkleet/astronvim_config.git" "${HOME}/.config/nvim"
 echo "Installing zsh plugins..."
 git clone -q "https://github.com/zsh-users/zsh-completions.git" "${HOME}/.zsh/zsh-completions"
 git clone -q "https://github.com/zsh-users/zsh-autosuggestions.git" "${HOME}/.zsh/zsh-autosuggestions"
@@ -10,26 +9,13 @@ git clone -q "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${HOME}
 git clone -q "https://github.com/MenkeTechnologies/zsh-very-colorful-manuals.git" "${HOME}/.zsh/zsh-very-colorful-manuals"
 git clone -q "https://github.com/MenkeTechnologies/zsh-more-completions.git" "${HOME}/.zsh/zsh-more-completions"
 git clone -q --depth=1 "https://github.com/romkatv/powerlevel10k.git" "${HOME}/.zsh/powerlevel10k"
-wget -P "${HOME}/.zsh/dircolors" "https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark"
-wget -P "${HOME}/.zsh/dircolors" "https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark"
-wget -P "${HOME}/.zsh/dircolors" "https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-universal"
+git clone -q "https://github.com/seebi/dircolors-solarized" "${HOME}/.zsh/zsh-dircolors-solarized"
 cp -r "${HOME}/dotfiles/.zsh" "${HOME}"
 mv "${HOME}/.zsh/.zshenv" "${HOME}"
-echo "Installing fzf..."
-git clone --depth 1 "https://github.com/junegunn/fzf.git" "${HOME}/.zsh/fzf" && "${HOME}/.zsh/fzf/install"
-mv "${HOME}/.fzf.zsh" "${HOME}/.zsh"
-rm "${HOME}/.fzf.bash"
+[[ ! -d ${XDG_DATA_HOME:-$HOME/.local/share}/pki/nssdb ]] && mkdir -p ${XDG_DATA_HOME:-$HOME/.local/share}/pki/nssdb
 [[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/bin"
-ln -s "${HOME}/.zsh/fzf/bin/fzf" "${HOME}/.local/bin/fzf"
 cp -r "${HOME}/dotfiles/.local/bin/*" "${HOME}/.local/bin"
-echo "Downloading MesloLGS NF fonts..."
-wget -P "${HOME}/.local/share/fonts" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
-wget -P "${HOME}/.local/share/fonts" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
-wget -P "${HOME}/.local/share/fonts" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
-wget -P "${HOME}/.local/share/fonts" "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
-if [[ -x "$(command -v fc-cache)" ]]; then
-    fc-cache -fv "${HOME}/.local/share/fonts"
-fi
+
 echo "Do you want automatically install dependiencies (only for Arch-based distros with activated 'community' and 'testing' repositories)? [y/n]"
 read -r input
 if [[ $input == "y" || $input == "Y" ]]; then
@@ -37,8 +23,11 @@ if [[ $input == "y" || $input == "Y" ]]; then
     git clone "https://aur.archlinux.org/yay.git" "${HOME}/yay" && cd "${HOME}/yay" && makepkg -si
     rm -rf "${HOME}/yay"
     yay -S zsh python python-pip python-setuptools perl go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim \
-    curl ripgrep gotop gdu exa bat bat-extras vivid ctags mpd ncmpcpp-git lazygit fd cllvm clang boost make 
+    curl ripgrep gotop gdu exa bat bat-extras vivid ctags mpd ncmpcpp-git lazygit fd llvm clang boost make 
     echo "Dependiencies installed!"
+    ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/go/bin
+    ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/cargo/bin
+    ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/gem/ruby/3.0.0/bin
 fi
 echo "Do you want to install minimal mpd/ncmpcpp config? [y/n]"
 read -r input

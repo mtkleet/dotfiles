@@ -93,7 +93,7 @@
         # nix_shell             # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
         # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
         # vpn_ip                # virtual private network indicator
-        # load                  # CPU load
+        load                    # CPU load
         # disk_usage            # disk usage
         # swap                  # used swap
         # todo                  # todo items (https://github.com/todotxt/todo.txt-cli)
@@ -1706,7 +1706,7 @@
         # typeset -g POWERLEVEL9K_HOST_TEMPLATE="%0B%0F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
         # typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
         if [[ -v TERMUX_VERSION ]]; then
-            typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F`termux-wifi-connectioninfo | grep ip | cut -d'"' -f 4`"
+            typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F@`termux-wifi-connectioninfo | grep ip | cut -d'"' -f 4`"
         else
             typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
         fi

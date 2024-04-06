@@ -8,9 +8,6 @@ export LESSHISTFILE=-
 export PATH=$HOME/.local/bin:$PATH
 export VISUAL=nvim
 export EDITOR=$VISUAL
-export LC_LANG=en-US.UTF-8
-export LC_CTYPE=C.UTF-8
-export LC_ALL=C.UTF-8
 
 # set WORDCHARDS for 'backward-kill-word' to stop at forward slash
 export WORDCHARS=${WORDCHARS/\/}
@@ -37,7 +34,9 @@ else
 fi
 
 # dircolors-solarized (https://github.com/seebi/dircolors-solarized)
-eval `dircolors ${ZDOTDIR}/dircolors/dircolors.256dark`;
+if [ -f $ZDOTDIR/dircolors/dircolors.256dark ]; then 
+    eval `dircolors ${ZDOTDIR}/dircolors-solarized/dircolors.256dark`;
+fi
 # vivid - A themeable LS_COLORS generator with a rich filetype datebase (https://github.com/sharkdp/vivid)
 test -r vivid && export LS_COLORS="$(vivid generate solarized-dark)"
 
@@ -71,7 +70,7 @@ setopt    LIST_ROWS_FIRST              # matches are listed in a horizontal fash
 setopt    LIST_TYPES                   # when listing files that are possible completions, show the type of each one
 unsetopt  MENU_COMPLETE                # don't iterate through every possible match in menu
 unsetopt  REC_EXACT                    # don't accept exact match if there are other possible completions
-#setopt    GLOB_DOTS                   # include hidden files in tab completion
+setopt    GLOB_DOTS                   # include hidden files in tab completion
 ## expansion & globbing
 setopt    BAD_PATTERN                  # if a pattern for filename generation is badly formed, print an error message
 #setopt   BARE_GLOB_QUAL               # in a glob pattern, treat a trailing set of parentheses as a qualifier list, if it doesn't contain `|', `(, `~'
@@ -142,43 +141,16 @@ unsetopt  SINGLE_LINE_ZLE              # don't use single line command line
 setopt    EMACS                        # emacs keybindings
 # history
 setopt    HIST_IGNORE_ALL_DUPS          # if a new command is a duplicate, remove the older one
-setopt    HIST_REDUCE_BLANKS           # remove superfluous blanks from each command line being added to the history list
+setopt    HIST_REDUCE_BLANKS            # remove superfluous blanks from each command line being added to the history list
 setopt    HIST_VERIFY                   # show command with history expansion to user before running it
 setopt    SHARE_HISTORY                 # share command history data
 setopt    EXTENDED_HISTORY              # save timestamp of  each command's beginning and the its duration
 setopt    HIST_IGNORE_SPACE             # remove command lines from the history list when the first character is space
 setopt    HIST_SAVE_NO_DUPS
 
-                                        # specify history file location
-export HISTFILE=$ZDOTDIR/zcompcache/zsh_history 
+export HISTFILE=$ZDOTDIR/.zsh_history    # specify history file location
 export HISTSIZE=10000                   # how many lines of history keep in memory
 export SAVEHIST=10000                   # how many lines of history keep in history file
-
-# basic keybindings
-bindkey   '^[[1;5D' backward-word
-bindkey   '^[[1;5C' forward-word
-bindkey   '^[[5D' beginning-of-line
-bindkey   '^[[5C' end-of-line
-bindkey   '^[[3~' delete-char
-bindkey   '^H' backward-kill-word
-
-exp_alias() {                          # expand aliases to the left (if any) before inserting a space
-    zle _expand_alias
-    zle self-insert
-    }; zle -N exp_alias
-
-# better history navigation
-autoload -U up-line-or-beginning-search; zle -N up-line-or-beginning-search
-autoload -U down-line-or-beginning-search; zle -N down-line-or-beginning-search
-
-bindkey -- ' '    exp_alias
-bindkey -- '^P'   up-history
-bindkey -- '^N'   down-history
-bindkey -- '^E'   end-of-line
-bindkey -- '^A'   beginning-of-line
-# bindkey -- '^[^M' self-insert-unmeta # alt-enter to insert a newline/carriage return
-bindkey -- '^K'   up-line-or-beginning-search
-bindkey -- '^J'   down-line-or-beginning-search
 
 [[ -n ${terminfo[kdch1]} ]] && bindkey -- "${terminfo[kdch1]}" delete-char                   # delete
 [[ -n ${terminfo[kend]}  ]] && bindkey -- "${terminfo[kend]}"  end-of-line                   # end
@@ -191,12 +163,9 @@ bindkey -- '^J'   down-line-or-beginning-search
 [[ -n ${terminfo[kcuu1]} ]] && bindkey -- "${terminfo[kcuu1]}" up-line-or-beginning-search   # up arrow
 [[ -n ${terminfo[kcud1]} ]] && bindkey -- "${terminfo[kcud1]}" down-line-or-beginning-search # down arrow
 
-function zcompile-many() {
-  local f
-  for f; do zcompile -R -- "$f".zwc "$f"; done
-}
-
-zstyle ':completion::complete:*' cache-path $ZDOTDIR/zcompcache/zcompcache
+#source $ZDOTDIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+#bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
 # correction
 zstyle ':completion:*:correct:*' original true
@@ -205,6 +174,7 @@ zstyle ':completion:*:approximate:*' max-errors 'reply=($(( ($#PREFIX + $#SUFFIX
 
 # completion
 zstyle ':completion:*' use-cache on
+zstyle ':completion::complete:*' cache-path $XDG_CACHE_HOME
 zstyle ':completion:*' cache-path "$comppath"
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' verbose true
@@ -213,7 +183,7 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:-command-:*:' verbose false
+zstyle ':completion:*:-command-:*:' verbose true
 zstyle ':completion::complete:*' gain-privileges 1
 zstyle ':completion:*:manuals.*' insert-sections true
 zstyle ':completion:*:manuals' separate-sections true
@@ -234,15 +204,16 @@ zstyle ':completion:*:warnings' format ' %F{green}->%F{red} no matches%f'
 zstyle ':completion:*:corrections' format ' %F{green}->%F{green} %d: %e%f'
 
 # menu colours
-# eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=36=0=01'
 
 # command parameters
+zstyle ':completion:*:sudo::' environ PATH="/sbin:/usr/sbin:$PATH" HOME="/root"
 zstyle ':completion:*:functions' ignored-patterns '(prompt*|_*|*precmd*|*preexec*)'
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
+zstyle ':completion::*:kill:*:*' command 'ps xf -U $USER -o pid,%cpu,cmd'
+zstyle ':completion::*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
 zstyle ':completion:*:(vim|nvim|vi):*' ignored-patterns '*.(wav|mp3|flac|ogg|mp4|avi|mkv|iso|so|o|7z|zip|tar|gz|bz2|rar|deb|pkg|gzip|pdf|png|jpeg|jpg|gif)'
 
 # hostnames and addresses
@@ -255,7 +226,9 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
 zstyle -e ':completion:*:hosts' hosts 'reply=( ${=${=${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ } ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*} ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}})'
 
-## additional completions (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
+
+
+# additional completions (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
 fpath=(
     $ZDOTDIR/zsh?##completions\/[^override]#src
     $ZDOTDIR/zsh?##completions\/[^override]#src/**/*~*/(CVS)#(/N)
@@ -263,35 +236,11 @@ fpath=(
 )
 fpath=($ZDOTDIR/zsh-more-completions/override_src $fpath)
 
-# fzf - A command-line fuzzy finder (https://github.com/junegunn/fzf)
-source $ZDOTDIR/.fzf.zsh
+autoload -U +X bashcompinit && bashcompinit
 
-# completion for ssh
-_fzf_complete_ssh() {
-    _fzf_complete +m -- "$@" < <(
-        setopt localoptions nonomatch
-        command cat <(command tail -n +1 ~/.ssh/config ~/.ssh/config.d/* /etc/ssh/ssh_config 2> /dev/null | command grep -i '^\s*host\(name\)\? ' | awk '{for (i = 2; i <= NF; i++) print $1 " " $i}' | command grep -v '[*?%]') \
-            <(command grep -oE '^[[a-z0-9.,:-]+' ~/.ssh/known_hosts | tr ',' '\n' | tr -d '[' | awk '{ print $1 " " $1 }') \
-            <(command grep -v '^\s*\(#\|$\)' /etc/hosts | command grep -Fv '0.0.0.0') |
-        awk '{if (length($2) > 0) {print $2}}' | sort -u
-    )
-}
-
-# completion for export
-_fzf_complete_export() {
-    _fzf_complete -m -- "$@" < <(
-        declare -xp | sed 's/=.*//' | sed 's/.* //'
-    )
-}
-
-# completion for kill
-_fzf_complete_kill() {
-    _fzf_complete -m --preview 'echo {}' --preview-window down:3:wrap --min-height 15 -- "$@" < <(
-        command ps -ef | sed 1d
-    )
-}
-_fzf_complete_kill_post() {
-    awk '{print $2}'
+function zcompile-many() {
+  local f
+  for f; do zcompile -R -- "$f".zwc "$f"; done
 }
 
 # zsh-syntax-highlighting - Fish shell like syntax highlighting for Zsh (https://github.com/zsh-users/zsh-syntax-highlighting)
@@ -320,16 +269,12 @@ fi
 if [ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-autoload -Uz compinit && compinit -C -d $ZDOTDIR/zcompcache/zcompdump
-[[ $ZDOTDIR/zcompcache/zcompdump.zwc -nt $ZDOTDIR/zcompcache/zcompdump ]] || zcompile-many $ZDOTDIR/zcompcache/zcompdump
+autoload -Uz compinit && compinit -C -d $ZDOTDIR/.zcompdump
+[[ $ZDOTDIR/.zcompdump.zwc -nt $ZDOTDIR/.zcompdump ]] || zcompile-many $ZDOTDIR/.zcompdump
 unfunction zcompile-many
 
-source $ZDOTDIR/.z.zsh
-source /usr/share/zsh/plugins/zsh-systemd/systemd.plugin.zsh
 # zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
 source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
-
 
 ### --- SOURCE PLUGINS --- ###
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -341,7 +286,7 @@ source $ZDOTDIR/.p10k.zsh
 # yay - An AUR Helper written in Go (https://github.com/Jguer/yay)
 if [[ $commands[yay] ]]; then
     alias ipkg='yay -S'
-    alias upkg='yay -Y --gendb && yay -Syu --devel --timeupdate'
+    alias upkg='yay -Syu --devel'
     alias rpkg='yay -Rsc'
     alias rpkgf='yay -R --nodeps --nodeps'
     alias lpkg='yay --query'
@@ -357,15 +302,13 @@ fi
 alias cpkg='sudo pacman -Rns $(pacman -Qtdq)'
 alias mirror='sudo reflector -f 30 -l 30 --number 15 --verbose --save /etc/pacman.d/mirrorlist'
 alias unlock='sudo rm /var/lib/pacman/db.lck'
-alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias su='sudo su'
-
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias sim='sudoedit'
 alias vrc="nvim ${XDG_CONFIG_HOME}/nvim/lua/user/init.lua"
 alias zrc="nvim ${ZDOTDIR}/.zshrc"
+alias i3c="nvim ${XDG_CONFIG_HOME}/i3/config"
 
 alias lo='exit'
 alias :q='exit'
@@ -377,7 +320,7 @@ alias grep='grep --color --exclude-dir={.git,.svn,CVS}'
 alias rg='rg -P -H'
 alias ps='ps auxf'
 alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
-alias -g wget="wget --hsts-file=${XDG_CACHE_HOME}/wget-hsts"
+alias -g wget="wget --hsts-file=${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"
 alias userlist='cut -d: -f1 /etc/passwd'
 alias jctl='journalctl -p 3 -xb'
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
@@ -408,15 +351,16 @@ if [[ $commands[advcp] ]]; then
     alias mv='advmv -g'
 fi
 #alias cp='rsync -ah --partial --inplace --info=progress2'
-alias rmf='rm -rfvi'
+alias rmi='rm --verbose --recursive --interactive'
+alias rmf='rm -R -I --verbose'
 
 # exa - a modern version of ls (https://github.com/ogham/exa)
-if [[ $commands[exa] ]]; then
-    alias l='exa --all --icons --grid --links --group-directories-first --classify --colour-scale --extended --git'
-    alias ll='exa --group --long --all --git --color=auto --time-style=default --icons --extended --group-directories-first --classify --modified --color-scale'
+if [[ $commands[eza] ]]; then
+    alias l='eza --all --icons --grid --links --group-directories-first --classify --extended --git'
+    alias ll='eza --group --long --all --git --color=auto --time-style=default --icons --extended --group-directories-first --classify --modified'
     #alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default'
-    function lll() {exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default $1 | less -r}
-    function wch() {exa -lamgF@ $(which $1)}
+    function lll() {eza -lamgF@ --group-directories-first --git --color=always --time-style=default $1 | less -r}
+    function wch() {eza -lamgF@ $(which $1)}
 else
     alias l='ls -lACFfH --color=auto '
     alias ll='ls -lAFfHh --color=auto '
