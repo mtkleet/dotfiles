@@ -1704,7 +1704,12 @@
         ####################################[ host: current host ]#####################################
         # typeset -g POWERLEVEL9K_HOST_TEMPLATE="%16F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1` %33F${POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION}"
         # typeset -g POWERLEVEL9K_HOST_TEMPLATE="%0B%0F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
-        typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
+        # typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
+        if [[ -v TERMUX_VERSION ]]; then
+            typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F`termux-wifi-connectioninfo | grep ip | cut -d'"' -f 4`"
+        else
+            typeset -g POWERLEVEL9K_HOST_TEMPLATE="%15F@`ip addr show |grep "inet " |grep -v 127.0.0. |head -1|cut -d" " -f6|cut -d/ -f1`"
+        fi
         typeset -g POWERLEVEL9K_HOST_BACKGROUND=23
         # Example of a user-defined prompt segment. Function prompt_example will be called on every
         # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or

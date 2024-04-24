@@ -1,0 +1,184 @@
+live_config_reload = false
+working_directory = "None"
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.bright]
+black = "0x475b62"
+blue = "0x708284"
+cyan = "0x819090"
+green = "0x475b62"
+magenta = "0x5956ba"
+red = "0xbd3613"
+white = "0xfcf4dc"
+yellow = "0x536870"
+
+[colors.cursor]
+cursor = "0x708284"
+text = "0x002831"
+
+[colors.normal]
+black = "0x002831"
+blue = "0x2176c7"
+cyan = "0x259286"
+green = "0x738a05"
+magenta = "0xc61c6f"
+red = "0xd11c24"
+white = "0xeae3cb"
+yellow = "0xa57706"
+
+[colors.primary]
+background = "0x001e27"
+foreground = "0x708284"
+
+[colors.selection]
+background = "0x002831"
+text = "0x819090"
+
+[cursor]
+style = "Block"
+thickness = 0.15
+unfocused_hollow = true
+vi_mode_style = "None"
+
+[env]
+TERM = "xterm-256color"
+WINIT_X11_SCALE_FACTOR = "1"
+
+[font]
+size = 9
+
+[font.bold]
+family = "MesloLGS Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "MesloLGS Nerd Font"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "MesloLGS Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "MesloLGS Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+#[hints]
+#modifiers = "None"
+#
+#[hints.launcher]
+#program = "xdg-open"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+
+[[keyboard.bindings]]
+action = "ClearLogNotice"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mode = "~Vi"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "SearchForward"
+key = "F"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "SearchBackward"
+key = "B"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "C"
+mode = "Vi"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+#[mouse.double_click]
+#threshold = 300
+#
+#[mouse.triple_click]
+#threshold = 300
+
+[scrolling]
+history = 2500
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[window]
+decorations = "full"
+opacity = 0.9
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 80
+lines = 24
