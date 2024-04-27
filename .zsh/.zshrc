@@ -3,7 +3,7 @@ export TERM=xterm-256color
 export COLORTERM=truecolor
 export MANROFFOPT='-c'
 export MANWIDTH=120
-export LESS='-R'
+export LESS='-RF'
 export LESSHISTFILE=-
 export PATH=$HOME/.local/bin:$PATH
 export VISUAL=nvim
@@ -34,9 +34,8 @@ else
 fi
 
 # dircolors-solarized (https://github.com/seebi/dircolors-solarized)
-if [ -f $ZDOTDIR/dircolors/dircolors.256dark ]; then 
-    eval `dircolors ${ZDOTDIR}/dircolors-solarized/dircolors.256dark`;
-fi
+[[ -f $ZDOTDIR/dircolors/dircolors.256dark ]] && eval `dircolors $ZDOTDIR/dircolors-solarized/dircolors.256dark`;
+
 # vivid - A themeable LS_COLORS generator with a rich filetype datebase (https://github.com/sharkdp/vivid)
 test -r vivid && export LS_COLORS="$(vivid generate solarized-dark)"
 
@@ -174,7 +173,7 @@ zstyle ':completion:*:approximate:*' max-errors 'reply=($(( ($#PREFIX + $#SUFFIX
 
 # completion
 zstyle ':completion:*' use-cache on
-zstyle ':completion::complete:*' cache-path $XDG_CACHE_HOME
+zstyle ':completion::complete:*' cache-path ${XDG_CACHE_HOME:-$HOME/.cache}
 zstyle ':completion:*' cache-path "$comppath"
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' verbose true
@@ -183,7 +182,7 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:-command-:*:' verbose true
+zstyle ':completion:*:-command-:*:' verbose false
 zstyle ':completion::complete:*' gain-privileges 1
 zstyle ':completion:*:manuals.*' insert-sections true
 zstyle ':completion:*:manuals' separate-sections true
@@ -205,15 +204,13 @@ zstyle ':completion:*:corrections' format ' %F{green}->%F{green} %d: %e%f'
 
 # menu colours
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=36=0=01'
 
 # command parameters
-zstyle ':completion:*:sudo::' environ PATH="/sbin:/usr/sbin:$PATH" HOME="/root"
 zstyle ':completion:*:functions' ignored-patterns '(prompt*|_*|*precmd*|*preexec*)'
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
-zstyle ':completion::*:kill:*:*' command 'ps xf -U $USER -o pid,%cpu,cmd'
-zstyle ':completion::*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
 zstyle ':completion:*:(vim|nvim|vi):*' ignored-patterns '*.(wav|mp3|flac|ogg|mp4|avi|mkv|iso|so|o|7z|zip|tar|gz|bz2|rar|deb|pkg|gzip|pdf|png|jpeg|jpg|gif)'
 
 # hostnames and addresses
@@ -226,17 +223,19 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
 zstyle -e ':completion:*:hosts' hosts 'reply=( ${=${=${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ } ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*} ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}})'
 
-
-
 # additional completions (https://github.com/zsh-users/zsh-completions) & (https://github.com/MenkeTechnologies/zsh-more-completions)
-fpath=(
+#[[ -r $ZDOTDIR/zsh-completions ]] && source $ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh
+#[[ -r $ZDOTDIR/zsh-more-completions ]] && source $ZDOTDIR/zsh-more-completions/zsh-more-completions.plugin.zsh
+
+fpath=($ZDOTDIR/zsh-more-completions/override_src $fpath)
+fpath+=(
     $ZDOTDIR/zsh?##completions\/[^override]#src
     $ZDOTDIR/zsh?##completions\/[^override]#src/**/*~*/(CVS)#(/N)
     "${fpath[@]}"
 )
-fpath=($ZDOTDIR/zsh-more-completions/override_src $fpath)
 
 autoload -U +X bashcompinit && bashcompinit
+autoload -Uz compinit && compinit 
 
 function zcompile-many() {
   local f
@@ -269,14 +268,13 @@ fi
 if [ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-autoload -Uz compinit && compinit -C -d $ZDOTDIR/.zcompdump
+
 [[ $ZDOTDIR/.zcompdump.zwc -nt $ZDOTDIR/.zcompdump ]] || zcompile-many $ZDOTDIR/.zcompdump
 unfunction zcompile-many
 
-# zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
-source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
-
 ### --- SOURCE PLUGINS --- ###
+## zsh-very-colorful-manuals - Custom colorscheme for man pages (https://github.com/MenkeTechnologies/zsh-very-colorful-manuals)
+source $ZDOTDIR/zsh-very-colorful-manuals/zsh-very-colorful-manuals.plugin.zsh 
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
@@ -306,9 +304,9 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias sim='sudoedit'
-alias vrc="nvim ${XDG_CONFIG_HOME}/nvim/lua/user/init.lua"
-alias zrc="nvim ${ZDOTDIR}/.zshrc"
-alias i3c="nvim ${XDG_CONFIG_HOME}/i3/config"
+alias vrc="nvim ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/lua/plugins/user.lua"
+alias zrc="nvim $ZDOTDIR/.zshrc"
+alias i3c="nvim ${XDG_CONFIG_HOME:-$HOME/.config}/i3/config"
 
 alias lo='exit'
 alias :q='exit'
@@ -320,7 +318,7 @@ alias grep='grep --color --exclude-dir={.git,.svn,CVS}'
 alias rg='rg -P -H'
 alias ps='ps auxf'
 alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
-alias -g wget="wget --hsts-file=${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"
+alias wget="wget --hsts-file=${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"
 alias userlist='cut -d: -f1 /etc/passwd'
 alias jctl='journalctl -p 3 -xb'
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
@@ -359,8 +357,8 @@ if [[ $commands[eza] ]]; then
     alias l='eza --all --icons --grid --links --group-directories-first --classify --extended --git'
     alias ll='eza --group --long --all --git --color=auto --time-style=default --icons --extended --group-directories-first --classify --modified'
     #alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default'
-    function lll() {eza -lamgF@ --group-directories-first --git --color=always --time-style=default $1 | less -r}
-    function wch() {eza -lamgF@ $(which $1)}
+    function lll() {eza --group --long --all --git --color=auto --time-style=default --icons --extended --group-directories-first --classify --modified $1 | $(less -RF)}
+    function wch() {eza --all --icons --grid --links --group-directories-first --classify --extended --git $(which $1)}
 else
     alias l='ls -lACFfH --color=auto '
     alias ll='ls -lAFfHh --color=auto '
