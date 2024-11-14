@@ -17,14 +17,17 @@ cp -r "${HOME}/dotfiles/.config/bat" "${HOME}/.config"
 echo "Do you want automatically install dependiencies (only for Arch-based distros with activated 'community' and 'testing' repositories)? [y/n]"
 read -r input
 if [[ $input == "y" || $input == "Y" ]]; then
+	[[ ! -d "${HOME}/.local/go" ]] && mkdir -p "${HOME}/.local/go"
+	[[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/cargo"
+	[[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/gem/ruby/3.3.0"
 	ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/go/bin
 	ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/cargo/bin
-	ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/gem/ruby/3.0.0/bin
+	ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/gem/ruby/3.3.0/bin
 	sudo pacman -S git base-devel
 	git clone "https://aur.archlinux.org/yay.git" "${HOME}/yay" && cd "${HOME}/yay" && makepkg -si
 	rm -rf "${HOME}/yay"
 	yay -S coreutils patch zsh python python-pip python-setuptools perl go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim \
-		curl ripgrep bottom gdu exa bat bat-extras vivid ctags mpd ncmpcpp-git lazygit fd llvm boost lazygit wget patch
+		curl ripgrep bottom gdu exa bat bat-extras vivid ctags mpd ncmpcpp-git lazygit fd llvm boost lazygit wget
 	curl https://raw.githubusercontent.com/jarun/advcpmv/master/install.sh --create-dirs -o ${HOME}/.local/advcpmv/install.sh && (cd ${HOME}/.local/advcpmv && sh install.sh)
 	cp ${HOME}/.local/advcpmv/advcp ${HOME}/.local/bin
 	cp ${HOME}/.local/advcpmv/advmv ${HOME}/.local/bin
@@ -42,7 +45,6 @@ if [[ $input == "y" || $input == "Y" ]]; then
 		touch log mpd.db mpd.sql state sticker.sql
 		echo "Remember to change music directory path in ~/.config/mpd/mpd.conf and ~/.config/ncmpcpp/config"
 		sleep 3
-
 	else
 		cp -r "${HOME}/dotfiles/.config/mpd" "${HOME}/.config"
 		cp -r "${HOME}/dotfiles/.config/ncmpcpp" "${HOME}/.config"

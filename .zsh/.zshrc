@@ -161,6 +161,8 @@ export SAVEHIST=10000                   # how many lines of history keep in hist
 [[ -n ${terminfo[kcbt]}  ]] && bindkey -- "${terminfo[kcbt]}"  reverse-menu-complete         # shift-tab
 [[ -n ${terminfo[kcuu1]} ]] && bindkey -- "${terminfo[kcuu1]}" up-line-or-beginning-search   # up arrow
 [[ -n ${terminfo[kcud1]} ]] && bindkey -- "${terminfo[kcud1]}" down-line-or-beginning-search # down arrow
+[[ -n ${terminfo[kLFT5]} ]] && bindkey -- "${terminfo[kLFT5]}" backward-word
+[[ -n ${terminfo[kLRT5]} ]] && bindkey -- "${terminfo[kLRT5]}" forward-word
 
 #source $ZDOTDIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 #bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
@@ -319,6 +321,7 @@ alias rg='rg -P -H'
 alias ps='ps auxf'
 alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
 alias wget="wget --hsts-file=${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"
+alias yarn="yarn --use-yarnrc ${XDG_CONFIG_HOME}/yarn/config"
 alias userlist='cut -d: -f1 /etc/passwd'
 alias jctl='journalctl -p 3 -xb'
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
@@ -357,7 +360,7 @@ if [[ $commands[eza] ]]; then
     alias l='eza --all --icons --grid --links --group-directories-first --classify --extended --git'
     alias ll='eza --group --long --all --git --color=auto --time-style=default --icons --extended --group-directories-first --classify --modified'
     #alias ll='exa -lamgF@ --group-directories-first --git --color=always --color-scale --time-style=default'
-    function lll() {eza --group --long --all --git --color=auto --time-style=default --icons --extended --group-directories-first --classify --modified $1 | $(less -RF)}
+    function lll() {eza --group --long --all --git --color=auto --time-style=default --icons --extended --group-directories-first --classify --modified $1 | less -RF}
     function wch() {eza --all --icons --grid --links --group-directories-first --classify --extended --git $(which $1)}
 else
     alias l='ls -lACFfH --color=auto '
@@ -386,7 +389,7 @@ if [[ $commands[yt-dlp] ]]; then
 fi
 
 # unified remote - turn your smartphone into a universal remote control (https://github.com/unifiedremote)
-# test -r /opt/urserver/urserver && alias urd="/opt/urserver/urserver --daemon"
+test -r /opt/urserver/urserver && alias urd="/opt/urserver/urserver --daemon"
 
 ### --- FUNCTIONS --- ###
 # 256-colors test pattern
@@ -416,3 +419,4 @@ ex () {
         echo "'$1' is not a valid file"
     fi
 }
+
