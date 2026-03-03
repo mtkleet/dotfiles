@@ -8,5 +8,11 @@ return {
     borders = "single",
     display_options = { notification_timeout = 2500 },
     interpreter_options = { Python3_original = { error_truncate = "long" } },
-  }
+  },
+
+  config = function(_, opts)
+    -- alias nvim-notify -> snacks.notify
+    package.loaded["notify"] = vim.notify
+    require("sniprun").setup(opts)
+  end,
 }
