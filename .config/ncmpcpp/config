@@ -63,3 +63,4 @@ message_delay_time =                "0"
 centered_cursor =                   "yes"
 enable_window_title =               "yes"
 external_editor =                   "nvim"
+#lyrics_fetchers = genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet

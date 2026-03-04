@@ -1,75 +1,172 @@
-#!/usr/bin/bash
-echo "Installing zsh plugins..."
-git clone -q "https://github.com/zsh-users/zsh-completions.git" "${HOME}/.zsh/zsh-completions"
-git clone -q "https://github.com/zsh-users/zsh-autosuggestions.git" "${HOME}/.zsh/zsh-autosuggestions"
-git clone -q "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${HOME}/.zsh/zsh-syntax-highlighting"
-git clone -q "https://github.com/MenkeTechnologies/zsh-very-colorful-manuals.git" "${HOME}/.zsh/zsh-very-colorful-manuals"
-git clone -q "https://github.com/MenkeTechnologies/zsh-more-completions.git" "${HOME}/.zsh/zsh-more-completions"
-git clone -q --depth=1 "https://github.com/romkatv/powerlevel10k.git" "${HOME}/.zsh/powerlevel10k"
-git clone -q "https://github.com/seebi/dircolors-solarized" "${HOME}/.zsh/dircolors-solarized"
-cp -r "${HOME}/dotfiles/.zsh" "${HOME}"
-cp "${HOME}/.zsh/.zshenv" "${HOME}"
-[[ ! -d ${XDG_DATA_HOME:-$HOME/.local/share}/pki/nssdb ]] && mkdir -p ${XDG_DATA_HOME:-$HOME/.local/share}/pki/nssdb
-[[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/bin"
-cp -r "${HOME}/dotfiles/.local/bin/*" "${HOME}/.local/bin"
-cp -r "${HOME}/dotfiles/.config/bat" "${HOME}/.config"
+#!/usr/bin/env bash
+set -euo pipefail
 
-echo "Do you want automatically install dependiencies (only for Arch-based distros with activated 'community' and 'testing' repositories)? [y/n]"
-read -r input
-if [[ $input == "y" || $input == "Y" ]]; then
-	[[ ! -d "${HOME}/.local/go" ]] && mkdir -p "${HOME}/.local/go"
-	[[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/cargo"
-	[[ ! -d "${HOME}/.local/bin" ]] && mkdir -p "${HOME}/.local/gem/ruby/3.3.0"
-	ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/go/bin
-	ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/cargo/bin
-	ln -s ${HOME}/.local/bin ${XDG_DATA_HOME}/gem/ruby/3.3.0/bin
-	sudo pacman -S git base-devel
-	git clone "https://aur.archlinux.org/yay.git" "${HOME}/yay" && cd "${HOME}/yay" && makepkg -si
-	rm -rf "${HOME}/yay"
-	yay -S coreutils patch zsh python python-pip python-setuptools perl go rust nodejs neovim python-pynvim nodejs-neovim ruby-neovim \
-		curl ripgrep bottom gdu exa bat bat-extras vivid ctags mpd ncmpcpp-git lazygit fd llvm boost lazygit wget
-	curl https://raw.githubusercontent.com/jarun/advcpmv/master/install.sh --create-dirs -o ${HOME}/.local/advcpmv/install.sh && (cd ${HOME}/.local/advcpmv && sh install.sh)
-	cp ${HOME}/.local/advcpmv/advcp ${HOME}/.local/bin
-	cp ${HOME}/.local/advcpmv/advmv ${HOME}/.local/bin
-	rm -rf ${HOME}/.local/advcpmv
-	echo "Dependiencies installed!"
-fi
-echo "Do you want to install minimal mpd/ncmpcpp config? [y/n]"
-read -r input
-if [[ $input == "y" || $input == "Y" ]]; then
-	mkdir -p "${HOME}/.config/mpd/playlists"
-	if [[ -f /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
-		cp -r "${HOME}/dotfiles/wsl/.config/mpd" "${HOME}/.config"
-		cp -r "${HOME}/dotfiles/wsl/.config/ncmpcpp" "${HOME}/.config"
-		cd "${HOME}/.config/mpd"
-		touch log mpd.db mpd.sql state sticker.sql
-		echo "Remember to change music directory path in ~/.config/mpd/mpd.conf and ~/.config/ncmpcpp/config"
-		sleep 3
-	else
-		cp -r "${HOME}/dotfiles/.config/mpd" "${HOME}/.config"
-		cp -r "${HOME}/dotfiles/.config/ncmpcpp" "${HOME}/.config"
-		cd "${HOME}/.config/mpd"
-		touch log mpd.db mpd.sql state sticker.sql
-		echo "Remember to change music directory path in ~/.config/mpd/mpd.conf and ~/.config/ncmpcpp/config"
-		sleep 3
-	fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$SCRIPT_DIR"
+
+ZSH_DIR="${HOME}/.zsh"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+# Helper functions
+ask() {
+  read -rp "$1 [y/N]: " input
+  [[ "${input:-}" =~ ^[Yy]$ ]]
+}
+
+clone_or_pull() {
+  local repo="$1"
+  local dir="$2"
+
+  if [[ -d "$dir/.git" ]]; then
+    echo "Updating $(basename "$dir")..."
+    git -C "$dir" pull --quiet
+  else
+    echo "Cloning $(basename "$dir")..."
+    git clone --depth=1 --quiet "$repo" "$dir"
+  fi
+}
+
+create_bin_redirect() {
+  local parent="$1"
+  local target="$HOME/.local/bin"
+
+  mkdir -p "$parent"
+
+  if [[ -L "$parent/bin" ]]; then
+    rm "$parent/bin"
+  elif [[ -e "$parent/bin" ]]; then
+    echo "Warning: $parent/bin exists and is not a symlink. Skipping."
+    return
+  fi
+
+  ln -s "$target" "$parent/bin"
+}
+
+detect_ruby_version() {
+  if command -v ruby &>/dev/null; then
+    ruby -e 'print RbConfig::CONFIG["ruby_version"]'
+  else
+    echo ""
+  fi
+}
+
+# ZSH plugins
+echo "Installing ZSH plugins..."
+mkdir -p "$ZSH_DIR"
+
+clone_or_pull https://github.com/zsh-users/zsh-completions.git "$ZSH_DIR/zsh-completions"
+clone_or_pull https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_DIR/zsh-autosuggestions"
+clone_or_pull https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_DIR/zsh-syntax-highlighting"
+clone_or_pull https://github.com/MenkeTechnologies/zsh-very-colorful-manuals.git "$ZSH_DIR/zsh-very-colorful-manuals"
+clone_or_pull https://github.com/MenkeTechnologies/zsh-more-completions.git "$ZSH_DIR/zsh-more-completions"
+clone_or_pull https://github.com/romkatv/powerlevel10k.git "$ZSH_DIR/powerlevel10k"
+clone_or_pull https://github.com/seebi/dircolors-solarized.git "$ZSH_DIR/dircolors-solarized"
+
+# Copy dotfiles
+echo "Copying configuration files..."
+
+# .zsh
+cp -r "$DOTFILES_DIR/.zsh" "$HOME"
+cp "$ZSH_DIR/.zshenv" "$HOME"
+
+# .config (without mpd/ncmpcpp for now)
+mkdir -p "$XDG_CONFIG_HOME"
+
+for dir in "$DOTFILES_DIR/.config"/*; do
+  base="$(basename "$dir")"
+
+  if [[ "$base" == "mpd" || "$base" == "ncmpcpp" ]]; then
+    continue
+  fi
+
+  cp -r "$dir" "$XDG_CONFIG_HOME/"
+done
+
+# .local/bin
+mkdir -p "$HOME/.local/bin"
+cp -r "$DOTFILES_DIR/.local/bin/." "$HOME/.local/bin/" 2>/dev/null || true
+
+# .local/share
+mkdir -p "$XDG_DATA_HOME"
+cp -r "$DOTFILES_DIR/.local/share/." "$XDG_DATA_HOME/" 2>/dev/null || true
+
+mkdir -p "$XDG_DATA_HOME/pki/nssdb"
+
+# Unified bin redirections
+echo "Creating unified bin redirections..."
+
+create_bin_redirect "$XDG_DATA_HOME/cargo"
+create_bin_redirect "$XDG_DATA_HOME/go"
+create_bin_redirect "$XDG_DATA_HOME/pnpm"
+
+RUBY_VERSION="$(detect_ruby_version)"
+
+if [[ -n "$RUBY_VERSION" ]]; then
+  create_bin_redirect "$XDG_DATA_HOME/gem/ruby/$RUBY_VERSION"
+else
+  echo "Ruby not detected. Skipping Ruby bin redirect."
 fi
 
-echo "Do you want to install AstroNvim (configuration)? [y/n]"
-read -r input
-if [[ $input == "y" || $input == "Y" ]]; then
-	echo "Installing AstroNvim..."
-	[[ -d "${HOME}/.config/nvim" ]] && mv "${HOME}/.config/nvim" "${HOME}/.config/nvim.old"
-	git clone -q "https://github.com/mtkleet/astronvim_config.git" "${HOME}/.config/nvim"
+# Arch dependencies
+if ask "Install dependencies (Arch-based only)?"; then
+
+  if [[ ! -f /etc/arch-release ]]; then
+    echo "Not an Arch-based system. Skipping."
+    exit 0
+  fi
+
+  sudo pacman -S --needed git base-devel
+
+  if ! command -v yay &>/dev/null; then
+    echo "Installing yay..."
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    (cd /tmp/yay && makepkg -si --noconfirm)
+    rm -rf /tmp/yay
+  fi
+
+  yay -S --needed \
+    coreutils patch zsh python python-pip perl go rust nodejs neovim \
+    curl ripgrep bottom gdu exa bat bat-extras vivid ctags mpd \
+    ncmpcpp lazygit fd llvm boost wget
+
+  echo "Dependencies installed."
 fi
 
-echo -n "You can find zsh configuration files and plugins in \$ZDOTDIR which is now set to: ~/.zsh 
-Restart prompt to apply changes and run: nvim +PackerSync
-[Recommended] If you have su rights, move ~/.zshenv to /etc/zsh (without dot): sudo mv \$HOME/.zshenv /etc/zsh/zshenv
-Do you wish to do it now? [y/n]"
-read -r input
-if [[ $input == "y" || $input == "Y" ]]; then
-	sudo mv "${HOME}/.zshenv" "/etc/zsh/zshenv"
-	echo "Done!"
+# mpd / ncmpcpp
+if ask "Install mpd/ncmpcpp config?"; then
+
+  mkdir -p "$XDG_CONFIG_HOME/mpd/playlists"
+
+  if [[ -f /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
+    cp -r "$DOTFILES_DIR/wsl/.config/mpd" "$XDG_CONFIG_HOME"
+    cp -r "$DOTFILES_DIR/wsl/.config/ncmpcpp" "$XDG_CONFIG_HOME"
+  else
+    cp -r "$DOTFILES_DIR/.config/mpd" "$XDG_CONFIG_HOME"
+    cp -r "$DOTFILES_DIR/.config/ncmpcpp" "$XDG_CONFIG_HOME"
+  fi
+
+  touch "$XDG_CONFIG_HOME/mpd/"{log,mpd.db,mpd.sql,state,sticker.sql}
+
+  echo "Remember to change music directory path in mpd.conf"
 fi
-exit
+
+# AstroNvim
+if ask "Install AstroNvim configuration?"; then
+  [[ -d "$XDG_CONFIG_HOME/nvim" ]] && mv "$XDG_CONFIG_HOME/nvim" "$XDG_CONFIG_HOME/nvim.backup"
+  clone_or_pull https://github.com/mtkleet/astronvim_config.git "$XDG_CONFIG_HOME/nvim"
+fi
+
+# ZDOTDIR notice
+echo
+echo "ZDOTDIR is set to ~/.zsh"
+echo "Recommended: move ~/.zshenv to /etc/zsh/zshenv"
+
+if ask "Move now? (requires sudo)"; then
+  sudo mv "$HOME/.zshenv" "/etc/zsh/zshenv"
+  echo "Done."
+fi
+
+echo
+echo "Installation complete."
