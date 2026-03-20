@@ -46,6 +46,7 @@ alias gcl='git clone'
 alias gfp='git fetch && git pull'
 alias rb='sudo reboot'
 alias ssn='sudo shutdown now'
+alias adb="HOME=${XDG_DATA_HOME}/android adb"
 
 # bat - a cat clone with wings (https://github.com/sharkdp/bat)
 if [[ $commands[bat] ]]; then
@@ -109,28 +110,28 @@ test -r /opt/urserver/urserver && alias urd="/opt/urserver/urserver --daemon"
 
 # 256-colors test pattern
 colortest() {
-    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$( (i%6)):#3}:+$'\n'}; done
 }
 
 # ex - extractor for all kinds of archives
-ex () {
+ex() {
     local file="$1"
 
     if [[ -f "$file" ]]; then
         case "$file" in
-            *.tar.bz2) tar xjf "$file" ;;
-            *.tar.gz)  tar xzf "$file" ;;
-            *.bz2)     bunzip2 "$file" ;;
-            *.rar)     unrar x "$file" ;;
-            *.gz)      gunzip "$file" ;;
-            *.tar)     tar xf "$file" ;;
-            *.tbz2)    tar xjf "$file" ;;
-            *.tgz)     tar xzf "$file" ;;
-            *.zip)     unzip "$file" ;;
-            *.Z)       uncompress "$file" ;;
-            *.7z)      7z x "$file" ;;
-            *.deb)     ar x "$file" ;;
-            *) echo "'$file' cannot be extracted via ex()" ;;
+        *.tar.bz2) tar xjf "$file" ;;
+        *.tar.gz) tar xzf "$file" ;;
+        *.bz2) bunzip2 "$file" ;;
+        *.rar) unrar x "$file" ;;
+        *.gz) gunzip "$file" ;;
+        *.tar) tar xf "$file" ;;
+        *.tbz2) tar xjf "$file" ;;
+        *.tgz) tar xzf "$file" ;;
+        *.zip) unzip "$file" ;;
+        *.Z) uncompress "$file" ;;
+        *.7z) 7z x "$file" ;;
+        *.deb) ar x "$file" ;;
+        *) echo "'$file' cannot be extracted via ex()" ;;
         esac
     else
         echo "'$file' is not a valid file"
