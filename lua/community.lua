@@ -10,6 +10,7 @@ return {
   { import = "astrocommunity.pack.python.base" },
   { import = "astrocommunity.pack.python.basedpyright" },
   { import = "astrocommunity.pack.python.ruff" },
+  { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.rust" },
   -- import/override with your plugins folder
 }
