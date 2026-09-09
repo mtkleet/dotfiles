@@ -129,7 +129,7 @@ if ask "Install dependencies (Arch-based only)?"; then
 	yay -S --needed \
 		coreutils patch zsh python python-pip perl go rust nodejs neovim \
 		curl ripgrep bottom gdu exa bat bat-extras vivid ctags mpd \
-		ncmpcpp lazygit fd llvm boost wget xsettingsd
+		ncmpcpp lazygit fd llvm boost wget xsettingsd tree-sitter-cli
 
 	echo "Dependencies installed."
 fi
